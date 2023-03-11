@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8geqnf5fvh24"
-path="res://.godot/imported/rond_smal_3.png-6a79f4ac6b5f3977e1df4109717b4d42.ctex"
+path="res://.godot/imported/rond_smal_3.png-7735abd0806aefd457ea02a49a51cb6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rond_smal_3.png"
-dest_files=["res://.godot/imported/rond_smal_3.png-6a79f4ac6b5f3977e1df4109717b4d42.ctex"]
+source_file="res://Assets/component/rond_smal_3.png"
+dest_files=["res://.godot/imported/rond_smal_3.png-7735abd0806aefd457ea02a49a51cb6d.ctex"]
 
 [params]
 

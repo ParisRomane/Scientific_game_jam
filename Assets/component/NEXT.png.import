@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo3d48qytsj4r"
-path="res://.godot/imported/rond_smal_2.png-23c7d958e46017bd132728d9a64704b3.ctex"
+uid="uid://ciwnovygp3kct"
+path="res://.godot/imported/NEXT.png-cc0d5b16ad7e882dea26fc5f3d97e31c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rond_smal_2.png"
-dest_files=["res://.godot/imported/rond_smal_2.png-23c7d958e46017bd132728d9a64704b3.ctex"]
+source_file="res://Assets/component/NEXT.png"
+dest_files=["res://.godot/imported/NEXT.png-cc0d5b16ad7e882dea26fc5f3d97e31c.ctex"]
 
 [params]
 

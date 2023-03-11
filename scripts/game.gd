@@ -8,7 +8,7 @@ func _ready():
 	get_tree().paused = true
 	# You can save bandwith by disabling server relay and peer notifications.
 	multiplayer.server_relay = false
-
+	
 	# Automatically start the server in headless mode.
 	if true:
 		print("Automatically starting dedicated server")
@@ -44,7 +44,8 @@ func start_game():
 	# Only change level on the server.
 	# Clients will instantiate the level via the spawner.
 	if multiplayer.is_server():
-		change_level.call_deferred(load("res://test_mockup/level.tscn"))
+		change_level.call_deferred(load("res://scenes/player.tscn"))
+		
 
 
 # Call this function deferred and only on the main authority (server).
@@ -55,7 +56,9 @@ func change_level(scene: PackedScene):
 		level.remove_child(c)
 		c.queue_free()
 	# Add new level.
-	level.add_child(scene.instantiate())
+	var instance = scene.instantiate()
+	instance.position = get_viewport().size/2
+	level.add_child(instance)
 
 # The server can restart the level by pressing HOME.
 func _input(event):

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btp6tk8has7vt"
-path="res://.godot/imported/rond.png-9c6ec38dc2a48519492f90338e723bbd.ctex"
+uid="uid://ct7ss8mebc4uu"
+path="res://.godot/imported/idle_02.png-feaacafeec21ee730a73b5ecf7075bdc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://rond.png"
-dest_files=["res://.godot/imported/rond.png-9c6ec38dc2a48519492f90338e723bbd.ctex"]
+source_file="res://Assets/personnages/idle/idle_02.png"
+dest_files=["res://.godot/imported/idle_02.png-feaacafeec21ee730a73b5ecf7075bdc.ctex"]
 
 [params]
 

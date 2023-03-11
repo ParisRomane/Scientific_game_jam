@@ -5,12 +5,12 @@ const MAX_SIZE_MAT = 9
 var element_names = ["Ni","Co","Cu","Mg"]
 var begin_text = [" Vitesse", " Cadence", " Minage DMG", " Régen"]
 
-var next_texture = preload("res://NEXT.png")
-var None_texture = preload("res://rond_smal_0.png")
-var Ni_texture = preload("res://rond_small.png")
-var Co_texture = preload("res://rond_smal_2.png")
-var Cu_texture = preload("res://rond_smal_3.png")
-var Mg_texture = preload("res://rond_smal_3.png")
+var next_texture = preload("res://Assets/component/NEXT.png")
+var None_texture = preload("res://Assets/component/rond_smal_0.png")
+var Ni_texture = preload("res://Assets/component/rond_small.png")
+var Co_texture = preload("res://Assets/component/rond_smal_2.png")
+var Cu_texture = preload("res://Assets/component/rond_smal_3.png")
+var Mg_texture = preload("res://Assets/component/rond_smal_3.png")
 
 
 #matrices des elements
@@ -22,7 +22,7 @@ func _ready():
 	for i in range(MAX_SIZE_MAT) :
 		self.get_node("stat_UI/hbox/matrix/"+str(i)).texture = None_texture
 	#preload propriety
-	var propriety = preload("res://propriety.tscn")
+	var propriety = preload("res://scenes/propriety.tscn")
 	for i in range(4):
 		var instance_propriety = propriety.instantiate()
 		instance_propriety.set_element_name( element_names[i])

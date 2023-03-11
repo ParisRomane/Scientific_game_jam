@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb3httmd3h0to"
-path="res://.godot/imported/people_icon.png-72c0442019ff7fedcdd3e7300b1090f1.ctex"
+uid="uid://drp2wi50i7ysv"
+path="res://.godot/imported/idle_05.png-50c0b4e10fafc35ed3aeaffd8b909a46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://people_icon.png"
-dest_files=["res://.godot/imported/people_icon.png-72c0442019ff7fedcdd3e7300b1090f1.ctex"]
+source_file="res://Assets/personnages/idle/idle_05.png"
+dest_files=["res://.godot/imported/idle_05.png-50c0b4e10fafc35ed3aeaffd8b909a46.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

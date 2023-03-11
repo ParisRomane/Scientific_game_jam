@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dagdecrokfe5u"
-path="res://.godot/imported/cross.png-bcc6b28a9469641d0e5e0111af55c5b8.ctex"
+uid="uid://dkoapkls5ypuw"
+path="res://.godot/imported/rond_smal_0.png-6c5c942721a8b5440aa642cf18d255b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cross.png"
-dest_files=["res://.godot/imported/cross.png-bcc6b28a9469641d0e5e0111af55c5b8.ctex"]
+source_file="res://Assets/component/rond_smal_0.png"
+dest_files=["res://.godot/imported/rond_smal_0.png-6c5c942721a8b5440aa642cf18d255b8.ctex"]
 
 [params]
 
@@ -25,7 +25,7 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
