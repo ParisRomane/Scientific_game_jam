@@ -35,7 +35,7 @@ signal player_death
 signal player_update_pv(pv)
 
 func _ready():
-	pv = 10
+	pv = pv_default
 	stat_regen = 0
 	stat_speed = 0
 	stat_damage = 0
