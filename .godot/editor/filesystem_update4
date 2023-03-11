@@ -1,0 +1,11 @@
+res://entropy_battle.tscn
+res://RigidBody2D.gd
+res://RigidBody2D_move.gd
+res://RigidBody2D_rotate.gd
+res://Sprite2D.gd
+res://bullet.tscn
+res://scenes/bullet.tscn
+res://scripts/bullet.gd
+res://Node2D_rot.gd
+res://scenes/player.tscn
+res://scripts/Arm.gd
