@@ -21,13 +21,14 @@ func _on_host_pressed():
 	peer.create_server(PORT)
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
 		OS.alert("Failed to start multiplayer server")
+		##PROVISOIRE : 
+		_on_connect_pressed()
 		return
 	multiplayer.multiplayer_peer = peer
 	start_game()
 
 
 func _on_connect_pressed():
-	$UI.show()
 	# Start as client
 	var peer = ENetMultiplayerPeer.new()
 	print(peer.create_client("127.0.0.1", PORT))
