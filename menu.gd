@@ -41,7 +41,7 @@ func _on_explain_open_pressed():
 
 
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://UI.tscn")
+	get_tree().change_scene_to_file("res://game.tscn")
 
 
 func _on_exit_pressed():

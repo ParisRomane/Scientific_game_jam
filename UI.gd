@@ -3,7 +3,7 @@ extends Control
 enum {CU,CO,NI,MG}
 const MAX_SIZE_MAT = 9
 var element_names = ["Ni","Co","Cu","Mg"]
-var begin_text = [" Vitesse", " Cadence", " Minage DMG", " Enemis DMG"]
+var begin_text = [" Vitesse", " Cadence", " Minage DMG", " Régen"]
 
 var next_texture = preload("res://NEXT.png")
 var None_texture = preload("res://rond_smal_0.png")

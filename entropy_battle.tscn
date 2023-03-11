@@ -54,7 +54,6 @@ texture_focused = ExtResource("4_f6s83")
 stretch_mode = 0
 
 [node name="menu" type="Node2D" parent="."]
-visible = false
 
 [node name="menu_sprite" type="Sprite2D" parent="menu"]
 position = Vector2(579, 325)
