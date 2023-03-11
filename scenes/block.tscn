@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://w3rp3yli148y"]
+
+[ext_resource type="Texture2D" uid="uid://2nxr1bnxm64j" path="res://assets/Placeholder_tileset.png" id="1_142f7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmmpc"]
+size = Vector2(128, 64)
+
+[node name="Block" type="StaticBody2D"]
+
+[node name="Hight" type="Sprite2D" parent="."]
+z_index = 2
+scale = Vector2(1.06667, 1.06667)
+texture = ExtResource("1_142f7")
+hframes = 2
+vframes = 2
+region_rect = Rect2(1, -1.5, 121, 123.5)
+
+[node name="Low" type="Sprite2D" parent="."]
+position = Vector2(2.02656e-06, 128)
+scale = Vector2(1.06667, 1.06667)
+texture = ExtResource("1_142f7")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 96)
+shape = SubResource("RectangleShape2D_nmmpc")

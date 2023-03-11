@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2yesllwhq0wd"]
+
+[ext_resource type="PackedScene" uid="uid://b20jlg83x3tt3" path="res://scenes/player.tscn" id="1_schdy"]
+[ext_resource type="PackedScene" uid="uid://dnqm2blahk24p" path="res://scenes/tile_map.tscn" id="3_0g55v"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("3_0g55v")]
+y_sort_enabled = true
+layer_1/z_index = 0
+
+[node name="Player" parent="." instance=ExtResource("1_schdy")]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(929, 566)
+scale = Vector2(1, 1)

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b20jlg83x3tt3"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_tldf4"]
+[ext_resource type="Script" path="res://scripts/Arm.gd" id="3_a2t4o"]
+[ext_resource type="Texture2D" uid="uid://w2jjiiru4xvi" path="res://icon.svg" id="3_xn5fx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rox12"]
+radius = 34.5254
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_tldf4")
+
+[node name="Arm" type="Sprite2D" parent="."]
+scale = Vector2(0.565429, 0.0341795)
+texture = ExtResource("3_xn5fx")
+offset = Vector2(65.437, -2.79019e-05)
+script = ExtResource("3_a2t4o")
+
+[node name="Marker2D" type="Marker2D" parent="Arm"]
+position = Vector2(127.337, 0)
+scale = Vector2(1.76857, 29.2573)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rox12")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(0.398438, 0.359375)
+texture = ExtResource("3_xn5fx")
+
+[node name="Reload" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
