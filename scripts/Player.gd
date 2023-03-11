@@ -40,6 +40,8 @@ func _ready():
 	stat_speed = 0
 	stat_damage = 0
 	stat_mining = 0
+	
+	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
@@ -100,6 +102,11 @@ func movement_loop():
 	if !move or is_dead:
 		vel.x = lerpf(vel.x, 0, 0.15)
 		vel.y = lerpf(vel.y, 0, 0.15)
+	
+	if abs(vel.x) <= 0.2 and abs(vel.y) <= 0.2:
+		$AnimatedSprite2D.play("idle")
+	else:
+		$AnimatedSprite2D.play("move")
 
 func shooting():
 	
@@ -119,6 +126,11 @@ func shooting():
 		#Timer start
 		if $Reload.is_stopped():
 			$Reload.start()
+		
+		$Arm.play("shoot")
+
+func _on_shoot_animation_finished():
+	$Arm.play("idle")
 
 
 func _on_reload_timeout():
