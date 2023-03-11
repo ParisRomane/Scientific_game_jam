@@ -1,28 +1,108 @@
-[gd_scene load_steps=5 format=3 uid="uid://344cgnvglbkv"]
+[gd_scene load_steps=22 format=3 uid="uid://344cgnvglbkv"]
 
-[ext_resource type="Script" path="res://RigidBody2D.gd" id="1_nping"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_tldf4"]
+[ext_resource type="Texture2D" uid="uid://yjbwjb1ngwpu" path="res://Assets/personnages/bras/bras.png" id="2_0aous"]
 [ext_resource type="Script" path="res://scripts/Arm.gd" id="3_a2t4o"]
-[ext_resource type="Texture2D" uid="uid://w2jjiiru4xvi" path="res://icon.svg" id="3_xn5fx"]
+[ext_resource type="Texture2D" uid="uid://ccsu081a3obwg" path="res://Assets/personnages/idle/idle_01.png" id="4_fxe4x"]
+[ext_resource type="Texture2D" uid="uid://bkd3iovrrc7db" path="res://Assets/personnages/idle/idle_02.png" id="5_uptpu"]
+[ext_resource type="Texture2D" uid="uid://bv6qeatj7olkd" path="res://Assets/personnages/idle/idle_03.png" id="6_3pict"]
+[ext_resource type="Texture2D" uid="uid://cfcunnlwk4b81" path="res://Assets/personnages/idle/idle_04.png" id="7_s7qky"]
+[ext_resource type="Texture2D" uid="uid://c7y6jck6ugn62" path="res://Assets/personnages/idle/idle_05.png" id="8_1pljn"]
+[ext_resource type="Texture2D" uid="uid://kdmrg8go1ldj" path="res://Assets/personnages/move/move_01.png" id="9_h4hlq"]
+[ext_resource type="Texture2D" uid="uid://vs6iv4bsn1fr" path="res://Assets/personnages/move/move_02.png" id="10_udn6f"]
+[ext_resource type="Texture2D" uid="uid://bb3ksbeyt7i2a" path="res://Assets/personnages/move/move_03.png" id="11_tv0rd"]
+[ext_resource type="Texture2D" uid="uid://dpdya3kuxopd6" path="res://Assets/personnages/move/move_04.png" id="12_l4e5c"]
+[ext_resource type="Texture2D" uid="uid://u11wfrt6dnaq" path="res://Assets/personnages/move/move_05.png" id="13_dy3p2"]
+[ext_resource type="Texture2D" uid="uid://c4owxgr53b0qt" path="res://Assets/personnages/move/move_06.png" id="14_mgvev"]
+[ext_resource type="Texture2D" uid="uid://bjlujrbvlec6m" path="res://Assets/personnages/bras_shoot/bras_01.png" id="14_qwpy0"]
+[ext_resource type="Texture2D" uid="uid://d06qwbq2cem72" path="res://Assets/personnages/bras_shoot/bras_02.png" id="15_hpu5w"]
+[ext_resource type="Texture2D" uid="uid://s58xojobr2qo" path="res://Assets/personnages/bras_shoot/bras_03.png" id="16_v46ny"]
+[ext_resource type="Texture2D" uid="uid://p2objyss47np" path="res://Assets/personnages/bras_shoot/bras_04.png" id="17_xp3st"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rox12"]
-radius = 34.5254
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqvdu"]
+radius = 31.0
+height = 130.0
 
-[node name="RigidBody2D" type="RigidBody2D"]
-gravity_scale = 0.0
-script = ExtResource("1_nping")
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7oem"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fxe4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_uptpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3pict")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s7qky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1pljn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_h4hlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_udn6f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_tv0rd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l4e5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dy3p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_mgvev")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
-[node name="Arm" type="Sprite2D" parent="."]
-scale = Vector2(0.565429, 0.0341795)
-texture = ExtResource("3_xn5fx")
-offset = Vector2(65.437, -2.79019e-05)
-script = ExtResource("3_a2t4o")
+[sub_resource type="SpriteFrames" id="SpriteFrames_icfmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0aous")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_qwpy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_hpu5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v46ny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xp3st")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 15.0
+}]
 
-[node name="Marker2D" type="Marker2D" parent="Arm"]
-position = Vector2(127.337, 0)
-scale = Vector2(1.76857, 29.2573)
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_tldf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_rox12")
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_eqvdu")
 debug_color = Color(1, 1, 1, 0.419608)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -30,4 +110,27 @@ debug_color = Color(1, 1, 1, 0.419608)
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(-1, -1)
 scale = Vector2(0.398438, 0.359375)
-texture = ExtResource("3_xn5fx")
+
+[node name="Reload" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u7oem")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.815564
+
+[node name="Arm" type="AnimatedSprite2D" parent="."]
+position = Vector2(-11, -22)
+sprite_frames = SubResource("SpriteFrames_icfmb")
+animation = &"shoot"
+autoplay = "idle"
+offset = Vector2(53, 1)
+script = ExtResource("3_a2t4o")
+
+[node name="Marker2D" type="Marker2D" parent="Arm"]
+position = Vector2(77, 4)
+scale = Vector2(0.323144, 9.43973)
+
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
