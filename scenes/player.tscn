@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://d06qwbq2cem72" path="res://Assets/personnages/bras_shoot/bras_02.png" id="15_hpu5w"]
 [ext_resource type="Texture2D" uid="uid://s58xojobr2qo" path="res://Assets/personnages/bras_shoot/bras_03.png" id="16_v46ny"]
 [ext_resource type="Texture2D" uid="uid://p2objyss47np" path="res://Assets/personnages/bras_shoot/bras_04.png" id="17_xp3st"]
+[gd_scene load_steps=5 format=3 uid="uid://bvfnfphwx2yff"]
+
+[ext_resource type="Script" path="res://scripts/RigidBody2D.gd" id="1_nping"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqvdu"]
 radius = 31.0
