@@ -32,7 +32,7 @@ var stat_mining # positive int
 
 signal player_death
 #signal player_grab_element(element)
-signal player_update_pv(pv)
+signal player_update_ui(stat_regen, stat_speed, stat_damage, stat_mining, pv)
 
 func _ready():
 	pv = pv_default
@@ -57,10 +57,13 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 	
 	update_pv(delta)
 
+func update_ui():
+	player_update_ui.emit(stat_regen, stat_speed, stat_damage, stat_mining, pv)
+
 func hit(damage):
 	pv -= damage
 	$Sounds/Hit.play()
-	player_update_pv.emit(pv)
+	update_ui()
 
 var regen_clock = 0
 func update_pv(delta):
@@ -75,7 +78,7 @@ func update_pv(delta):
 		
 		regen_clock += delta
 		
-		player_update_pv.emit(pv)
+		update_ui()
 
 func action_loop():
 	right = Input.is_action_pressed("ui_right")
