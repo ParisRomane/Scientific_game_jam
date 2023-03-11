@@ -60,6 +60,7 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 func hit(damage):
 	pv -= damage
 	$Sounds/Hit.play()
+	player_update_pv.emit(pv)
 
 var regen_clock = 0
 func update_pv(delta):
