@@ -2,14 +2,15 @@ extends CharacterBody2D
 
 const SPEED = 1000
 var vel = Vector2()
-var damage
+var damage # harm in pv to player
+var mining # harm to block
 
-func start(pos, dir, dam):
+func start(pos, dir, dam, min):
 	$Sprite2D.rotate(dir)
 	position = pos
 	damage = dam
+	mining = min
 	vel = Vector2(SPEED, 0).rotated(dir)
-	print("shoot")
 
 func _physics_process(delta):
 	var collision = move_and_collide(vel*delta)

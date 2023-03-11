@@ -27,17 +27,19 @@ var stat_mining # positive int
 @export var pv_default = 100 # 100 pv
 @export var regen_time_default = 1.0 # time to recover 1 pv in seconds
 @export var max_speed = 100
-@export var damage_default = 7
-
+@export var damage_default = 7 # harm to players
+@export var mining_default = 7 # harm to bocks
 
 signal player_death
-
+#signal player_grab_element(element)
+signal player_update_pv(pv)
 
 func _ready():
 	pv = 10
 	stat_regen = 0
 	stat_speed = 0
 	stat_damage = 0
+	stat_mining = 0
 
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
@@ -50,7 +52,6 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 	vel = velocity
 	
 	update_pv(delta)
-	
 
 func hit(damage):
 	pv -= damage
@@ -67,7 +68,8 @@ func update_pv(delta):
 				pv +=1
 		
 		regen_clock += delta
-	
+		
+		player_update_pv.emit(pv)
 
 func action_loop():
 	
@@ -107,10 +109,11 @@ func shooting():
 		var rotation = shoot_line.angle()
 		can_shoot = false
 		
-		var damage = damage_default + 0.2 * stat_damage
+		var damage = damage_default * (1 + 0.2 * stat_damage)
+		var mining = mining_default * (1 + 0.2 * stat_mining)
 		
 		#Bullet spawn
-		b.start($Arm/Marker2D.global_position, rotation, damage)
+		b.start($Arm/Marker2D.global_position, rotation, damage, mining)
 		get_parent().add_child(b)
 		
 		#Timer start
