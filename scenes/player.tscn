@@ -1,11 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvfnfphwx2yff"]
+[gd_scene load_steps=8 format=3 uid="uid://bvfnfphwx2yff"]
 
 [ext_resource type="Script" path="res://scripts/RigidBody2D.gd" id="1_nping"]
 [ext_resource type="Script" path="res://scripts/Arm.gd" id="3_a2t4o"]
 [ext_resource type="Texture2D" uid="uid://c2exjhnn7bud5" path="res://Assets/personnages/idle/idle_01.png" id="3_xn5fx"]
+[ext_resource type="Script" path="res://scenes/PlayerInput.gd" id="4_qsc63"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rox12"]
 radius = 34.5254
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_nwtwl"]
+properties/0/path = NodePath("..:player")
+properties/0/spawn = true
+properties/0/sync = false
+properties/1/path = NodePath("..:position")
+properties/1/spawn = true
+properties/1/sync = true
+properties/2/path = NodePath("..:linear_velocity")
+properties/2/spawn = true
+properties/2/sync = true
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dqr1t"]
+properties/0/path = NodePath("PlayerInput:direction")
+properties/0/spawn = false
+properties/0/sync = true
 
 [node name="RigidBody2D" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -31,3 +48,11 @@ debug_color = Color(1, 1, 1, 0.419608)
 position = Vector2(-1, -1)
 scale = Vector2(0.398438, 0.359375)
 texture = ExtResource("3_xn5fx")
+
+[node name="serverSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../PlayerInput")
+replication_config = SubResource("SceneReplicationConfig_nwtwl")
+
+[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_dqr1t")
+script = ExtResource("4_qsc63")

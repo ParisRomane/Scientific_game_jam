@@ -45,7 +45,7 @@ func start_game():
 	# Only change level on the server.
 	# Clients will instantiate the level via the spawner.
 	if multiplayer.is_server():
-		change_level.call_deferred(load("res://scenes/player.tscn"))
+		change_level.call_deferred(load("res://scenes/level.tscn"))
 		
 
 
@@ -61,15 +61,4 @@ func change_level(scene: PackedScene):
 	instance.position = get_viewport().size/2
 	level.add_child(instance)
 
-# The server can restart the level by pressing HOME.
-func _input(event):
-	if not multiplayer.is_server():
-		return
-	if event.is_action("ui_home") and Input.is_action_just_pressed("ui_home"):
-		change_level.call_deferred(load("res://test_mockup/level.tscn"))
 
-
-
-func _on_start_pressed():
-	print("")
-	pass # Replace with function body.
