@@ -42,7 +42,9 @@ func _ready():
 	stat_mining = 0
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
-
+	
+	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
+	$Sounds/Shoot.stream = load("res://Assets/son/shoot.mp3")
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
@@ -57,6 +59,7 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 
 func hit(damage):
 	pv -= damage
+	$Sounds/Hit.play()
 
 var regen_clock = 0
 func update_pv(delta):
@@ -74,7 +77,6 @@ func update_pv(delta):
 		player_update_pv.emit(pv)
 
 func action_loop():
-	
 	right = Input.is_action_pressed("ui_right")
 	left = Input.is_action_pressed("ui_left")
 	up = Input.is_action_pressed("ui_up")
@@ -109,7 +111,6 @@ func movement_loop():
 		$AnimatedSprite2D.play("move")
 
 func shooting():
-	
 	if shoot and can_shoot and !is_dead:
 		shoot_line = get_global_mouse_position() - global_position
 		var b = bullet.instantiate()
@@ -128,6 +129,8 @@ func shooting():
 			$Reload.start()
 		
 		$Arm.play("shoot")
+		
+		$Sounds/Shoot.play()
 
 func _on_shoot_animation_finished():
 	$Arm.play("idle")
