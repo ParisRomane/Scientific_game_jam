@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://btskw0x6y15ga"]
 
 [ext_resource type="Script" path="res://propriety.gd" id="1_4oel7"]
-[ext_resource type="Texture2D" uid="uid://ccts0rc45bvey" path="res://rond_small.png" id="2_3kpf1"]
+[ext_resource type="Texture2D" uid="uid://btp6tk8has7vt" path="res://rond.png" id="1_45mkp"]
 
 [node name="propriety" type="Control"]
 custom_minimum_size = Vector2(40, 40)
@@ -24,8 +24,7 @@ text = "Ni "
 
 [node name="icon" type="TextureRect" parent="hbox"]
 layout_mode = 2
-texture = ExtResource("2_3kpf1")
-expand_mode = 2
+texture = ExtResource("1_45mkp")
 
 [node name="description" type="Label" parent="hbox"]
 layout_mode = 2

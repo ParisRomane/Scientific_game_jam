@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://oro086x6bn1"]
+[gd_scene load_steps=5 format=3 uid="uid://oro086x6bn1"]
 
 [ext_resource type="Script" path="res://UI.gd" id="1_cdcu0"]
 [ext_resource type="Texture2D" uid="uid://dkoapkls5ypuw" path="res://rond_smal_0.png" id="2_6lqo2"]
 [ext_resource type="Texture2D" uid="uid://ccts0rc45bvey" path="res://rond_small.png" id="2_vb7ne"]
+[ext_resource type="Texture2D" uid="uid://cb3httmd3h0to" path="res://people_icon.png" id="4_hvo6l"]
 
 [node name="UI" type="Control"]
 z_index = 100
@@ -73,3 +74,28 @@ texture = ExtResource("2_vb7ne")
 [node name="list_prop" type="VBoxContainer" parent="stat_UI/hbox"]
 layout_mode = 2
 alignment = 1
+
+[node name="Container" type="Container" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="hbox" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="icon_people" type="TextureRect" parent="Container/hbox"]
+layout_mode = 2
+texture = ExtResource("4_hvo6l")
+expand_mode = 2
+
+[node name="nb_alive" type="Label" parent="Container/hbox"]
+layout_mode = 2
+text = ": 4"
