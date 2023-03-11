@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4m53yeoeaqsj"]
+
+[ext_resource type="Script" path="res://entropy_battle.gd" id="1_spail"]
+[ext_resource type="PackedScene" uid="uid://oro086x6bn1" path="res://UI.tscn" id="2_i5k1g"]
+
+[node name="game" type="Node2D"]
+visible = false
+script = ExtResource("1_spail")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("2_i5k1g")]
