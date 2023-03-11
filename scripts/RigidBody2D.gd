@@ -26,8 +26,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move()
-	shoot()
+	if player == multiplayer.get_unique_id():
+		move()
+		shoot()
+		$Arm.look_at(get_global_mouse_position())
 
 func shoot():
 	if Input.is_action_pressed("ui_select"):

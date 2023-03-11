@@ -1,5 +1,6 @@
 extends Node
 
+var peer = ENetMultiplayerPeer.new()
 const PORT = 4433
 
 
@@ -17,7 +18,6 @@ func _ready():
 
 func _on_host_pressed():
 	# Start as server
-	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
 		OS.alert("Failed to start multiplayer server")
@@ -30,7 +30,6 @@ func _on_host_pressed():
 
 func _on_connect_pressed():
 	# Start as client
-	var peer = ENetMultiplayerPeer.new()
 	print(peer.create_client("127.0.0.1", PORT))
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
 		OS.alert("Failed to start multiplayer client")

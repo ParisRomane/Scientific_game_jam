@@ -14,7 +14,7 @@ func _ready():
 
 	# Spawn the local player unless this is a dedicated server export.
 	if not OS.has_feature("dedicated_server"):
-		add_player(1)
+		add_player(multiplayer.get_unique_id())
 
 
 func _exit_tree():
@@ -25,6 +25,7 @@ func _exit_tree():
 
 
 func add_player(id: int):
+	print("ID : ",id)
 	var character = preload("res://scenes/player.tscn").instantiate()
 	# Set player id.
 	character.player = id
