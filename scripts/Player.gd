@@ -15,18 +15,59 @@ var down
 var move
 var shoot
 
-@export var max_speed = 300
-
 var ACC = 50
 
-func _ready():
-	pass
+#player stats
+var pv #int between 0 and pv_default
+var stat_speed # positive int
+var stat_damage # positive int
+var stat_regen # positive int
+var stat_mining # positive int
 
-func _physics_process(delta):	# 60 FPS
+@export var pv_default = 100 # 100 pv
+@export var regen_time_default = 1.0 # time to recover 1 pv in seconds
+@export var max_speed = 100
+@export var damage_default = 7
+
+
+signal player_death
+
+
+func _ready():
+	pv = 10
+	stat_regen = 0
+	stat_speed = 0
+	stat_damage = 0
+
+
+func _physics_process(delta):	# 60 FPS (delta is in s)
+	if pv <= 0:
+		player_death.emit()
+	
 	action_loop()
 	set_velocity(vel)
 	move_and_slide()
 	vel = velocity
+	
+	update_pv(delta)
+	
+
+func hit(damage):
+	pv -= damage
+
+var regen_clock = 0
+func update_pv(delta):
+	if stat_regen != 0:
+		# real time to recover 1 pv according to the regen stat
+		var regen_time = regen_time_default / stat_regen
+		
+		if regen_clock >= regen_time:
+			regen_clock = 0
+			if pv < pv_default:
+				pv +=1
+		
+		regen_clock += delta
+	
 
 func action_loop():
 	
@@ -41,16 +82,17 @@ func action_loop():
 	shooting()
 
 func movement_loop():
+	var speed = max_speed * (1 + 0.2 * stat_speed)
 	
 	if !is_dead:
 		if right:
-			vel.x = min(vel.x + ACC, max_speed)
+			vel.x = min(vel.x + ACC, speed)
 		if left:
-			vel.x = max(vel.x - ACC, -max_speed)
+			vel.x = max(vel.x - ACC, -speed)
 		if up:
-			vel.y = max(vel.y - ACC, -max_speed)
+			vel.y = max(vel.y - ACC, -speed)
 		if down:
-			vel.y = min(vel.y + ACC, max_speed)
+			vel.y = min(vel.y + ACC, speed)
 	
 	#Inertia management
 	if !move or is_dead:
@@ -65,8 +107,10 @@ func shooting():
 		var rotation = shoot_line.angle()
 		can_shoot = false
 		
+		var damage = damage_default + 0.2 * stat_damage
+		
 		#Bullet spawn
-		b.start($Arm/Marker2D.global_position, rotation)
+		b.start($Arm/Marker2D.global_position, rotation, damage)
 		get_parent().add_child(b)
 		
 		#Timer start
