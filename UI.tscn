@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://oro086x6bn1"]
+
+[ext_resource type="Script" path="res://UI.gd" id="1_cdcu0"]
+[ext_resource type="Texture2D" uid="uid://dkoapkls5ypuw" path="res://rond_smal_0.png" id="2_6lqo2"]
+[ext_resource type="Texture2D" uid="uid://ccts0rc45bvey" path="res://rond_small.png" id="2_vb7ne"]
+
+[node name="UI" type="Control"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cdcu0")
+
+[node name="stat_UI" type="Container" parent="."]
+z_index = 100
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="hbox" type="HBoxContainer" parent="stat_UI"]
+layout_mode = 2
+
+[node name="matrix" type="GridContainer" parent="stat_UI/hbox"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 3
+
+[node name="0" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+texture = ExtResource("2_6lqo2")
+
+[node name="1" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+
+[node name="2" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+
+[node name="3" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+texture = ExtResource("2_6lqo2")
+
+[node name="4" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+texture = ExtResource("2_6lqo2")
+
+[node name="5" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+texture = ExtResource("2_vb7ne")
+
+[node name="6" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+texture = ExtResource("2_vb7ne")
+
+[node name="7" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+texture = ExtResource("2_vb7ne")
+
+[node name="8" type="TextureRect" parent="stat_UI/hbox/matrix"]
+layout_mode = 2
+texture = ExtResource("2_vb7ne")
+
+[node name="list_prop" type="VBoxContainer" parent="stat_UI/hbox"]
+layout_mode = 2
+alignment = 1

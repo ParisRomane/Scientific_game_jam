@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://b2yesllwhq0wd"]
+[gd_scene load_steps=4 format=3 uid="uid://b2yesllwhq0wd"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Animation" id="Animation_xtwi6"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_j6x4s"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7r6yq"]
+_data = {
+"RESET": SubResource("Animation_j6x4s"),
+"new_animation": SubResource("Animation_xtwi6")
+}
+
+[node name="game" type="Node2D"]
+
+[node name="RigidBody2D" type="CharacterBody2D" parent="."]
+motion_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7r6yq")
+}
