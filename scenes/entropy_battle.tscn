@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2yesllwhq0wd"]
+[gd_scene load_steps=9 format=3 uid="uid://b2yesllwhq0wd"]
 
 [ext_resource type="PackedScene" uid="uid://cmxcwv4mw72wd" path="res://scenes/tile_map_pp.tscn" id="1_s4b0s"]
 [ext_resource type="PackedScene" uid="uid://344cgnvglbkv" path="res://scenes/player.tscn" id="1_schdy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bjwbn540qeak0" path="res://scenes/cu.tscn" id="4_ri828"]
 [ext_resource type="PackedScene" uid="uid://c8a5b7bvu76y8" path="res://scenes/mg.tscn" id="5_k8agc"]
 [ext_resource type="PackedScene" uid="uid://cup1f1g7jn15t" path="res://scenes/ni.tscn" id="6_kr6sn"]
+[ext_resource type="AudioStream" uid="uid://tim6clh77f8f" path="res://Assets/son/block_break.mp3" id="8_7lxih"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -63,3 +64,6 @@ position = Vector2(2346, 715)
 
 [node name="Mg5" parent="." instance=ExtResource("5_k8agc")]
 position = Vector2(2448, 715)
+
+[node name="Break" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7lxih")

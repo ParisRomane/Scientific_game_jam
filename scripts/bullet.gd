@@ -23,5 +23,6 @@ func _physics_process(delta):
 			
 		if collision.get_collider().name == "TileMap":
 			tilemap.on_hit(collision, 10)
+			get_parent().get_node("Break").play()
 		
 		queue_free()
