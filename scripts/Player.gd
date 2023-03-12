@@ -46,10 +46,12 @@ func _ready():
 	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
 	$Sounds/Shoot.stream = load("res://Assets/son/shoot.mp3")
 	$Sounds/Powerup.stream = load("res://Assets/son/powerup.mp3")
+	$Sounds/Loose.stream = load("res://Assets/son/loose.mp3")
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
 		player_death.emit()
+		$Sounds/Loose.play()
 	
 	action_loop()
 	set_velocity(vel)

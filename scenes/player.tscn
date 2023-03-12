@@ -142,4 +142,6 @@ frame_progress = 0.0450979
 
 [node name="Powerup" type="AudioStreamPlayer" parent="Sounds"]
 
+[node name="Loose" type="AudioStreamPlayer" parent="Sounds"]
+
 [connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
