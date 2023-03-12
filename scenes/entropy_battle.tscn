@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd6jvf01ifsgg"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_2evq0"]
+[ext_resource type="Texture2D" uid="uid://btp6tk8has7vt" path="res://Assets/component/rond.png" id="3_1q3wf"]
+[ext_resource type="Texture2D" uid="uid://b8geqnf5fvh24" path="res://Assets/component/rond_smal_3.png" id="4_5u1r6"]
+[ext_resource type="Texture2D" uid="uid://dagdecrokfe5u" path="res://Assets/component/cross.png" id="4_f6s83"]
+[ext_resource type="Texture2D" uid="uid://bo3d48qytsj4r" path="res://Assets/component/rond_smal_2.png" id="5_g1q82"]
+
+[node name="entropy_battle" type="Node2D"]
+script = ExtResource("1_2evq0")
+
+[node name="credit" type="Node2D" parent="."]
+visible = false
+
+[node name="credit_sprite" type="Sprite2D" parent="credit"]
+z_index = 2
+position = Vector2(567.5, 324)
+scale = Vector2(21.62, 12.6)
+texture = ExtResource("3_1q3wf")
+
+[node name="credit_close" type="TextureButton" parent="credit"]
+z_index = 3
+offset_left = 945.0
+offset_top = 4.0
+offset_right = 1138.0
+offset_bottom = 182.0
+texture_normal = ExtResource("4_f6s83")
+texture_pressed = ExtResource("4_f6s83")
+texture_hover = ExtResource("4_f6s83")
+texture_disabled = ExtResource("4_f6s83")
+texture_focused = ExtResource("4_f6s83")
+stretch_mode = 0
+
+[node name="explain" type="Node2D" parent="."]
+visible = false
+
+[node name="explain_sprite" type="Sprite2D" parent="explain"]
+z_index = 2
+position = Vector2(567.5, 324)
+scale = Vector2(21.62, 12.6)
+texture = ExtResource("4_5u1r6")
+
+[node name="explain_close" type="TextureButton" parent="explain"]
+z_index = 3
+offset_left = 945.0
+offset_top = 4.0
+offset_right = 1138.0
+offset_bottom = 182.0
+texture_normal = ExtResource("4_f6s83")
+texture_pressed = ExtResource("4_f6s83")
+texture_hover = ExtResource("4_f6s83")
+texture_disabled = ExtResource("4_f6s83")
+texture_focused = ExtResource("4_f6s83")
+stretch_mode = 0
+
+[node name="menu" type="Node2D" parent="."]
+
+[node name="menu_sprite" type="Sprite2D" parent="menu"]
+position = Vector2(579, 325)
+scale = Vector2(57.6, 32.2)
+texture = ExtResource("5_g1q82")
+
+[node name="exit" type="TextureButton" parent="menu"]
+z_index = 3
+offset_left = 945.0
+offset_top = 4.0
+offset_right = 1138.0
+offset_bottom = 182.0
+texture_normal = ExtResource("4_f6s83")
+texture_pressed = ExtResource("4_f6s83")
+texture_hover = ExtResource("4_f6s83")
+texture_disabled = ExtResource("4_f6s83")
+texture_focused = ExtResource("4_f6s83")
+stretch_mode = 0
+
+[node name="credit_open" type="Button" parent="menu"]
+offset_left = 496.0
+offset_top = 325.0
+offset_right = 560.0
+offset_bottom = 356.0
+text = "CRÉDIT"
+
+[node name="explain_open" type="Button" parent="menu"]
+offset_left = 470.0
+offset_top = 378.0
+offset_right = 594.0
+offset_bottom = 409.0
+text = "EXPLAINATION"
+
+[node name="start" type="Button" parent="menu"]
+offset_left = 500.0
+offset_top = 276.0
+offset_right = 556.0
+offset_bottom = 307.0
+text = "START
+"
+
+[connection signal="pressed" from="credit/credit_close" to="." method="_on_credit_close_pressed"]
+[connection signal="pressed" from="explain/explain_close" to="." method="_on_credit_close_pressed"]
+[connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="menu/credit_open" to="." method="_on_credit_open_pressed"]
+[connection signal="pressed" from="menu/explain_open" to="." method="_on_explain_open_pressed"]
+[connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
