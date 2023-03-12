@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://w2jjiiru4xvi" path="res://icon.svg" id="2_yesb6"]
 
-[sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(13.4894, 7.53061)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06i1y"]
+size = Vector2(22, 6)
 
 [node name="bullet" type="CharacterBody2D"]
 script = ExtResource("1")

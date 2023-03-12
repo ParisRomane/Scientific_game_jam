@@ -32,15 +32,19 @@ var stat_mining # positive int
 
 signal player_death
 #signal player_grab_element(element)
-signal player_update_pv(pv)
+signal player_update_ui(stat_regen, stat_speed, stat_damage, stat_mining, pv)
 
 func _ready():
-	pv = 10
+	pv = pv_default
 	stat_regen = 0
 	stat_speed = 0
 	stat_damage = 0
 	stat_mining = 0
-
+	
+	$Arm.animation_finished.connect(_on_shoot_animation_finished)
+	
+	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
+	$Sounds/Shoot.stream = load("res://Assets/son/shoot.mp3")
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
@@ -53,8 +57,13 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 	
 	update_pv(delta)
 
+func update_ui():
+	player_update_ui.emit(stat_regen, stat_speed, stat_damage, stat_mining, pv)
+
 func hit(damage):
 	pv -= damage
+	$Sounds/Hit.play()
+	update_ui()
 
 var regen_clock = 0
 func update_pv(delta):
@@ -69,10 +78,9 @@ func update_pv(delta):
 		
 		regen_clock += delta
 		
-		player_update_pv.emit(pv)
+		update_ui()
 
 func action_loop():
-	
 	right = Input.is_action_pressed("ui_right")
 	left = Input.is_action_pressed("ui_left")
 	up = Input.is_action_pressed("ui_up")
@@ -100,9 +108,13 @@ func movement_loop():
 	if !move or is_dead:
 		vel.x = lerpf(vel.x, 0, 0.15)
 		vel.y = lerpf(vel.y, 0, 0.15)
+	
+	if abs(vel.x) <= 0.2 and abs(vel.y) <= 0.2:
+		$AnimatedSprite2D.play("idle")
+	else:
+		$AnimatedSprite2D.play("move")
 
 func shooting():
-	
 	if shoot and can_shoot and !is_dead:
 		shoot_line = get_global_mouse_position() - global_position
 		var b = bullet.instantiate()
@@ -113,12 +125,19 @@ func shooting():
 		var mining = mining_default * (1 + 0.2 * stat_mining)
 		
 		#Bullet spawn
-		get_parent().add_child(b)
 		b.start($Arm/Marker2D.global_position, rotation, damage, mining)
+		get_parent().add_child(b)
 		
 		#Timer start
 		if $Reload.is_stopped():
 			$Reload.start()
+		
+		$Arm.play("shoot")
+		
+		$Sounds/Shoot.play()
+
+func _on_shoot_animation_finished():
+	$Arm.play("idle")
 
 
 func _on_reload_timeout():
