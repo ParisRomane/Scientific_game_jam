@@ -1,8 +1,8 @@
 res://scenes/entropy_battle.tscn
-res://scenes/co.tscn
 res://scripts/co.gd
+res://scenes/co.tscn
 res://scenes/cu.tscn
 res://scenes/mg.tscn
 res://scenes/ni.tscn
-res://scenes/tile_map_pp.tscn
 res://scenes/tile_map.tscn
+res://scenes/tile_map_pp.tscn
