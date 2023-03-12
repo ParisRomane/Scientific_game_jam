@@ -8,7 +8,6 @@ func _ready():
 	
 	pass # Replace with function body.
 
-
 func change_scene(screen):
 	$credit.hide()
 	$menu.hide()

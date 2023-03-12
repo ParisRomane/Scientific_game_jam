@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dd6jvf01ifsgg"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_2evq0"]
-[ext_resource type="Texture2D" uid="uid://dnpiwxlphjlqe" path="res://Assets/ui/ecran_credit.png" id="3_pwxnk"]
-[ext_resource type="Texture2D" uid="uid://dwpbd2x3r4gkk" path="res://Assets/entropybattle.png" id="3_t1i6b"]
+[ext_resource type="Texture2D" uid="uid://biwlub667irwb" path="res://Assets/ui/ecran_credit.png" id="3_pwxnk"]
+[ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://Assets/entropybattle.png" id="3_t1i6b"]
 [ext_resource type="Texture2D" uid="uid://dagdecrokfe5u" path="res://Assets/component/cross.png" id="4_f6s83"]
 [ext_resource type="AudioStream" uid="uid://cv8ylthitehol" path="res://Assets/son/lobby.mp3" id="4_s5exa"]
 
