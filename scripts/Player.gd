@@ -1,5 +1,17 @@
 extends CharacterBody2D
 
+
+# Set by the authority, synchronized on spawn.
+@export var player := 1 :
+	set(id):
+		player = id
+		# Give authority over the player input to the appropriate peer.
+		$PlayerInput.set_multiplayer_authority(id)
+		print("SET : ",id)
+
+# Player synchronized input.
+@onready var input = $PlayerInput
+
 var mouse_pos = Vector2()
 var vel = Vector2()
 var bullet = preload("res://scenes/bullet.tscn")
@@ -32,17 +44,25 @@ var stat_mining # positive int
 
 signal player_death
 #signal player_grab_element(element)
-signal player_update_pv(pv)
+signal player_update_ui(stat_regen, stat_speed, stat_damage, stat_mining, pv)
 
 func _ready():
-	pv = 10
+	# Set the camera as current if we are this player.
+	if player == multiplayer.get_unique_id():
+		$Camera2D.enabled = true
+	else :
+		$Camera2D.enabled = false
+	
+	pv = pv_default
 	stat_regen = 0
 	stat_speed = 0
 	stat_damage = 0
 	stat_mining = 0
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
-
+	
+	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
+	$Sounds/Shoot.stream = load("res://Assets/son/shoot.mp3")
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
@@ -55,8 +75,13 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 	
 	update_pv(delta)
 
+func update_ui():
+	player_update_ui.emit(stat_regen, stat_speed, stat_damage, stat_mining, pv)
+
 func hit(damage):
 	pv -= damage
+	$Sounds/Hit.play()
+	update_ui()
 
 var regen_clock = 0
 func update_pv(delta):
@@ -71,19 +96,20 @@ func update_pv(delta):
 		
 		regen_clock += delta
 		
-		player_update_pv.emit(pv)
+		update_ui()
 
 func action_loop():
-	
-	right = Input.is_action_pressed("ui_right")
-	left = Input.is_action_pressed("ui_left")
-	up = Input.is_action_pressed("ui_up")
-	down = Input.is_action_pressed("ui_down")
-	move = right or left or up or down
-	shoot = Input.is_action_pressed("shoot")
-	
-	movement_loop()
-	shooting()
+	if player == multiplayer.get_unique_id():
+		$Arm.look_at(get_global_mouse_position())
+		right = Input.is_action_pressed("ui_right")
+		left = Input.is_action_pressed("ui_left")
+		up = Input.is_action_pressed("ui_up")
+		down = Input.is_action_pressed("ui_down")
+		move = right or left or up or down
+		shoot = Input.is_action_pressed("shoot")
+		
+		movement_loop()
+		shooting()
 
 func movement_loop():
 	var speed = max_speed * (1 + 0.2 * stat_speed)
@@ -109,7 +135,6 @@ func movement_loop():
 		$AnimatedSprite2D.play("move")
 
 func shooting():
-	
 	if shoot and can_shoot and !is_dead:
 		shoot_line = get_global_mouse_position() - global_position
 		var b = bullet.instantiate()
@@ -128,6 +153,8 @@ func shooting():
 			$Reload.start()
 		
 		$Arm.play("shoot")
+		
+		$Sounds/Shoot.play()
 
 func _on_shoot_animation_finished():
 	$Arm.play("idle")
