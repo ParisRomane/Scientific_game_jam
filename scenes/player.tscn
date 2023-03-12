@@ -139,4 +139,6 @@ scale = Vector2(0.323144, 9.43973)
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Sounds"]
 
+[node name="Powerup" type="AudioStreamPlayer" parent="Sounds"]
+
 [connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]

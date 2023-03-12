@@ -45,6 +45,7 @@ func _ready():
 	
 	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
 	$Sounds/Shoot.stream = load("res://Assets/son/shoot.mp3")
+	$Sounds/Powerup.stream = load("res://Assets/son/powerup.mp3")
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
@@ -153,4 +154,6 @@ func upgrade(ind):
 	if ind == 3 :
 		stat_regen += 1
 	
-	print("powerup")
+	$Sounds/Powerup.play()
+	
+	update_ui()
