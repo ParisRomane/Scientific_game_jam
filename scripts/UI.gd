@@ -18,7 +18,7 @@ var elements_matrix = [0,0,0,0,0,0,0,0,0]
 var order_of_add = [0,2,4,1,7,5,8,3,6]
 
 #signal
-signal update_stat()
+signal update_stat(list_stat)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,14 +55,18 @@ func add_element(element_type):
 		update_holder()
 
 func update_proprieties():
+	var multip = mult()
+	var list = []
 	for i in range(4):
+		list.append(add(i+1)* multip)
 		$stat_UI/hbox/list_prop.get_child(i).set_description(": +"+ str(add(i+1)) + begin_text[i])	
-	$mult.text = "Entropie accumulée : x"+ str(mult())
+	$mult.text = "Entropie accumulée : x"+ str(multip)
+	emit_signal("update_stat", list)
+	
 	
 func update_holder(): 
 	if (len(elements_matrix) < MAX_SIZE_MAT-1):
 		get_node("stat_UI/hbox/matrix/"+str(order_of_add[nb_added])).texture =  next_texture
-
 
 func update_alive(nb_alive): 
 	# signal ? ou global a un signal et ici est appellé ?
@@ -71,7 +75,7 @@ func update_alive(nb_alive):
 
 
 func add(type):
-	var s = 0
+	var s = 1
 	for i in range(len(elements_matrix)):
 		if (elements_matrix[i]==type):
 			s+=1
@@ -107,3 +111,5 @@ func mult():
 	#return nombre d'env different
 	return mult
 
+func change_hp(pv):
+	print(pv)

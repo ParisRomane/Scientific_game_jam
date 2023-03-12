@@ -31,20 +31,20 @@ var ACC = 50
 
 #player stats
 var pv #int between 0 and pv_default
-var stat_speed # positive int
-var stat_damage # positive int
-var stat_regen # positive int
-var stat_mining # positive int
+var stat_speed =0 # positive int
+var stat_damage =0 # positive int
+var stat_regen =0 # positive int
+var stat_mining =0 # positive int
 
 @export var pv_default = 100 # 100 pv
 @export var regen_time_default = 1.0 # time to recover 1 pv in seconds
 @export var max_speed = 100
-@export var damage_default = 7 # harm to players
-@export var mining_default = 7 # harm to bocks
+@export var damage_default = 1 # harm to players
+@export var mining_default = 1 # harm to bocks
 
 signal player_death
 #signal player_grab_element(element)
-signal player_update_ui(stat_regen, stat_speed, stat_damage, stat_mining, pv)
+signal player_update_ui(pv)
 
 func _ready():
 	# Set the camera as current if we are this player.
@@ -53,11 +53,9 @@ func _ready():
 	else :
 		$Camera2D.enabled = false
 	
+	get_node("../../../../CanvasLayer/UI").connect("update_stat",self.change_setting)
+	self.connect("player_update_ui",get_node("../../../../CanvasLayer/UI").change_hp)
 	pv = pv_default
-	stat_regen = 0
-	stat_speed = 0
-	stat_damage = 0
-	stat_mining = 0
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 	
@@ -75,13 +73,11 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 	
 	update_pv(delta)
 
-func update_ui():
-	player_update_ui.emit(stat_regen, stat_speed, stat_damage, stat_mining, pv)
 
 func hit(damage):
 	pv -= damage
 	$Sounds/Hit.play()
-	update_ui()
+	player_update_ui.emit(pv)
 
 var regen_clock = 0
 func update_pv(delta):
@@ -96,7 +92,7 @@ func update_pv(delta):
 		
 		regen_clock += delta
 		
-		update_ui()
+		player_update_ui.emit(pv)
 
 func action_loop():
 	if player == multiplayer.get_unique_id():
@@ -162,3 +158,10 @@ func _on_shoot_animation_finished():
 
 func _on_reload_timeout():
 	can_shoot = true
+
+func change_setting(list):
+	print(list)
+	stat_regen = list[0]
+	stat_speed = list[1]
+	stat_damage = list[2]
+	stat_mining = list[3]
