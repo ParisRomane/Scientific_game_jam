@@ -5,14 +5,15 @@ const MAX_SIZE_MAT = 9
 var element_names = ["Cu","Co","Ni","Mg"]
 var begin_text = [" Vitesse", " Cadence", " Minage DMG", " Régen"]
 
-var next_texture = preload("res://Assets/component/NEXT.png")
-var None_texture = preload("res://Assets/component/rond_smal_0.png")
-var Ni_texture = preload("res://Assets/component/rond_small.png")
-var Co_texture = preload("res://Assets/component/rond_smal_2.png")
-var Cu_texture = preload("res://Assets/component/rond_smal_3.png")
-var Mg_texture = preload("res://Assets/component/rond_smal_3.png")
+var next_texture = preload("res://Assets/environement/placeholder.png")
+var None_texture = preload("res://Assets/environement/no_gems.png")
+var Cu_texture = preload("res://Assets/environement/Gemme_Rose.png")
+var Co_texture = preload("res://Assets/environement/Gemme_Vert.png")
+var Ni_texture = preload("res://Assets/environement/Gemme_Bleu.png")
+var Mg_texture = preload("res://Assets/environement/Gemme_Jaune.png")
 var nb_added = 0
 
+var list_texture = [Cu_texture, Co_texture,Ni_texture, Mg_texture]
 #matrices des elements
 var elements_matrix = [0,0,0,0,0,0,0,0,0]
 var order_of_add = [0,2,4,1,7,5,8,3,6]
@@ -29,6 +30,7 @@ func _ready():
 	for i in range(4):
 		var instance_propriety = propriety.instantiate()
 		instance_propriety.set_element_name( element_names[i])
+		instance_propriety.set_texture(list_texture[i])
 		instance_propriety.set_description(": +1" +begin_text[i])
 		$stat_UI/hbox/list_prop.add_child(instance_propriety)
 	get_node("stat_UI/hbox/matrix/"+str(order_of_add[0])).texture = next_texture
@@ -57,12 +59,12 @@ func update_proprieties():
 	for i in range(4):
 		list.append(add(i+1)* multip)
 		$stat_UI/hbox/list_prop.get_child(i).set_description(": +"+ str(add(i+1)) + begin_text[i])	
-	$mult.text = "Entropie accumulée : x"+ str(multip)
+	$mult.text = "Entropie : x"+ str(multip)
 	emit_signal("update_stat", list)
 	
 	
 func update_holder(): 
-	if (len(elements_matrix) < MAX_SIZE_MAT-1):
+	if (nb_added < MAX_SIZE_MAT-1):
 		get_node("stat_UI/hbox/matrix/"+str(order_of_add[nb_added])).texture =  next_texture
 
 func update_alive(nb_alive): 
