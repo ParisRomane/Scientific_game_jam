@@ -7,7 +7,7 @@ extends CharacterBody2D
 		player = id
 		# Give authority over the player input to the appropriate peer.
 		$PlayerInput.set_multiplayer_authority(id)
-		print(id)
+		print("SET : ",id)
 
 # Player synchronized input.
 @onready var input = $PlayerInput
@@ -99,15 +99,17 @@ func update_pv(delta):
 		update_ui()
 
 func action_loop():
-	right = Input.is_action_pressed("ui_right")
-	left = Input.is_action_pressed("ui_left")
-	up = Input.is_action_pressed("ui_up")
-	down = Input.is_action_pressed("ui_down")
-	move = right or left or up or down
-	shoot = Input.is_action_pressed("shoot")
-	
-	movement_loop()
-	shooting()
+	if player == multiplayer.get_unique_id():
+		$Arm.look_at(get_global_mouse_position())
+		right = Input.is_action_pressed("ui_right")
+		left = Input.is_action_pressed("ui_left")
+		up = Input.is_action_pressed("ui_up")
+		down = Input.is_action_pressed("ui_down")
+		move = right or left or up or down
+		shoot = Input.is_action_pressed("shoot")
+		
+		movement_loop()
+		shooting()
 
 func movement_loop():
 	var speed = max_speed * (1 + 0.2 * stat_speed)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dwkmgv6wr6sx3"]
+[gd_scene load_steps=23 format=3 uid="uid://344cgnvglbkv"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_tldf4"]
 [ext_resource type="Texture2D" uid="uid://cuu4e3fyvahdx" path="res://Assets/personnages/bras/bras.png" id="2_0aous"]
-[ext_resource type="Script" path="res://scripts/Arm.gd" id="3_a2t4o"]
 [ext_resource type="Texture2D" uid="uid://c2exjhnn7bud5" path="res://Assets/personnages/idle/idle_01.png" id="3_xn5fx"]
 [ext_resource type="Texture2D" uid="uid://ct7ss8mebc4uu" path="res://Assets/personnages/idle/idle_02.png" id="5_uptpu"]
 [ext_resource type="Texture2D" uid="uid://bus6hekhh8m8y" path="res://Assets/personnages/idle/idle_03.png" id="6_3pict"]
@@ -18,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dx31upqm5rrla" path="res://Assets/personnages/bras_shoot/bras_02.png" id="15_hpu5w"]
 [ext_resource type="Texture2D" uid="uid://c58uyawkjelb4" path="res://Assets/personnages/bras_shoot/bras_03.png" id="16_v46ny"]
 [ext_resource type="Texture2D" uid="uid://1st8beeob83i" path="res://Assets/personnages/bras_shoot/bras_04.png" id="17_xp3st"]
+[ext_resource type="Script" path="res://scenes/PlayerInput.gd" id="19_jbj4l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqvdu"]
 radius = 31.0
@@ -97,6 +97,14 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_lgb1o"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/1/path = NodePath(".:player")
+properties/1/spawn = true
+properties/1/sync = false
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_tldf4")
 
@@ -127,7 +135,6 @@ sprite_frames = SubResource("SpriteFrames_icfmb")
 animation = &"shoot"
 autoplay = "idle"
 offset = Vector2(53, 1)
-script = ExtResource("3_a2t4o")
 
 [node name="Marker2D" type="Marker2D" parent="Arm"]
 position = Vector2(77, 4)
@@ -138,5 +145,9 @@ scale = Vector2(0.323144, 9.43973)
 [node name="Hit" type="AudioStreamPlayer" parent="Sounds"]
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Sounds"]
+
+[node name="PlayerInput" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_lgb1o")
+script = ExtResource("19_jbj4l")
 
 [connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]
