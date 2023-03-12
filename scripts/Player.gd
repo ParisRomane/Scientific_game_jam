@@ -126,6 +126,7 @@ func shooting():
 		var mining = mining_default * (1 + 0.2 * stat_mining)
 		
 		#Bullet spawn
+		self.add_collision_exception_with(b)
 		b.start($Arm/Marker2D.global_position, rotation, damage, mining)
 		get_parent().add_child(b)
 		

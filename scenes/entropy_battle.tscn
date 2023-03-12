@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2yesllwhq0wd"]
 
-[ext_resource type="PackedScene" path="res://scenes/tile_map_pp.tscn" id="1_s4b0s"]
+[ext_resource type="PackedScene" uid="uid://cmxcwv4mw72wd" path="res://scenes/tile_map_pp.tscn" id="1_s4b0s"]
 [ext_resource type="PackedScene" uid="uid://344cgnvglbkv" path="res://scenes/player.tscn" id="1_schdy"]
-[ext_resource type="PackedScene" path="res://scenes/co.tscn" id="4_61uqm"]
+[ext_resource type="PackedScene" uid="uid://cejml0f27k48c" path="res://scenes/co.tscn" id="4_61uqm"]
 [ext_resource type="Script" path="res://scripts/co.gd" id="4_gwtjf"]
-[ext_resource type="PackedScene" path="res://scenes/cu.tscn" id="4_ri828"]
-[ext_resource type="PackedScene" path="res://scenes/mg.tscn" id="5_k8agc"]
-[ext_resource type="PackedScene" path="res://scenes/ni.tscn" id="6_kr6sn"]
+[ext_resource type="PackedScene" uid="uid://bjwbn540qeak0" path="res://scenes/cu.tscn" id="4_ri828"]
+[ext_resource type="PackedScene" uid="uid://c8a5b7bvu76y8" path="res://scenes/mg.tscn" id="5_k8agc"]
+[ext_resource type="PackedScene" uid="uid://cup1f1g7jn15t" path="res://scenes/ni.tscn" id="6_kr6sn"]
 
 [node name="Node2D" type="Node2D"]
 

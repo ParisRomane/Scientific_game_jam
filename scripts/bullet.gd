@@ -22,7 +22,6 @@ func _physics_process(delta):
 			collision.get_collider().hit(damage);
 			
 		if collision.get_collider().name == "TileMap":
-			
 			tilemap.on_hit(collision, 10)
 		
 		queue_free()
