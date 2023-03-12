@@ -2,8 +2,6 @@ extends Node2D
 #enum elements type 
 enum {NONE, CU,CO,NI,MG}
 const MAX_SIZE_MAT = 9
-var element_names = ["Cu","Co","Ni","Mg"]
-var begin_text = [" Vitesse", " Cadence", " Minage DMG", " Régen"]
 
 var next_texture = preload("res://Assets/component/NEXT.png")
 var None_texture = preload("res://Assets/component/rond_smal_0.png")
@@ -17,20 +15,18 @@ var nb_added = 0
 var elements_matrix = [0,0,0,0,0,0,0,0,0]
 var order_of_add = [0,2,4,1,7,5,8,3,6]
 
-#signal
-signal update_stat()
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# se connecter au signal du joueur
+	
 	for i in range(MAX_SIZE_MAT) :
 		self.get_node("stat_UI/hbox/matrix/"+str(i)).texture = None_texture
-	#preload propriety
-	var propriety = preload("res://scenes/propriety.tscn")
-	for i in range(4):
-		var instance_propriety = propriety.instantiate()
-		instance_propriety.set_element_name( element_names[i])
-		instance_propriety.set_description(": +1" +begin_text[i])
-		$stat_UI/hbox/list_prop.add_child(instance_propriety)
+	
+	$Mg.text = "0"
+	$Ni.text = "0"
+	$Cu.text = "0"
+	$Co.text = "0"
+	
 	get_node("stat_UI/hbox/matrix/"+str(order_of_add[0])).texture = next_texture
 	add_element(CU)
 	add_element(CO)
@@ -51,12 +47,15 @@ func add_element(element_type):
 				get_node("stat_UI/hbox/matrix/"+str(order_of_add[nb_added])).texture =  Mg_texture
 		elements_matrix[order_of_add[nb_added]] = element_type
 		nb_added+=1 
-		update_proprieties()
+		#update_proprieties()
 		update_holder()
 
-func update_proprieties():
-	for i in range(4):
-		$stat_UI/hbox/list_prop.get_child(i).set_description("    "+ str(add(i+1)) + begin_text[i])	
+func update_proprieties(stat_regen, stat_speed, stat_damage, stat_mining, pv):
+	$Mg.text = str(stat_speed)
+	$Ni.text = str(stat_regen)
+	$Cu.text = str(stat_damage)
+	$Co.text = str(stat_mining)
+	
 	$mult.text = "Entropie accumulée : x"+ str(mult())
 	
 func update_holder(): 
