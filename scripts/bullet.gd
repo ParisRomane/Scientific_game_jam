@@ -6,7 +6,7 @@ var damage # harm in pv to player
 var mining # harm to block
 
 func start(pos, dir, dam, min):
-	$Sprite2D.rotate(dir)
+	$AnimatedSprite2D.rotate(dir)
 	position = pos
 	damage = dam
 	mining = min
