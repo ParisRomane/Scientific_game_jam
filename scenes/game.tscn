@@ -16,10 +16,6 @@ spawn_limit = 4
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("2_i5k1g")]
-offset_left = -1.0
-offset_top = 4.0
-offset_right = 3.0
-offset_bottom = 3.0
 
 [node name="Idle03" type="Sprite2D" parent="."]
 position = Vector2(545, 244)

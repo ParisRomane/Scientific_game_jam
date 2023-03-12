@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 #enum elements type 
 enum {NONE, CU,CO,NI,MG}
 const MAX_SIZE_MAT = 9
@@ -56,7 +56,7 @@ func add_element(element_type):
 
 func update_proprieties():
 	for i in range(4):
-		$stat_UI/hbox/list_prop.get_child(i).set_description(": +"+ str(add(i+1)) + begin_text[i])	
+		$stat_UI/hbox/list_prop.get_child(i).set_description("    "+ str(add(i+1)) + begin_text[i])	
 	$mult.text = "Entropie accumulée : x"+ str(mult())
 	
 func update_holder(): 
