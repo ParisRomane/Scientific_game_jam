@@ -29,21 +29,18 @@ var shoot
 
 var ACC = 50
 
-
+#player stats
+var pv #int between 0 and pv_default
+var stat_speed # positive int
+var stat_damage # positive int
+var stat_regen # positive int
+var stat_mining # positive int
 
 @export var pv_default = 100 # 100 pv
 @export var regen_time_default = 1.0 # time to recover 1 pv in seconds
 @export var max_speed = 100
 @export var damage_default = 7 # harm to players
 @export var mining_default = 7 # harm to bocks
-
-#player stats
-var pv = pv_default #int between 0 and pv_default
-var stat_speed =0 # positive int
-var stat_damage =0# positive int
-var stat_regen =0 # positive int
-var stat_mining =0 # positive int
-
 
 signal player_death
 #signal player_grab_element(element)
@@ -56,6 +53,11 @@ func _ready():
 	else :
 		$Camera2D.enabled = false
 	
+	pv = pv_default
+	stat_regen = 0
+	stat_speed = 0
+	stat_damage = 0
+	stat_mining = 0
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 	
