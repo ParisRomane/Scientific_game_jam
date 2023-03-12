@@ -1,0 +1,160 @@
+extends CharacterBody2D
+
+
+# Set by the authority, synchronized on spawn.
+@export var player := 1 :
+	set(id):
+		player = id
+		# Give authority over the player input to the appropriate peer.
+		$PlayerInput.set_multiplayer_authority(id)
+		print(id)
+
+# Player synchronized input.
+@onready var input = $PlayerInput
+
+var mouse_pos = Vector2()
+var vel = Vector2()
+var bullet = preload("res://scenes/bullet.tscn")
+var is_dead = false
+var can_shoot = true
+var shoot_line
+
+#Key var
+var right
+var left
+var up
+var down
+var move
+var shoot
+
+var ACC = 50
+
+
+
+@export var pv_default = 100 # 100 pv
+@export var regen_time_default = 1.0 # time to recover 1 pv in seconds
+@export var max_speed = 100
+@export var damage_default = 7 # harm to players
+@export var mining_default = 7 # harm to bocks
+
+#player stats
+var pv = pv_default #int between 0 and pv_default
+var stat_speed =0 # positive int
+var stat_damage =0# positive int
+var stat_regen =0 # positive int
+var stat_mining =0 # positive int
+
+
+signal player_death
+#signal player_grab_element(element)
+signal player_update_ui(stat_regen, stat_speed, stat_damage, stat_mining, pv)
+
+func _ready():
+	# Set the camera as current if we are this player.
+	if player == multiplayer.get_unique_id():
+		$Camera2D.enabled = true
+	else :
+		$Camera2D.enabled = false
+	
+	
+	$Arm.animation_finished.connect(_on_shoot_animation_finished)
+	
+	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
+	$Sounds/Shoot.stream = load("res://Assets/son/shoot.mp3")
+
+func _physics_process(delta):	# 60 FPS (delta is in s)
+	if pv <= 0:
+		player_death.emit()
+	
+	action_loop()
+	set_velocity(vel)
+	move_and_slide()
+	vel = velocity
+	
+	update_pv(delta)
+
+func update_ui():
+	player_update_ui.emit(stat_regen, stat_speed, stat_damage, stat_mining, pv)
+
+func hit(damage):
+	pv -= damage
+	$Sounds/Hit.play()
+	update_ui()
+
+var regen_clock = 0
+func update_pv(delta):
+	if stat_regen != 0:
+		# real time to recover 1 pv according to the regen stat
+		var regen_time = regen_time_default / stat_regen
+		
+		if regen_clock >= regen_time:
+			regen_clock = 0
+			if pv < pv_default:
+				pv +=1
+		
+		regen_clock += delta
+		
+		update_ui()
+
+func action_loop():
+	right = Input.is_action_pressed("ui_right")
+	left = Input.is_action_pressed("ui_left")
+	up = Input.is_action_pressed("ui_up")
+	down = Input.is_action_pressed("ui_down")
+	move = right or left or up or down
+	shoot = Input.is_action_pressed("shoot")
+	
+	movement_loop()
+	shooting()
+
+func movement_loop():
+	var speed = max_speed * (1 + 0.2 * stat_speed)
+	
+	if !is_dead:
+		if right:
+			vel.x = min(vel.x + ACC, speed)
+		if left:
+			vel.x = max(vel.x - ACC, -speed)
+		if up:
+			vel.y = max(vel.y - ACC, -speed)
+		if down:
+			vel.y = min(vel.y + ACC, speed)
+	
+	#Inertia management
+	if !move or is_dead:
+		vel.x = lerpf(vel.x, 0, 0.15)
+		vel.y = lerpf(vel.y, 0, 0.15)
+	
+	if abs(vel.x) <= 0.2 and abs(vel.y) <= 0.2:
+		$AnimatedSprite2D.play("idle")
+	else:
+		$AnimatedSprite2D.play("move")
+
+func shooting():
+	if shoot and can_shoot and !is_dead:
+		shoot_line = get_global_mouse_position() - global_position
+		var b = bullet.instantiate()
+		var rotation = shoot_line.angle()
+		can_shoot = false
+		
+		var damage = damage_default * (1 + 0.2 * stat_damage)
+		var mining = mining_default * (1 + 0.2 * stat_mining)
+		
+		#Bullet spawn
+		b.start($Arm/Marker2D.global_position, rotation, damage, mining)
+		get_parent().add_child(b)
+		
+		#Timer start
+		if $Reload.is_stopped():
+			$Reload.start()
+		
+		$Arm.play("shoot")
+		
+		$Sounds/Shoot.play()
+
+func _on_shoot_animation_finished():
+	$Arm.play("idle")
+
+
+func _on_reload_timeout():
+	can_shoot = true
