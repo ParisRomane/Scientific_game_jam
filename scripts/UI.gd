@@ -32,10 +32,7 @@ func _ready():
 		instance_propriety.set_description(": +1" +begin_text[i])
 		$stat_UI/hbox/list_prop.add_child(instance_propriety)
 	get_node("stat_UI/hbox/matrix/"+str(order_of_add[0])).texture = next_texture
-	add_element(CU)
-	add_element(CO)
-	add_element(CU)
-	add_element(NI)
+
 
 	
 func add_element(element_type):
@@ -112,4 +109,4 @@ func mult():
 	return mult
 
 func change_hp(pv):
-	print(pv)
+	pass

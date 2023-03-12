@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+enum {NONE, CU,CO,NI,MG}
 
 # Set by the authority, synchronized on spawn.
 @export var player := 1 :
@@ -7,7 +8,6 @@ extends CharacterBody2D
 		player = id
 		# Give authority over the player input to the appropriate peer.
 		$PlayerInput.set_multiplayer_authority(id)
-		print("SET : ",id)
 
 # Player synchronized input.
 @onready var input = $PlayerInput
@@ -46,6 +46,8 @@ signal player_death
 #signal player_grab_element(element)
 signal player_update_ui(pv)
 
+signal get_element(elem)
+
 func _ready():
 	# Set the camera as current if we are this player.
 	if player == multiplayer.get_unique_id():
@@ -53,10 +55,10 @@ func _ready():
 	else :
 		$Camera2D.enabled = false
 	
-	get_node("../../../../CanvasLayer/UI").connect("update_stat",self.change_setting)
-	self.connect("player_update_ui",get_node("../../../../CanvasLayer/UI").change_hp)
+	get_node("../../../../CanvasLayer/"+self.name).connect("update_stat",self.change_setting)
+	self.connect("player_update_ui",get_node("../../../../CanvasLayer/"+self.name).change_hp)
+	self.connect("get_element",get_node("../../../../CanvasLayer/"+self.name). add_element)
 	pv = pv_default
-	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 	
 	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
@@ -160,7 +162,6 @@ func _on_reload_timeout():
 	can_shoot = true
 
 func change_setting(list):
-	print(list)
 	stat_regen = list[0]
 	stat_speed = list[1]
 	stat_damage = list[2]

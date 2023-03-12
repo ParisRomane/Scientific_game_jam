@@ -25,18 +25,9 @@ func _exit_tree():
 
 
 func add_player(id: int):
-	print("ID : ",id)
-	var character = preload("res://scenes/player.tscn").instantiate()
-	# Set player id.
-	character.player = id
-	# Randomize character position.
-	var pos := Vector2.from_angle(randf() * 2 * PI)
-	character.position = Vector2(0,0)
-	character.name = str(id)
-	$Players.add_child(character, true)
+	pass
+
 
 
 func del_player(id: int):
-	if not $Players.has_node(str(id)):
-		return
-	$Players.get_node(str(id)).queue_free()
+	pass
