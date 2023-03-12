@@ -133,3 +133,5 @@ func upgrade(ind):
 		stat_speed += 1
 	if ind == 3 :
 		stat_regen += 1
+	
+	print("powerup")
