@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmxcwv4mw72wd"]
 
-[ext_resource type="Texture2D" uid="uid://id1c46gnaqu6" path="res://assets/Placeholder_tileset_updated.png" id="1_4ksvi"]
+[ext_resource type="Texture2D" uid="uid://242e1fbjxs2v" path="res://assets/Environement/block_tileset.png" id="1_70r0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_knfmq"]
-texture = ExtResource("1_4ksvi")
+texture = ExtResource("1_70r0y")
 texture_region_size = Vector2i(120, 120)
 0:0/size_in_atlas = Vector2i(1, 2)
 0:0/0 = 0

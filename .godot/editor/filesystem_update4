@@ -4,3 +4,5 @@ res://scripts/co.gd
 res://scenes/cu.tscn
 res://scenes/mg.tscn
 res://scenes/ni.tscn
+res://scenes/tile_map_pp.tscn
+res://scenes/tile_map.tscn
