@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd6jvf01ifsgg"]
+[gd_scene load_steps=7 format=3 uid="uid://dd6jvf01ifsgg"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_2evq0"]
 [ext_resource type="Texture2D" uid="uid://btp6tk8has7vt" path="res://Assets/component/rond.png" id="3_1q3wf"]
 [ext_resource type="Texture2D" uid="uid://b8geqnf5fvh24" path="res://Assets/component/rond_smal_3.png" id="4_5u1r6"]
 [ext_resource type="Texture2D" uid="uid://dagdecrokfe5u" path="res://Assets/component/cross.png" id="4_f6s83"]
 [ext_resource type="Texture2D" uid="uid://bo3d48qytsj4r" path="res://Assets/component/rond_smal_2.png" id="5_g1q82"]
+[ext_resource type="AudioStream" uid="uid://cv8ylthitehol" path="res://Assets/son/lobby.mp3" id="6_iumgc"]
 
 [node name="entropy_battle" type="Node2D"]
 script = ExtResource("1_2evq0")
@@ -94,6 +95,10 @@ offset_right = 556.0
 offset_bottom = 307.0
 text = "START
 "
+
+[node name="Musique" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_iumgc")
+autoplay = true
 
 [connection signal="pressed" from="credit/credit_close" to="." method="_on_credit_close_pressed"]
 [connection signal="pressed" from="explain/explain_close" to="." method="_on_credit_close_pressed"]
