@@ -1,2 +1,6 @@
-res://entropy_battle.tscn
-res://matrice2multi.gd
+res://scenes/entropy_battle.tscn
+res://scenes/co.tscn
+res://scripts/co.gd
+res://scenes/cu.tscn
+res://scenes/mg.tscn
+res://scenes/ni.tscn
