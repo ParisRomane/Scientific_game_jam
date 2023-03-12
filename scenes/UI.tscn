@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b12wixw6amjsd"]
+[gd_scene load_steps=6 format=3 uid="uid://b12wixw6amjsd"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_xkwvf"]
 [ext_resource type="Texture2D" uid="uid://dkoapkls5ypuw" path="res://Assets/component/rond_smal_0.png" id="2_15a7m"]
+[ext_resource type="Texture2D" uid="uid://crso72leofrll" path="res://Assets/environement/Gemme_Bleu.png" id="2_mliki"]
 [ext_resource type="Texture2D" uid="uid://ccts0rc45bvey" path="res://Assets/component/rond_small.png" id="3_iiq1i"]
 [ext_resource type="Texture2D" uid="uid://cb3httmd3h0to" path="res://Assets/component/people_icon.png" id="4_e57v1"]
 
@@ -23,22 +24,10 @@ offset_right = 640.0
 offset_bottom = 611.0
 text = "Entropie : 1"
 
-[node name="stat_UI" type="Container" parent="."]
+[node name="stat_UI" type="Node2D" parent="."]
 z_index = 100
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -191.0
-offset_right = 5.0
-offset_bottom = -41.0
-grow_horizontal = 2
-grow_vertical = 0
 
 [node name="hbox" type="HBoxContainer" parent="stat_UI"]
-layout_mode = 2
 
 [node name="matrix" type="GridContainer" parent="stat_UI/hbox"]
 clip_contents = true
@@ -49,13 +38,15 @@ columns = 3
 
 [node name="0" type="TextureRect" parent="stat_UI/hbox/matrix"]
 layout_mode = 2
-texture = ExtResource("2_15a7m")
+texture = ExtResource("2_mliki")
 
 [node name="1" type="TextureRect" parent="stat_UI/hbox/matrix"]
 layout_mode = 2
+texture = ExtResource("2_mliki")
 
 [node name="2" type="TextureRect" parent="stat_UI/hbox/matrix"]
 layout_mode = 2
+texture = ExtResource("2_mliki")
 
 [node name="3" type="TextureRect" parent="stat_UI/hbox/matrix"]
 layout_mode = 2
@@ -85,21 +76,9 @@ texture = ExtResource("3_iiq1i")
 layout_mode = 2
 alignment = 1
 
-[node name="Container" type="Container" parent="."]
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="Container" type="Node2D" parent="."]
 
 [node name="hbox" type="HBoxContainer" parent="Container"]
-layout_mode = 2
 
 [node name="icon_people" type="TextureRect" parent="Container/hbox"]
 layout_mode = 2

@@ -45,10 +45,7 @@ func _ready():
 	stat_speed = 0
 	stat_damage = 0
 	stat_mining = 0
-	
-	get_node("../../../CanvasLayer/1").connect("update_stat",self.change_setting)
-	self.connect("player_update_pv",get_node("../../../CanvasLayer/1").change_hp)
-	self.connect("add_element",get_node("../../../CanvasLayer/1"). add_element)
+
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 	
