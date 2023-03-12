@@ -24,6 +24,25 @@ offset_top = 4.0
 offset_right = 3.0
 offset_bottom = 3.0
 
+[node name="Connect" type="Button" parent="CanvasLayer"]
+offset_left = 892.0
+offset_top = 48.0
+offset_right = 962.0
+offset_bottom = 79.0
+text = "connect
+"
+
+[node name="host" type="Button" parent="CanvasLayer"]
+offset_left = 1026.0
+offset_top = 52.0
+offset_right = 1069.0
+offset_bottom = 83.0
+text = "host
+"
+
 [node name="Idle03" type="Sprite2D" parent="."]
 position = Vector2(545, 244)
 texture = ExtResource("3_uola6")
+
+[connection signal="pressed" from="CanvasLayer/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="CanvasLayer/host" to="." method="_on_host_pressed"]

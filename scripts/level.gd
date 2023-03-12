@@ -1,10 +1,21 @@
 extends Node2D
 
 func _ready():
+	pass
+
+
+func _exit_tree():
+	if not multiplayer.is_server():
+		return
+	multiplayer.peer_connected.disconnect(add_player)
+	multiplayer.peer_disconnected.disconnect(del_player)
+
+
+func start():
 	# We only need to spawn players on the server.
 	if not multiplayer.is_server():
 		return
-
+		
 	multiplayer.peer_connected.connect(add_player)
 	multiplayer.peer_disconnected.connect(del_player)
 
@@ -15,14 +26,7 @@ func _ready():
 	# Spawn the local player unless this is a dedicated server export.
 	if not OS.has_feature("dedicated_server"):
 		add_player(multiplayer.get_unique_id())
-
-
-func _exit_tree():
-	if not multiplayer.is_server():
-		return
-	multiplayer.peer_connected.disconnect(add_player)
-	multiplayer.peer_disconnected.disconnect(del_player)
-
+		
 
 func add_player(id: int):
 	print("ID : ",id)

@@ -1,22 +1,17 @@
 extends Node
 
 var peer = ENetMultiplayerPeer.new()
-const PORT = 4433
+const PORT = 4437
 
 
 func _ready():
 	# Start paused
-	get_tree().paused = true
-	# You can save bandwith by disabling server relay and peer notifications.
-	multiplayer.server_relay = false
+	get_tree().paused = false
 	
-	# Automatically start the server in headless mode.
-	if true:
-		print("Automatically starting dedicated server")
-		_on_host_pressed.call_deferred()
 
 
 func _on_host_pressed():
+	print("here")
 	# Start as server
 	peer.create_server(PORT)
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
@@ -26,11 +21,14 @@ func _on_host_pressed():
 		return
 	multiplayer.multiplayer_peer = peer
 	start_game()
+	
 
 
 func _on_connect_pressed():
+	print("there")
 	# Start as client
-	print(peer.create_client("127.0.0.1", PORT))
+	var id = peer.create_client("127.0.0.1", PORT)
+	print(peer)
 	if peer.get_connection_status() == MultiplayerPeer.CONNECTION_DISCONNECTED:
 		OS.alert("Failed to start multiplayer client")
 		return
@@ -45,6 +43,8 @@ func start_game():
 	# Clients will instantiate the level via the spawner.
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://scenes/level.tscn"))
+	else :
+		$Level/Level.start()
 		
 
 
@@ -59,5 +59,6 @@ func change_level(scene: PackedScene):
 	var instance = scene.instantiate()
 	instance.position = get_viewport().size/2
 	level.add_child(instance)
+	$Level/Level.start()
 
 
