@@ -3,16 +3,22 @@ extends CharacterBody2D
 const SPEED = 1000
 var vel = Vector2()
 var damage # harm in pv to player
-var mining # harm to block
+var ttl # time to live
 
-func start(pos, dir, dam, min):
+var time_counter
+
+func start(pos, dir, dam, ran):
 	$AnimatedSprite2D.rotate(dir)
 	position = pos
 	damage = dam
-	mining = min
+	ttl = ran
 	vel = Vector2(SPEED, 0).rotated(dir)
+	time_counter = 0
 
 func _physics_process(delta):
+	time_counter += delta
+	if time_counter >= ttl:
+		queue_free()
 	
 	var collision = move_and_collide(vel*delta)
 	var tilemap = get_parent().get_node("TileMap")

@@ -26,16 +26,15 @@ var pv #int between 0 and pv_default
 var stat_speed # positive int
 var stat_damage # positive int
 var stat_regen # positive int
-var stat_mining # positive int
+var stat_range # positive int
 
 @export var pv_default = 100 # 100 pv
 @export var regen_time_default = 1.0 # time to recover 1 pv in seconds
 @export var max_speed = 100
 @export var damage_default = 7 # harm to players
-@export var mining_default = 7 # harm to bocks
+@export var range_default = 0.1 # seconds before bullet disappears
 
 signal player_death
-#signal player_grab_element(element)
 signal player_update_pv(pv)
 signal add_element(element)
 
@@ -44,8 +43,7 @@ func _ready():
 	stat_regen = 0
 	stat_speed = 0
 	stat_damage = 0
-	stat_mining = 0
-
+	stat_range = 0
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 	
@@ -131,11 +129,11 @@ func shooting():
 		can_shoot = false
 		
 		var damage = damage_default * (1 + 0.2 * stat_damage)
-		var mining = mining_default * (1 + 0.2 * stat_mining)
+		var range = range_default * (1 + 0.4 * stat_range)
 		
 		#Bullet spawn
 		self.add_collision_exception_with(b)
-		b.start($Arm/Marker2D.global_position, rotation, damage, mining)
+		b.start($Arm/Marker2D.global_position, rotation, damage, range)
 		get_parent().add_child(b)
 		
 		#Timer start
@@ -172,4 +170,4 @@ func change_setting(list):
 	stat_regen = list[0]
 	stat_speed = list[1]
 	stat_damage = list[2]
-	stat_mining = list[3]
+	stat_range = list[3]

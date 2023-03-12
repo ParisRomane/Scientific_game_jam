@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd6jvf01ifsgg"]
+[gd_scene load_steps=6 format=3 uid="uid://dd6jvf01ifsgg"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_2evq0"]
-[ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://Assets/entropybattle.png" id="3_t1i6b"]
+[ext_resource type="Texture2D" uid="uid://dnpiwxlphjlqe" path="res://Assets/ui/ecran_credit.png" id="3_pwxnk"]
+[ext_resource type="Texture2D" uid="uid://dwpbd2x3r4gkk" path="res://Assets/entropybattle.png" id="3_t1i6b"]
 [ext_resource type="Texture2D" uid="uid://dagdecrokfe5u" path="res://Assets/component/cross.png" id="4_f6s83"]
+[ext_resource type="AudioStream" uid="uid://cv8ylthitehol" path="res://Assets/son/lobby.mp3" id="4_s5exa"]
 
 [node name="entropy_battle" type="Node2D"]
 script = ExtResource("1_2evq0")
@@ -21,29 +23,27 @@ texture_pressed = ExtResource("4_f6s83")
 texture_hover = ExtResource("4_f6s83")
 texture_disabled = ExtResource("4_f6s83")
 texture_focused = ExtResource("4_f6s83")
-stretch_mode = 0
 
 [node name="crédit_sprite" type="Sprite2D" parent="credit"]
 z_index = 3
 position = Vector2(576.5, 325.75)
 scale = Vector2(0.606771, 0.615278)
-texture = ExtResource("3_t1i6b")
+texture = ExtResource("3_pwxnk")
 
 [node name="explain" type="Node2D" parent="."]
 visible = false
 
 [node name="explain_close" type="TextureButton" parent="explain"]
-z_index = 3
-offset_left = 945.0
-offset_top = 4.0
-offset_right = 1138.0
-offset_bottom = 182.0
+z_index = 4
+offset_left = 1129.0
+offset_top = 3.0
+offset_right = 1149.0
+offset_bottom = 23.0
 texture_normal = ExtResource("4_f6s83")
 texture_pressed = ExtResource("4_f6s83")
 texture_hover = ExtResource("4_f6s83")
 texture_disabled = ExtResource("4_f6s83")
 texture_focused = ExtResource("4_f6s83")
-stretch_mode = 0
 
 [node name="menu_sprite" type="Sprite2D" parent="explain"]
 position = Vector2(576.5, 325.75)
@@ -59,38 +59,41 @@ texture = ExtResource("3_t1i6b")
 
 [node name="exit" type="TextureButton" parent="menu"]
 z_index = 3
-offset_left = 1002.0
-offset_top = 4.0
-offset_right = 1138.0
-offset_bottom = 136.0
+offset_left = 1129.0
+offset_top = 3.0
+offset_right = 1149.0
+offset_bottom = 23.0
 texture_normal = ExtResource("4_f6s83")
 texture_pressed = ExtResource("4_f6s83")
 texture_hover = ExtResource("4_f6s83")
 texture_disabled = ExtResource("4_f6s83")
 texture_focused = ExtResource("4_f6s83")
-stretch_mode = 0
 
 [node name="credit_open" type="Button" parent="menu"]
-offset_left = 496.0
-offset_top = 325.0
-offset_right = 560.0
-offset_bottom = 356.0
-text = "CRÉDIT"
+offset_left = 182.0
+offset_top = 521.0
+offset_right = 254.0
+offset_bottom = 552.0
+text = "CRÉDITS"
 
 [node name="explain_open" type="Button" parent="menu"]
-offset_left = 470.0
-offset_top = 378.0
-offset_right = 594.0
-offset_bottom = 409.0
+offset_left = 159.0
+offset_top = 572.0
+offset_right = 283.0
+offset_bottom = 603.0
 text = "EXPLAINATION"
 
 [node name="start" type="Button" parent="menu"]
-offset_left = 500.0
-offset_top = 276.0
-offset_right = 556.0
-offset_bottom = 307.0
+offset_left = 189.0
+offset_top = 470.0
+offset_right = 245.0
+offset_bottom = 501.0
 text = "START
 "
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_s5exa")
+autoplay = true
 
 [connection signal="pressed" from="credit/credit_close" to="." method="_on_credit_close_pressed"]
 [connection signal="pressed" from="explain/explain_close" to="." method="_on_credit_close_pressed"]
