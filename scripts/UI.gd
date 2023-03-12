@@ -34,7 +34,7 @@ func _ready():
 	get_node("stat_UI/hbox/matrix/"+str(order_of_add[0])).texture = next_texture
 
 
-	
+
 func add_element(element_type):
 	if (nb_added < MAX_SIZE_MAT):
 		match element_type :

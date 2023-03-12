@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+
+enum {NONE, CU,CO,NI,MG}
+
+
 var mouse_pos = Vector2()
 var vel = Vector2()
 var bullet = preload("res://scenes/bullet.tscn")
@@ -32,7 +36,8 @@ var stat_mining # positive int
 
 signal player_death
 #signal player_grab_element(element)
-signal player_update_ui(stat_regen, stat_speed, stat_damage, stat_mining, pv)
+signal player_update_pv(pv)
+signal add_element(element)
 
 func _ready():
 	pv = pv_default
@@ -40,6 +45,10 @@ func _ready():
 	stat_speed = 0
 	stat_damage = 0
 	stat_mining = 0
+	
+	get_node("../../../CanvasLayer/1").connect("update_stat",self.change_setting)
+	self.connect("player_update_pv",get_node("../../../CanvasLayer/1").change_hp)
+	self.connect("add_element",get_node("../../../CanvasLayer/1"). add_element)
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 	
@@ -61,7 +70,7 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 	update_pv(delta)
 
 func update_ui():
-	player_update_ui.emit(stat_regen, stat_speed, stat_damage, stat_mining, pv)
+	player_update_pv.emit(pv)
 
 func hit(damage):
 	pv -= damage
@@ -148,15 +157,22 @@ func _on_reload_timeout():
 	can_shoot = true
 	
 func upgrade(ind):
-	if ind == 0 :
-		stat_damage += 1
-	if ind == 1 :
-		stat_mining += 1
-	if ind == 2 :
-		stat_speed += 1
-	if ind == 3 :
-		stat_regen += 1
+	ind = ind+1
+	if ind == CU :
+		emit_signal("add_element", CU)
+	if ind == NI :
+		emit_signal("add_element", NI)
+	if ind == MG :
+		emit_signal("add_element", MG)
+	if ind == CO :
+		emit_signal("add_element", CO)
 	
 	$Sounds/Powerup.play()
 	
 	update_ui()
+	
+func change_setting(list):
+	stat_regen = list[0]
+	stat_speed = list[1]
+	stat_damage = list[2]
+	stat_mining = list[3]
