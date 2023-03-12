@@ -19,6 +19,34 @@
 [ext_resource type="Texture2D" uid="uid://s58xojobr2qo" path="res://Assets/personnages/bras_shoot/bras_03.png" id="16_v46ny"]
 [ext_resource type="Texture2D" uid="uid://p2objyss47np" path="res://Assets/personnages/bras_shoot/bras_04.png" id="17_xp3st"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_icfmb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0aous")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_qwpy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_hpu5w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_v46ny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xp3st")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 15.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqvdu"]
 radius = 31.0
 height = 130.0
@@ -69,36 +97,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_icfmb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_0aous")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_qwpy0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_hpu5w")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_v46ny")
-}, {
-"duration": 1.0,
-"texture": ExtResource("17_xp3st")
-}],
-"loop": false,
-"name": &"shoot",
-"speed": 15.0
-}]
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_tldf4")
+
+[node name="Arm" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(-11, -22)
+sprite_frames = SubResource("SpriteFrames_icfmb")
+animation = &"shoot"
+autoplay = "idle"
+offset = Vector2(53, 1)
+script = ExtResource("3_a2t4o")
+
+[node name="Marker2D" type="Marker2D" parent="Arm"]
+position = Vector2(77, 4)
+scale = Vector2(0.323144, 9.43973)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0)
@@ -120,18 +133,6 @@ sprite_frames = SubResource("SpriteFrames_u7oem")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.0450979
-
-[node name="Arm" type="AnimatedSprite2D" parent="."]
-position = Vector2(-11, -22)
-sprite_frames = SubResource("SpriteFrames_icfmb")
-animation = &"shoot"
-autoplay = "idle"
-offset = Vector2(53, 1)
-script = ExtResource("3_a2t4o")
-
-[node name="Marker2D" type="Marker2D" parent="Arm"]
-position = Vector2(77, 4)
-scale = Vector2(0.323144, 9.43973)
 
 [node name="Sounds" type="Node" parent="."]
 
