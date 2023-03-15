@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cup1f1g7jn15t"]
 
 [ext_resource type="Script" path="res://scripts/ni.gd" id="1_ok1ir"]
-[ext_resource type="Texture2D" uid="uid://cqqas5yupjrcm" path="res://assets/Elts.png" id="1_vy7k4"]
+[ext_resource type="Texture2D" uid="uid://15vca2y8wim5" path="res://Assets/environement/Gemme_Jaune.png" id="2_e34ef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ig4f"]
 radius = 60.407
@@ -10,11 +10,7 @@ radius = 60.407
 script = ExtResource("1_ok1ir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_vy7k4")
-hframes = 2
-vframes = 2
-frame = 2
+texture = ExtResource("2_e34ef")
 
 [node name="Area2D" type="Area2D" parent="."]
 
