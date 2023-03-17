@@ -1,6 +1,6 @@
 extends Node2D
 
-enum { MENU, AUTHORS,EXPLAIN }
+enum { MENU, AUTHORS, CREDITS }
 var scene = MENU
 
 # Called when the node enters the scene tree for the first time.
@@ -11,9 +11,9 @@ func _ready():
 func change_scene(screen):
 	$authors.hide()
 	$menu.hide()
-	$explain.hide()
+	$credits.hide()
 	$authors/authors_close.disabled = true
-	$explain/explain_close.disabled = true
+	$credits/credits_close.disabled = true
 	$menu/exit.disabled = true
 	match screen :
 		MENU : 
@@ -22,9 +22,9 @@ func change_scene(screen):
 		AUTHORS : 
 			$authors.show()
 			$authors/authors_close.disabled = false
-		EXPLAIN : 
-			$explain.show()
-			$explain/explain_close.disabled = false
+		CREDITS : 
+			$credits.show()
+			$credits/credits_close.disabled = false
 	
 func load_game():
 	pass
@@ -36,8 +36,11 @@ func _on_authors_close_pressed():
 func _on_authors_open_pressed():
 	change_scene(AUTHORS)
 
-func _on_explain_open_pressed():
-	change_scene(EXPLAIN)
+func _on_credits_close_pressed():
+	change_scene(MENU)
+
+func _on_credits_open_pressed():
+	change_scene(CREDITS)
 
 
 func _on_start_pressed():

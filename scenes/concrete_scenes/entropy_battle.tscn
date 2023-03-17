@@ -30,10 +30,10 @@ position = Vector2(576.5, 325.75)
 scale = Vector2(0.606771, 0.615278)
 texture = ExtResource("3_28ht1")
 
-[node name="explain" type="Node2D" parent="."]
+[node name="credits" type="Node2D" parent="."]
 visible = false
 
-[node name="explain_close" type="TextureButton" parent="explain"]
+[node name="credits_close" type="TextureButton" parent="credits"]
 z_index = 4
 offset_left = 1129.0
 offset_top = 3.0
@@ -45,7 +45,7 @@ texture_hover = ExtResource("2_u4oow")
 texture_disabled = ExtResource("2_u4oow")
 texture_focused = ExtResource("2_u4oow")
 
-[node name="menu_sprite" type="Sprite2D" parent="explain"]
+[node name="credits_sprite" type="Sprite2D" parent="credits"]
 position = Vector2(576.5, 325.75)
 scale = Vector2(0.606771, 0.615278)
 texture = ExtResource("4_8cx18")
@@ -70,24 +70,24 @@ texture_disabled = ExtResource("2_u4oow")
 texture_focused = ExtResource("2_u4oow")
 
 [node name="authors_open" type="Button" parent="menu"]
-offset_left = 182.0
-offset_top = 521.0
-offset_right = 254.0
-offset_bottom = 552.0
+offset_left = 143.0
+offset_top = 525.0
+offset_right = 227.0
+offset_bottom = 556.0
 text = "AUTHORS"
 
-[node name="explain_open" type="Button" parent="menu"]
-offset_left = 159.0
-offset_top = 572.0
-offset_right = 283.0
-offset_bottom = 603.0
-text = "EXPLAINATION"
+[node name="credits_open" type="Button" parent="menu"]
+offset_left = 149.0
+offset_top = 579.0
+offset_right = 221.0
+offset_bottom = 610.0
+text = "CREDITS"
 
 [node name="start" type="Button" parent="menu"]
-offset_left = 189.0
-offset_top = 470.0
-offset_right = 245.0
-offset_bottom = 501.0
+offset_left = 155.0
+offset_top = 474.0
+offset_right = 211.0
+offset_bottom = 505.0
 text = "START
 "
 
@@ -96,8 +96,8 @@ stream = ExtResource("5_l3d3y")
 autoplay = true
 
 [connection signal="pressed" from="authors/authors_close" to="." method="_on_authors_close_pressed"]
-[connection signal="pressed" from="explain/explain_close" to="." method="_on_credit_close_pressed"]
+[connection signal="pressed" from="credits/credits_close" to="." method="_on_credits_close_pressed"]
 [connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="menu/authors_open" to="." method="_on_authors_open_pressed"]
-[connection signal="pressed" from="menu/explain_open" to="." method="_on_explain_open_pressed"]
+[connection signal="pressed" from="menu/credits_open" to="." method="_on_credits_open_pressed"]
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
