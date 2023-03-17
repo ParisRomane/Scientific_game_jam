@@ -55,8 +55,7 @@ func _ready():
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
-		player_death.emit()
-		$Sounds/Loose.play()
+		die()
 	
 	action_loop()
 	set_velocity(vel)
@@ -100,6 +99,11 @@ func action_loop():
 	shoot = Input.is_action_pressed("shoot")
 	suicide = Input.is_action_just_pressed("ui_cancel")
 	
+	if !is_dead:
+		var coef = 1/(float(pv_default)/float(pv))
+		$AnimatedSprite2D.modulate = Color(1, coef, coef)
+		$Arm.modulate = Color(1, coef, coef)
+	
 	movement_loop()
 	shooting()
 
@@ -119,7 +123,7 @@ func movement_loop():
 		if down:
 			vel.y = min(vel.y + ACC, speed)
 		if suicide:
-			die()
+			pv -= 10
 	
 	#Inertia management
 	if !move or is_dead:
@@ -183,7 +187,8 @@ func change_setting(list):
 	stat_range = list[3]
 	
 func die():
-	print("Dead")
+	player_death.emit()
+	$Sounds/Loose.play()
 	is_dead = true
 	z_index = 0
 	$CollisionShape2D.set_disabled(true)
