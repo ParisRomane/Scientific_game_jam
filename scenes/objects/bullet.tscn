@@ -1,21 +1,21 @@
 [gd_scene load_steps=7 format=3 uid="uid://cypgq2pnxl58r"]
 
-[ext_resource type="Script" path="res://scripts/bullet.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://c3wjmrof3gb23" path="res://Assets/autres/balle/ball_01.png" id="2_7a18e"]
-[ext_resource type="Texture2D" uid="uid://c3rjqfwy8gyar" path="res://Assets/autres/balle/ball_02.png" id="3_yfsmy"]
-[ext_resource type="Texture2D" uid="uid://28ud5v1grbft" path="res://Assets/autres/balle/ball_03.png" id="4_c2qnh"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_eodts"]
+[ext_resource type="Texture2D" uid="uid://c3wjmrof3gb23" path="res://Assets/autres/balle/ball_01.png" id="2_lrh67"]
+[ext_resource type="Texture2D" uid="uid://c3rjqfwy8gyar" path="res://Assets/autres/balle/ball_02.png" id="3_0givr"]
+[ext_resource type="Texture2D" uid="uid://28ud5v1grbft" path="res://Assets/autres/balle/ball_03.png" id="4_rabpg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uxh30"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_7a18e")
+"texture": ExtResource("2_lrh67")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_yfsmy")
+"texture": ExtResource("3_0givr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_c2qnh")
+"texture": ExtResource("4_rabpg")
 }],
 "loop": true,
 "name": &"default",
@@ -27,7 +27,7 @@ radius = 8.0
 height = 26.0
 
 [node name="bullet" type="CharacterBody2D"]
-script = ExtResource("1")
+script = ExtResource("1_eodts")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uxh30")

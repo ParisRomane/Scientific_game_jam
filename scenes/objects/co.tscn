@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cejml0f27k48c"]
 
-[ext_resource type="Texture2D" uid="uid://k3bm82jvctnv" path="res://Assets/environement/Gemme_Rose.png" id="1_25u82"]
+[ext_resource type="Texture2D" uid="uid://k3bm82jvctnv" path="res://Assets/environement/Gemme_Rose.png" id="1_ioi2y"]
 
 [sub_resource type="GDScript" id="GDScript_k50vp"]
 script/source = "extends StaticBody2D
@@ -19,7 +19,7 @@ radius = 60.407
 script = SubResource("GDScript_k50vp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_25u82")
+texture = ExtResource("1_ioi2y")
 
 [node name="Area2D" type="Area2D" parent="."]
 

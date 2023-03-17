@@ -6,7 +6,7 @@ enum {NONE, CU,CO,NI,MG}
 
 var mouse_pos = Vector2()
 var vel = Vector2()
-var bullet = preload("res://scenes/bullet.tscn")
+var bullet = preload("res://scenes/objects/bullet.tscn")
 var is_dead = false
 var can_shoot = true
 var shoot_line
@@ -100,6 +100,9 @@ func action_loop():
 
 func movement_loop():
 	var speed = max_speed * (1 + 0.2 * stat_speed)
+	
+	#Change z-index priority
+	z_index = int(position.y)
 	
 	if !is_dead:
 		if right:

@@ -26,7 +26,7 @@ func _ready():
 	for i in range(MAX_SIZE_MAT) :
 		self.get_node("stat_UI/hbox/matrix/"+str(i)).texture = None_texture
 	#preload propriety
-	var propriety = preload("res://scenes/propriety.tscn")
+	var propriety = preload("res://scenes/UIs/propriety.tscn")
 	for i in range(4):
 		var instance_propriety = propriety.instantiate()
 		instance_propriety.set_element_name( element_names[i])
