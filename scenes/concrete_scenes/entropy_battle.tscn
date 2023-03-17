@@ -9,10 +9,10 @@
 [node name="entropy_battle" type="Node2D"]
 script = ExtResource("1_7mh4i")
 
-[node name="credit" type="Node2D" parent="."]
+[node name="authors" type="Node2D" parent="."]
 visible = false
 
-[node name="credit_close" type="TextureButton" parent="credit"]
+[node name="authors_close" type="TextureButton" parent="authors"]
 z_index = 4
 offset_left = 945.0
 offset_top = 4.0
@@ -24,7 +24,7 @@ texture_hover = ExtResource("2_u4oow")
 texture_disabled = ExtResource("2_u4oow")
 texture_focused = ExtResource("2_u4oow")
 
-[node name="crédit_sprite" type="Sprite2D" parent="credit"]
+[node name="authors_sprite" type="Sprite2D" parent="authors"]
 z_index = 3
 position = Vector2(576.5, 325.75)
 scale = Vector2(0.606771, 0.615278)
@@ -69,12 +69,12 @@ texture_hover = ExtResource("2_u4oow")
 texture_disabled = ExtResource("2_u4oow")
 texture_focused = ExtResource("2_u4oow")
 
-[node name="credit_open" type="Button" parent="menu"]
+[node name="authors_open" type="Button" parent="menu"]
 offset_left = 182.0
 offset_top = 521.0
 offset_right = 254.0
 offset_bottom = 552.0
-text = "CRÉDITS"
+text = "AUTHORS"
 
 [node name="explain_open" type="Button" parent="menu"]
 offset_left = 159.0
@@ -95,9 +95,9 @@ text = "START
 stream = ExtResource("5_l3d3y")
 autoplay = true
 
-[connection signal="pressed" from="credit/credit_close" to="." method="_on_credit_close_pressed"]
+[connection signal="pressed" from="authors/authors_close" to="." method="_on_authors_close_pressed"]
 [connection signal="pressed" from="explain/explain_close" to="." method="_on_credit_close_pressed"]
 [connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="menu/credit_open" to="." method="_on_credit_open_pressed"]
+[connection signal="pressed" from="menu/authors_open" to="." method="_on_authors_open_pressed"]
 [connection signal="pressed" from="menu/explain_open" to="." method="_on_explain_open_pressed"]
 [connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
