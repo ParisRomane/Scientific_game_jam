@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvctq65fhai5h"]
+
+[ext_resource type="Script" path="res://scripts/blocks/copper_block.gd" id="1_ue2m6"]
+[ext_resource type="Texture2D" uid="uid://btv722q2amxad" path="res://Assets/environement/Blocks/copper_block.png" id="2_r2bbg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y2hh"]
+size = Vector2(120, 84)
+
+[node name="CuBlock" type="StaticBody2D"]
+script = ExtResource("1_ue2m6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r2bbg")
+vframes = 5
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_2y2hh")

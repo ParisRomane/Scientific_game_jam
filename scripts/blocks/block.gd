@@ -6,14 +6,15 @@ var hitpoints = 20
 func _ready():
 	z_index = position.y
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func on_death():
+		drop()
+		queue_free()
+		
+func drop():
 	pass
 
 func hit(damage):
 	hitpoints -= damage
-	print(damage)
 	
 	if(hitpoints >= 15):
 		$Sprite2D.frame_coords = Vector2i(0, 2)
@@ -25,5 +26,5 @@ func hit(damage):
 		$Sprite2D.frame_coords = Vector2i(0, 0)
 		
 	else:
-		queue_free()
+		on_death()
 		
