@@ -31,7 +31,7 @@ var stat_range # positive int
 @export var pv_default = 100 # 100 pv
 @export var regen_time_default = 1.0 # time to recover 1 pv in seconds
 @export var max_speed = 100
-@export var damage_default = 7 # harm to players
+@export var damage_default = 5 # harm to players
 @export var range_default = 0.1 # seconds before bullet disappears
 
 signal player_death
