@@ -18,6 +18,7 @@ var up
 var down
 var move
 var shoot
+var suicide
 
 var ACC = 50
 
@@ -71,6 +72,9 @@ func hit(damage):
 	pv -= damage
 	$Sounds/Hit.play()
 	update_ui()
+	
+	if pv <= 0:
+		die()
 
 var regen_clock = 0
 func update_pv(delta):
@@ -94,6 +98,7 @@ func action_loop():
 	down = Input.is_action_pressed("ui_down")
 	move = right or left or up or down
 	shoot = Input.is_action_pressed("shoot")
+	suicide = Input.is_action_just_pressed("ui_cancel")
 	
 	movement_loop()
 	shooting()
@@ -113,6 +118,8 @@ func movement_loop():
 			vel.y = max(vel.y - ACC, -speed)
 		if down:
 			vel.y = min(vel.y + ACC, speed)
+		if suicide:
+			die()
 	
 	#Inertia management
 	if !move or is_dead:
@@ -174,3 +181,11 @@ func change_setting(list):
 	stat_speed = list[1]
 	stat_damage = list[2]
 	stat_range = list[3]
+	
+func die():
+	print("Dead")
+	is_dead = true
+	z_index = 0
+	$CollisionShape2D.set_disabled(true)
+	$Arm.visible = false
+	$AnimatedSprite2D.play("idle")

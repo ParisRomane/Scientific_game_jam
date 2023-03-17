@@ -132,7 +132,6 @@ one_shot = true
 sprite_frames = SubResource("SpriteFrames_u7oem")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.0450979
 
 [node name="Sounds" type="Node" parent="."]
 
