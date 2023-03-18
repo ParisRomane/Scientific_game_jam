@@ -11,14 +11,13 @@
 script = ExtResource("1_7mh4i")
 
 [node name="authors" type="Node2D" parent="."]
-visible = false
 
 [node name="authors_close" type="TextureButton" parent="authors"]
 z_index = 4
-offset_left = 945.0
-offset_top = 4.0
-offset_right = 1138.0
-offset_bottom = 182.0
+offset_left = 1129.0
+offset_top = 3.0
+offset_right = 1149.0
+offset_bottom = 23.0
 texture_normal = ExtResource("2_u4oow")
 texture_pressed = ExtResource("2_u4oow")
 texture_hover = ExtResource("2_u4oow")
