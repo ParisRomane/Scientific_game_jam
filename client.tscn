@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbcwqabs3y8to"]
+
+[ext_resource type="Script" path="res://client.gd" id="1_sijkl"]
+
+[node name="client" type="Node"]
+script = ExtResource("1_sijkl")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_right = 531.0
+offset_bottom = 308.0
+text = "
+"
+placeholder_text = "write here "
+
+[node name="send" type="Button" parent="."]
+offset_left = 542.0
+offset_top = 80.0
+offset_right = 751.0
+offset_bottom = 120.0
+text = "send"
+
+[connection signal="pressed" from="send" to="." method="_on_send_pressed"]

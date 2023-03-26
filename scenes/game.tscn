@@ -11,10 +11,6 @@ script = ExtResource("1_shv7s")
 
 [node name="map" parent="Level" instance=ExtResource("2_ywp54")]
 
-[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("../Level")
-spawn_limit = 4
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="1" parent="CanvasLayer" instance=ExtResource("2_i5k1g")]
