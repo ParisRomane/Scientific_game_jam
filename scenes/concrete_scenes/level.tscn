@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://bonxtmmsyk3c2"]
 
 [ext_resource type="PackedScene" uid="uid://v5uoayi34jr" path="res://scenes/tilemaps/tile_map_pp_undestructible.tscn" id="1_wal2v"]
 [ext_resource type="PackedScene" uid="uid://cmxcwv4mw72wd" path="res://scenes/tilemaps/tile_map_pp.tscn" id="2_xs1n1"]
 [ext_resource type="PackedScene" uid="uid://b4m3vl5p1kc3r" path="res://scenes/objects/player.tscn" id="3_4btbk"]
 [ext_resource type="PackedScene" uid="uid://cejml0f27k48c" path="res://scenes/objects/co.tscn" id="4_6yuh1"]
-[ext_resource type="Script" path="res://scripts/atoms/co.gd" id="5_8yael"]
-[ext_resource type="PackedScene" uid="uid://bjwbn540qeak0" path="res://scenes/objects/cu.tscn" id="6_tksko"]
-[ext_resource type="PackedScene" uid="uid://d0b11sky648tt" path="res://scenes/objects/mg.tscn" id="7_sqq6l"]
-[ext_resource type="PackedScene" uid="uid://cup1f1g7jn15t" path="res://scenes/objects/ni.tscn" id="8_yuj5x"]
+[ext_resource type="Script" path="res://scripts/atoms/co.gd" id="5_b3wso"]
+[ext_resource type="PackedScene" path="res://scenes/objects/cu.tscn" id="6_tksko"]
+[ext_resource type="PackedScene" path="res://scenes/objects/mg.tscn" id="7_sqq6l"]
+[ext_resource type="PackedScene" path="res://scenes/objects/ni.tscn" id="8_yuj5x"]
 [ext_resource type="AudioStream" uid="uid://dobx6i14xf8s2" path="res://Assets/son/block_break.mp3" id="9_dpmd8"]
 [ext_resource type="AudioStream" uid="uid://cnha7dj51525h" path="res://Assets/son/game.mp3" id="10_dqkjg"]
 
@@ -29,23 +29,23 @@ position = Vector2(1379, 900)
 
 [node name="Co" parent="." instance=ExtResource("4_6yuh1")]
 position = Vector2(1381, 1393)
-script = ExtResource("5_8yael")
+script = ExtResource("5_b3wso")
 
 [node name="Co2" parent="." instance=ExtResource("4_6yuh1")]
 position = Vector2(1862, 916)
-script = ExtResource("5_8yael")
+script = ExtResource("5_b3wso")
 
 [node name="Co3" parent="." instance=ExtResource("4_6yuh1")]
 position = Vector2(1987, 916)
-script = ExtResource("5_8yael")
+script = ExtResource("5_b3wso")
 
 [node name="Co4" parent="." instance=ExtResource("4_6yuh1")]
 position = Vector2(1868, 797)
-script = ExtResource("5_8yael")
+script = ExtResource("5_b3wso")
 
 [node name="Co5" parent="." instance=ExtResource("4_6yuh1")]
 position = Vector2(1983, 791)
-script = ExtResource("5_8yael")
+script = ExtResource("5_b3wso")
 
 [node name="Cu" parent="." instance=ExtResource("6_tksko")]
 position = Vector2(1497, 1254)

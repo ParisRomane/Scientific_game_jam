@@ -1,16 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8qxr3xhkmoxf"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_shv7s"]
-[ext_resource type="PackedScene" uid="uid://d1ogdv0p7dn4t" path="res://scenes/concrete_scenes/new_level.tscn" id="2_dctqd"]
 [ext_resource type="PackedScene" uid="uid://fdhrndqmcpp5" path="res://scenes/UIs/UI.tscn" id="2_i5k1g"]
+[ext_resource type="PackedScene" path="res://scenes/concrete_scenes/level.tscn" id="2_ywp54"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_shv7s")
 
 [node name="Level" type="Node" parent="."]
 
-[node name="Map" parent="Level" instance=ExtResource("2_dctqd")]
-position = Vector2(3, 4)
+[node name="map" parent="Level" instance=ExtResource("2_ywp54")]
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../Level")
