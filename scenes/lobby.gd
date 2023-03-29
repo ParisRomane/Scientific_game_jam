@@ -11,7 +11,7 @@ var _stream: StreamPeerTCP = StreamPeerTCP.new()
 func _ready():
 	_status = _stream.get_status()
 	print(_status)
-	connect_to_host("127.0.0.1",4434)
+	connect_to_server("127.0.0.1",4433)
 	pass # Replace with function body.
 
 
@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 	
 
 
-func connect_to_host(host: String, port: int) -> void:
+func connect_to_server(host: String, port: int) -> void:
 	print("Connecting to %s:%d" % [host, port])
 	# Reset status so we can tell if it changes to error again.
 	_status = _stream.STATUS_NONE
@@ -59,7 +59,8 @@ func connect_to_host(host: String, port: int) -> void:
 		print("Error connecting to host.")
 		emit_signal("error")
 	
-func send(data: PackedByteArray) -> bool:
+func send(sdata: String) -> bool:
+	var data = sdata.to_utf8_buffer()
 	if _status != _stream.STATUS_CONNECTED:
 		print("Error: Stream is not currently connected.")
 		return false
@@ -76,14 +77,20 @@ func update_data(data):
 		$lobby_L/VBoxContainer.remove_child(n)
 		n.queue_free()
 	for i in range(len(data)):
-		var connect = connect_scene.instantiate()
-		connect.get_node("ColorRect/pseudo_host").text = data[i]["joueur1"]["pseudo"]
-		$lobby_L/VBoxContainer.add_child(connect)
+		var co = connect_scene.instantiate()
+		co.setup(data[i],i)
+		co.connect("co", self._on_connect_pressed)
+		$lobby_L/VBoxContainer.add_child(co)
 	
 
+func _on_connect_pressed(msg):
+	if (($lobby_R/pseudo.text).replace(" ","") == "") :
+		print("erreur avec le pseudo")
+		return -1
+	send(msg + " "+ $lobby_R/pseudo.text )
 
 func _on_host_pressed():
 	var string = "LOBBY HOST "+ $lobby_R/pseudo.text
-	send(string.to_utf8_buffer())
+	send(string)
 	pass # Replace with function body.
 	

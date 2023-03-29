@@ -20,6 +20,7 @@ offset_right = 98.0
 offset_bottom = 138.0
 
 [node name="ColorRect" type="ColorRect" parent="lobby_L"]
+layout_mode = 0
 offset_left = -83.0
 offset_top = -75.0
 offset_right = 488.0
@@ -28,12 +29,14 @@ color = Color(0.105882, 0.160784, 0.160784, 0.568627)
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="lobby_L"]
+layout_mode = 0
 offset_left = -65.0
 offset_top = -5.0
 offset_right = 457.0
 offset_bottom = 473.0
 
 [node name="lobby_label" type="Label" parent="lobby_L"]
+layout_mode = 0
 offset_left = -35.0
 offset_top = -59.0
 offset_right = 243.0
@@ -45,6 +48,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="ColorRect2" type="ColorRect" parent="lobby_R"]
+layout_mode = 0
 offset_left = 667.0
 offset_top = 63.0
 offset_right = 1127.0
@@ -52,12 +56,14 @@ offset_bottom = 632.0
 color = Color(0.105882, 0.160784, 0.160784, 0.568627)
 
 [node name="pseudo" type="TextEdit" parent="lobby_R"]
+layout_mode = 0
 offset_left = 700.0
 offset_top = 192.0
 offset_right = 1083.0
 offset_bottom = 278.0
 
 [node name="host" type="Button" parent="lobby_R"]
+layout_mode = 0
 offset_left = 684.0
 offset_top = 534.0
 offset_right = 1109.0
@@ -65,6 +71,7 @@ offset_bottom = 608.0
 text = "HOST"
 
 [node name="pseudo_label" type="Label" parent="lobby_R"]
+layout_mode = 0
 offset_left = 702.0
 offset_top = 157.0
 offset_right = 885.0
