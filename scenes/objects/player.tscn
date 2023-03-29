@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://344cgnvglbkv"]
+[gd_scene load_steps=22 format=3 uid="uid://b4m3vl5p1kc3r"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_tldf4"]
 [ext_resource type="Texture2D" uid="uid://cuu4e3fyvahdx" path="res://Assets/personnages/bras/bras.png" id="2_0aous"]
@@ -132,7 +132,6 @@ one_shot = true
 sprite_frames = SubResource("SpriteFrames_u7oem")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.0450979
 
 [node name="Sounds" type="Node" parent="."]
 

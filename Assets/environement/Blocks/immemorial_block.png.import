@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqxdhqk31rj8n"
-path="res://.godot/imported/block_tileset.png-bf314729a6146d1d4cb60049e873a2c1.ctex"
+uid="uid://dn8cjtgptlktn"
+path="res://.godot/imported/immemorial_block.png-da1d6a846d0f7ac37d15e720716688e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/environement/block_tileset.png"
-dest_files=["res://.godot/imported/block_tileset.png-bf314729a6146d1d4cb60049e873a2c1.ctex"]
+source_file="res://Assets/environement/Blocks/immemorial_block.png"
+dest_files=["res://.godot/imported/immemorial_block.png-da1d6a846d0f7ac37d15e720716688e9.ctex"]
 
 [params]
 

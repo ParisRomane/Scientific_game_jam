@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd6jvf01ifsgg"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_7mh4i"]
+[ext_resource type="Texture2D" uid="uid://dagdecrokfe5u" path="res://Assets/component/cross.png" id="2_u4oow"]
+[ext_resource type="Texture2D" uid="uid://67adkq2o8kcs" path="res://Assets/ui/authors.png" id="3_8usm0"]
+[ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://Assets/entropybattle.png" id="4_8cx18"]
+[ext_resource type="Texture2D" uid="uid://dyl52ndnyjgop" path="res://Assets/ui/credits.png" id="4_fhj8u"]
+[ext_resource type="AudioStream" uid="uid://cv8ylthitehol" path="res://Assets/son/lobby.mp3" id="5_l3d3y"]
+
+[node name="entropy_battle" type="Node2D"]
+script = ExtResource("1_7mh4i")
+
+[node name="authors" type="Node2D" parent="."]
+visible = false
+
+[node name="authors_close" type="TextureButton" parent="authors"]
+z_index = 4
+offset_left = 1129.0
+offset_top = 3.0
+offset_right = 1149.0
+offset_bottom = 23.0
+texture_normal = ExtResource("2_u4oow")
+texture_pressed = ExtResource("2_u4oow")
+texture_hover = ExtResource("2_u4oow")
+texture_disabled = ExtResource("2_u4oow")
+texture_focused = ExtResource("2_u4oow")
+
+[node name="authors_sprite" type="Sprite2D" parent="authors"]
+z_index = 3
+position = Vector2(576.5, 325.75)
+scale = Vector2(0.606771, 0.615278)
+texture = ExtResource("3_8usm0")
+
+[node name="credits" type="Node2D" parent="."]
+visible = false
+
+[node name="credits_close" type="TextureButton" parent="credits"]
+z_index = 4
+offset_left = 1129.0
+offset_top = 3.0
+offset_right = 1149.0
+offset_bottom = 23.0
+texture_normal = ExtResource("2_u4oow")
+texture_pressed = ExtResource("2_u4oow")
+texture_hover = ExtResource("2_u4oow")
+texture_disabled = ExtResource("2_u4oow")
+texture_focused = ExtResource("2_u4oow")
+
+[node name="credits_sprite" type="Sprite2D" parent="credits"]
+position = Vector2(576.5, 325.75)
+scale = Vector2(0.606771, 0.615278)
+texture = ExtResource("4_fhj8u")
+
+[node name="menu" type="Node2D" parent="."]
+
+[node name="menu_sprite" type="Sprite2D" parent="menu"]
+position = Vector2(576.5, 325.75)
+scale = Vector2(0.606771, 0.615278)
+texture = ExtResource("4_8cx18")
+
+[node name="exit" type="TextureButton" parent="menu"]
+z_index = 3
+offset_left = 1129.0
+offset_top = 3.0
+offset_right = 1149.0
+offset_bottom = 23.0
+texture_normal = ExtResource("2_u4oow")
+texture_pressed = ExtResource("2_u4oow")
+texture_hover = ExtResource("2_u4oow")
+texture_disabled = ExtResource("2_u4oow")
+texture_focused = ExtResource("2_u4oow")
+
+[node name="authors_open" type="Button" parent="menu"]
+offset_left = 143.0
+offset_top = 525.0
+offset_right = 227.0
+offset_bottom = 556.0
+text = "AUTHORS"
+
+[node name="credits_open" type="Button" parent="menu"]
+offset_left = 149.0
+offset_top = 579.0
+offset_right = 221.0
+offset_bottom = 610.0
+text = "CREDITS"
+
+[node name="start" type="Button" parent="menu"]
+offset_left = 155.0
+offset_top = 474.0
+offset_right = 211.0
+offset_bottom = 505.0
+text = "START
+"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_l3d3y")
+autoplay = true
+
+[connection signal="pressed" from="authors/authors_close" to="." method="_on_authors_close_pressed"]
+[connection signal="pressed" from="credits/credits_close" to="." method="_on_credits_close_pressed"]
+[connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="menu/authors_open" to="." method="_on_authors_open_pressed"]
+[connection signal="pressed" from="menu/credits_open" to="." method="_on_credits_open_pressed"]
+[connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]

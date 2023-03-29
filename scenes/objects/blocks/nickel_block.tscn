@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dygf8usfr1y7o"]
+
+[ext_resource type="Script" path="res://scripts/blocks/nickel_block.gd" id="1_0sbyb"]
+[ext_resource type="Texture2D" uid="uid://jqhuf550rpni" path="res://Assets/environement/Blocks/nickel_block.png" id="2_08imw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y2hh"]
+size = Vector2(120, 84)
+
+[node name="NiBlock" type="StaticBody2D"]
+script = ExtResource("1_0sbyb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_08imw")
+vframes = 5
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_2y2hh")

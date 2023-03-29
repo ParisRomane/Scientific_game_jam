@@ -6,7 +6,7 @@ enum {NONE, CU,CO,NI,MG}
 
 var mouse_pos = Vector2()
 var vel = Vector2()
-var bullet = preload("res://scenes/bullet.tscn")
+var bullet = preload("res://scenes/objects/bullet.tscn")
 var is_dead = false
 var can_shoot = true
 var shoot_line
@@ -18,6 +18,7 @@ var up
 var down
 var move
 var shoot
+var suicide
 
 var ACC = 50
 
@@ -31,7 +32,7 @@ var stat_range # positive int
 @export var pv_default = 100 # 100 pv
 @export var regen_time_default = 1.0 # time to recover 1 pv in seconds
 @export var max_speed = 100
-@export var damage_default = 7 # harm to players
+@export var damage_default = 5 # harm to players
 @export var range_default = 0.1 # seconds before bullet disappears
 
 signal player_death
@@ -54,8 +55,7 @@ func _ready():
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
-		player_death.emit()
-		$Sounds/Loose.play()
+		die()
 	
 	action_loop()
 	set_velocity(vel)
@@ -71,6 +71,9 @@ func hit(damage):
 	pv -= damage
 	$Sounds/Hit.play()
 	update_ui()
+	
+	if pv <= 0:
+		die()
 
 var regen_clock = 0
 func update_pv(delta):
@@ -94,12 +97,21 @@ func action_loop():
 	down = Input.is_action_pressed("ui_down")
 	move = right or left or up or down
 	shoot = Input.is_action_pressed("shoot")
+	suicide = Input.is_action_just_pressed("ui_cancel")
+	
+	if !is_dead:
+		var coef = 1/(float(pv_default)/float(pv))
+		$AnimatedSprite2D.modulate = Color(1, coef, coef)
+		$Arm.modulate = Color(1, coef, coef)
 	
 	movement_loop()
 	shooting()
 
 func movement_loop():
 	var speed = max_speed * (1 + 0.2 * stat_speed)
+	
+	#Change z-index priority
+	z_index = int(position.y)
 	
 	if !is_dead:
 		if right:
@@ -110,6 +122,8 @@ func movement_loop():
 			vel.y = max(vel.y - ACC, -speed)
 		if down:
 			vel.y = min(vel.y + ACC, speed)
+		if suicide:
+			pv -= 10
 	
 	#Inertia management
 	if !move or is_dead:
@@ -171,3 +185,12 @@ func change_setting(list):
 	stat_speed = list[1]
 	stat_damage = list[2]
 	stat_range = list[3]
+	
+func die():
+	player_death.emit()
+	$Sounds/Loose.play()
+	is_dead = true
+	z_index = 0
+	$CollisionShape2D.set_disabled(true)
+	$Arm.visible = false
+	$AnimatedSprite2D.play("idle")

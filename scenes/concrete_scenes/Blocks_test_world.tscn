@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://6kuy5sykmlee"]
+
+[ext_resource type="PackedScene" uid="uid://b3l67aotlg1jg" path="res://scenes/objects/blocks/basic_block.tscn" id="1_pbkeo"]
+[ext_resource type="PackedScene" uid="uid://b4m3vl5p1kc3r" path="res://scenes/objects/player.tscn" id="2_lxrb5"]
+[ext_resource type="PackedScene" uid="uid://v2buf4urmqb5" path="res://scenes/objects/blocks/cobalt_block.tscn" id="3_0dj8b"]
+[ext_resource type="PackedScene" uid="uid://ccocvv6dqi2sj" path="res://scenes/objects/blocks/immemorial_block.tscn" id="4_usr57"]
+[ext_resource type="PackedScene" uid="uid://bvctq65fhai5h" path="res://scenes/objects/blocks/copper_block.tscn" id="5_xwws5"]
+[ext_resource type="PackedScene" uid="uid://bu6v3kax4nleb" path="res://scenes/objects/blocks/magnesium_block.tscn" id="6_w0f30"]
+[ext_resource type="PackedScene" uid="uid://dygf8usfr1y7o" path="res://scenes/objects/blocks/nickel_block.tscn" id="7_6c7sl"]
+
+[node name="Blocks_test_world" type="Node2D"]
+
+[node name="Block" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(900, 900)
+
+[node name="Block2" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(1020, 900)
+
+[node name="Block3" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(900, 780)
+
+[node name="Block4" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(1020, 780)
+
+[node name="Block5" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(1140, 900)
+
+[node name="Block6" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(1140, 780)
+
+[node name="Block7" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(900, 540)
+
+[node name="Block8" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(1020, 540)
+
+[node name="Block9" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(1140, 540)
+
+[node name="Player" parent="." instance=ExtResource("2_lxrb5")]
+position = Vector2(1260, 780)
+
+[node name="CoBlock" parent="." instance=ExtResource("3_0dj8b")]
+position = Vector2(1260, 540)
+
+[node name="CoBlock2" parent="." instance=ExtResource("3_0dj8b")]
+position = Vector2(1740, 660)
+
+[node name="CoBlock3" parent="." instance=ExtResource("3_0dj8b")]
+position = Vector2(1500, 900)
+
+[node name="BasicBlock" parent="." instance=ExtResource("1_pbkeo")]
+position = Vector2(1260, 420)
+
+[node name="ImmemorialBlock" parent="." instance=ExtResource("4_usr57")]
+position = Vector2(780, 540)
+
+[node name="ImmemorialBlock2" parent="." instance=ExtResource("4_usr57")]
+position = Vector2(780, 660)
+
+[node name="ImmemorialBlock3" parent="." instance=ExtResource("4_usr57")]
+position = Vector2(780, 780)
+
+[node name="ImmemorialBlock4" parent="." instance=ExtResource("4_usr57")]
+position = Vector2(780, 900)
+
+[node name="CuBlock" parent="." instance=ExtResource("5_xwws5")]
+position = Vector2(1500, 660)
+
+[node name="MgBlock" parent="." instance=ExtResource("6_w0f30")]
+position = Vector2(1380, 900)
+
+[node name="NiBlock" parent="." instance=ExtResource("7_6c7sl")]
+position = Vector2(1740, 900)

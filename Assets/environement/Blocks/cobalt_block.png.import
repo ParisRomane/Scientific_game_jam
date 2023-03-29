@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biwlub667irwb"
-path="res://.godot/imported/ecran_credit.png-85814148181fab5beb34e90e25212129.ctex"
+uid="uid://dtw7xxssdefws"
+path="res://.godot/imported/cobalt_block.png-beabe1a054c94dfbaf3f790b037e8351.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ui/ecran_credit.png"
-dest_files=["res://.godot/imported/ecran_credit.png-85814148181fab5beb34e90e25212129.ctex"]
+source_file="res://Assets/environement/Blocks/cobalt_block.png"
+dest_files=["res://.godot/imported/cobalt_block.png-beabe1a054c94dfbaf3f790b037e8351.ctex"]
 
 [params]
 
