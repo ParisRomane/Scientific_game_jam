@@ -19,6 +19,7 @@ var down
 var move
 var shoot
 var suicide
+@export var is_player = true;
 
 var ACC = 50
 
@@ -56,13 +57,16 @@ func _ready():
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
 		die()
-	
-	action_loop()
-	set_velocity(vel)
-	move_and_slide()
-	vel = velocity
-	
-	update_pv(delta)
+	if is_player :
+		action_loop()
+		set_velocity(vel)
+		move_and_slide()
+		vel = velocity
+		
+		update_pv(delta)
+	else : 
+		movement_loop()
+		shooting()
 
 func update_ui():
 	player_update_pv.emit(pv)

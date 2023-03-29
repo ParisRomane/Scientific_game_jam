@@ -11,7 +11,7 @@ var _stream: StreamPeerTCP = StreamPeerTCP.new()
 func _ready():
 	_status = _stream.get_status()
 	print(_status)
-	connect_to_server("127.0.0.1",4433)
+	connect_to_server("127.0.0.1",4434)
 	pass # Replace with function body.
 
 
@@ -73,24 +73,35 @@ func send(sdata: String) -> bool:
 var connect_scene = preload("res://scenes/connect.tscn")
 func update_data(data):
 	print(data)
-	for n in $lobby_L/VBoxContainer.get_children():
-		$lobby_L/VBoxContainer.remove_child(n)
+	for n in $Lobby/lobby_L/VBoxContainer.get_children():
+		$Lobby/lobby_L/VBoxContainer.remove_child(n)
 		n.queue_free()
 	for i in range(len(data)):
 		var co = connect_scene.instantiate()
 		co.setup(data[i],i)
 		co.connect("co", self._on_connect_pressed)
-		$lobby_L/VBoxContainer.add_child(co)
+		$Lobby/lobby_L/VBoxContainer.add_child(co)
 	
+var level_scene = preload("res://scenes/concrete_scenes/new_level.tscn")
 
 func _on_connect_pressed(msg):
-	if (($lobby_R/pseudo.text).replace(" ","") == "") :
+	if (($Lobby/lobby_R/pseudo.text).replace(" ","") == "") :
 		print("erreur avec le pseudo")
 		return -1
-	send(msg + " "+ $lobby_R/pseudo.text )
+	send(msg + " "+ $Lobby/lobby_R/pseudo.text )
+	# a faire fonction séparé lorsque le serveur répond...
+	var level = level_scene.instantiate()
+	level.get_node('player_1').is_player = false
+	level.get_node('player_1/Camera2D').enabled = false
+	self.add_child(level)
 
 func _on_host_pressed():
-	var string = "LOBBY HOST "+ $lobby_R/pseudo.text
+	var string = "LOBBY HOST "+ $Lobby/lobby_R/pseudo.text
 	send(string)
-	pass # Replace with function body.
+	# a faire fonction séparé lorsque le serveur répond...
+	var level = level_scene.instantiate()
+	level.get_node('player_2').is_player = false
+	level.get_node('player_2/Camera2D').enabled = false
+	self.add_child(level)
+
 	

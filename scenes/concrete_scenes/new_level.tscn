@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1ogdv0p7dn4t"]
+[gd_scene load_steps=13 format=3 uid="uid://d1ogdv0p7dn4t"]
 
 [ext_resource type="PackedScene" uid="uid://cmxcwv4mw72wd" path="res://scenes/tilemaps/tile_map_pp.tscn" id="1_0mpq8"]
 [ext_resource type="PackedScene" uid="uid://b4m3vl5p1kc3r" path="res://scenes/objects/player.tscn" id="1_schdy"]
+[ext_resource type="Script" path="res://scenes/concrete_scenes/Multiplayer.gd" id="1_ysk0u"]
 [ext_resource type="PackedScene" uid="uid://ccocvv6dqi2sj" path="res://scenes/objects/blocks/immemorial_block.tscn" id="3_0hxjt"]
 [ext_resource type="PackedScene" uid="uid://bu6v3kax4nleb" path="res://scenes/objects/blocks/magnesium_block.tscn" id="4_h0ddq"]
 [ext_resource type="PackedScene" uid="uid://bvctq65fhai5h" path="res://scenes/objects/blocks/copper_block.tscn" id="5_y0amc"]
@@ -14,10 +15,18 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_schdy")]
+[node name="Multiplayer" type="Node" parent="."]
+script = ExtResource("1_ysk0u")
+
+[node name="player_1" parent="." instance=ExtResource("1_schdy")]
 z_index = 3
 y_sort_enabled = true
-position = Vector2(360, 1980)
+position = Vector2(3700, 624)
+
+[node name="player_2" parent="." instance=ExtResource("1_schdy")]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(415, 1775)
 
 [node name="TileMap3" parent="." instance=ExtResource("1_0mpq8")]
 position = Vector2(7320, 4320)
