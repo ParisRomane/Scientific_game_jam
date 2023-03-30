@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/atoms/cu.gd" id="1_rpul1"]
-[ext_resource type="Texture2D" uid="uid://dq163ln1f2p8i" path="res://Assets/environement/Gemme_Vert.png" id="2_1vxp2"]
+[ext_resource type="Texture2D" uid="uid://dq163ln1f2p8i" path="res://assets/environement/Gemme_Vert.png" id="2_1vxp2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ig4f"]
 radius = 60.407

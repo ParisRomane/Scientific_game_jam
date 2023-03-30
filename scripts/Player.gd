@@ -48,10 +48,10 @@ func _ready():
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 	
-	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
-	$Sounds/Shoot.stream = load("res://Assets/son/shoot.mp3")
-	$Sounds/Powerup.stream = load("res://Assets/son/powerup.mp3")
-	$Sounds/Loose.stream = load("res://Assets/son/loose.mp3")
+	$Sounds/Hit.stream = load("res://assets/son/hit.wav")
+	$Sounds/Shoot.stream = load("res://assets/son/shoot.mp3")
+	$Sounds/Powerup.stream = load("res://assets/son/powerup.mp3")
+	$Sounds/Loose.stream = load("res://assets/son/loose.mp3")
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:

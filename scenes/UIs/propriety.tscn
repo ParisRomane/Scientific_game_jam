@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb2iowsgdckom"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/propriety.gd" id="1_6osf6"]
-[ext_resource type="Texture2D" uid="uid://15vca2y8wim5" path="res://Assets/environement/Gemme_Jaune.png" id="2_ygpxt"]
+[ext_resource type="Texture2D" uid="uid://15vca2y8wim5" path="res://assets/environement/Gemme_Jaune.png" id="2_ygpxt"]
 
 [node name="propriety" type="Control"]
 custom_minimum_size = Vector2(40, 40)

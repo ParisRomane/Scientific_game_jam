@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/blocks/block.gd" id="1_ybwt6"]
-[ext_resource type="Texture2D" uid="uid://ch171h3yrtrh1" path="res://Assets/environement/Blocks/temple_block.png" id="2_b4rkp"]
+[ext_resource type="Texture2D" uid="uid://ch171h3yrtrh1" path="res://assets/environement/Blocks/temple_block.png" id="2_b4rkp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y2hh"]
 size = Vector2(120, 84)

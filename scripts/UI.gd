@@ -5,12 +5,12 @@ const MAX_SIZE_MAT = 9
 var element_names = ["Cu","Co","Ni","Mg"]
 var begin_text = [" Régen", "Vitesse", " DMG", "Range"]
 
-var next_texture = preload("res://Assets/environement/placeholder.png")
-var None_texture = preload("res://Assets/environement/no_gems.png")
-var Cu_texture = preload("res://Assets/environement/Gemme_Rose.png")
-var Co_texture = preload("res://Assets/environement/Gemme_Vert.png")
-var Ni_texture = preload("res://Assets/environement/Gemme_Bleu.png")
-var Mg_texture = preload("res://Assets/environement/Gemme_Jaune.png")
+var next_texture = preload("res://assets/environement/placeholder.png")
+var None_texture = preload("res://assets/environement/no_gems.png")
+var Cu_texture = preload("res://assets/environement/Gemme_Rose.png")
+var Co_texture = preload("res://assets/environement/Gemme_Vert.png")
+var Ni_texture = preload("res://assets/environement/Gemme_Bleu.png")
+var Mg_texture = preload("res://assets/environement/Gemme_Jaune.png")
 var nb_added = 0
 
 var list_texture = [Cu_texture, Co_texture,Ni_texture, Mg_texture]

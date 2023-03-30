@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cypgq2pnxl58r"]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_eodts"]
-[ext_resource type="Texture2D" uid="uid://c3wjmrof3gb23" path="res://Assets/autres/balle/ball_01.png" id="2_lrh67"]
-[ext_resource type="Texture2D" uid="uid://c3rjqfwy8gyar" path="res://Assets/autres/balle/ball_02.png" id="3_0givr"]
-[ext_resource type="Texture2D" uid="uid://28ud5v1grbft" path="res://Assets/autres/balle/ball_03.png" id="4_rabpg"]
+[ext_resource type="Texture2D" uid="uid://c3wjmrof3gb23" path="res://assets/autres/balle/ball_01.png" id="2_lrh67"]
+[ext_resource type="Texture2D" uid="uid://c3rjqfwy8gyar" path="res://assets/autres/balle/ball_02.png" id="3_0givr"]
+[ext_resource type="Texture2D" uid="uid://28ud5v1grbft" path="res://assets/autres/balle/ball_03.png" id="4_rabpg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uxh30"]
 animations = [{

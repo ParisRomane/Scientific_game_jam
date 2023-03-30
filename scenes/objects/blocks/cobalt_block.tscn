@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://v2buf4urmqb5"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Texture2D" uid="uid://dtw7xxssdefws" path="res://Assets/environement/Blocks/cobalt_block.png" id="1_b8rkw"]
+[ext_resource type="Texture2D" uid="uid://dtw7xxssdefws" path="res://assets/environement/Blocks/cobalt_block.png" id="1_b8rkw"]
 [ext_resource type="Script" path="res://scripts/blocks/cobalt_block.gd" id="1_o0o1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y2hh"]
