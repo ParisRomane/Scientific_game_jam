@@ -31,15 +31,19 @@ func load_game():
 	
 
 func _on_authors_close_pressed():
+	$Cancel.play()
 	change_scene(MENU)
 
 func _on_authors_open_pressed():
+	$Accept.play()
 	change_scene(AUTHORS)
 
 func _on_credits_close_pressed():
+	$Cancel.play()
 	change_scene(MENU)
 
 func _on_credits_open_pressed():
+	$Accept.play()
 	change_scene(CREDITS)
 
 

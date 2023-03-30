@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jc4xgw6c8xg2"]
+[gd_scene load_steps=9 format=3 uid="uid://jc4xgw6c8xg2"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_7mh4i"]
 [ext_resource type="Texture2D" uid="uid://dagdecrokfe5u" path="res://assets/component/cross.png" id="2_3mefc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bqvd4kkaaugp2" path="res://assets/ui/credits.png" id="4_w25fc"]
 [ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://assets/entropybattle.png" id="5_doj02"]
 [ext_resource type="AudioStream" uid="uid://cv8ylthitehol" path="res://assets/son/lobby.mp3" id="6_uhp5n"]
+[ext_resource type="AudioStream" uid="uid://rxcso4ka1kqm" path="res://assets/son/bip_accept.wav" id="7_p4y8e"]
+[ext_resource type="AudioStream" uid="uid://dnc0pu7j315qb" path="res://assets/son/bip_cancel.wav" id="8_u76c1"]
 
 [node name="entropy_battle" type="Node2D"]
 script = ExtResource("1_7mh4i")
@@ -95,6 +97,12 @@ text = "START
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_uhp5n")
 autoplay = true
+
+[node name="Accept" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_p4y8e")
+
+[node name="Cancel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_u76c1")
 
 [connection signal="pressed" from="authors/authors_close" to="." method="_on_authors_close_pressed"]
 [connection signal="pressed" from="credits/credits_close" to="." method="_on_credits_close_pressed"]
