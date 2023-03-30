@@ -44,8 +44,8 @@ func _process(delta: float) -> void:
 				print("Error getting data from stream: ", data[0])
 				emit_signal("error")
 			else:
-				print((data[1].get_string_from_utf8().replace("'",'"')))
-				update_data(JSON.parse_string(data[1].get_string_from_utf8().replace("'",'"')))
+				var info = data[1].get_string_from_utf8()
+				update_data(JSON.parse_string(info.replace("'",'"')))
 	
 	#send data
 	
@@ -82,7 +82,7 @@ func update_data(data):
 		co.connect("co", self._on_connect_pressed)
 		$Lobby/lobby_L/VBoxContainer.add_child(co)
 	
-var level_scene = preload("res://scenes/concrete_scenes/new_level.tscn")
+var level_scene = preload("res://scenes/concrete_scenes/game.tscn")
 
 func _on_connect_pressed(msg):
 	if (($Lobby/lobby_R/pseudo.text).replace(" ","") == "") :
@@ -90,18 +90,25 @@ func _on_connect_pressed(msg):
 		return -1
 	send(msg + " "+ $Lobby/lobby_R/pseudo.text )
 	# a faire fonction séparé lorsque le serveur répond...
-	var level = level_scene.instantiate()
-	level.get_node('player_1').is_player = false
-	level.get_node('player_1/Camera2D').enabled = false
-	self.add_child(level)
+	launch_game("player_2")
 
 func _on_host_pressed():
 	var string = "LOBBY HOST "+ $Lobby/lobby_R/pseudo.text
 	send(string)
 	# a faire fonction séparé lorsque le serveur répond...
+	launch_game("player_1")
+	
+func launch_game(name : String):
 	var level = level_scene.instantiate()
-	level.get_node('player_2').is_player = false
-	level.get_node('player_2/Camera2D').enabled = false
+	level.connect_ui_to_player(name)
+	for i in range (1,3) : 
+		if ('player_'+str(i) != name) :
+			level.player = name
+			level.get_node('Map/player_'+str(i)).is_player = false
+			level.get_node('Map/player_'+str(i) + '/Camera2D').enabled = false
+	#level.get_node("CanvasLayer/1").connect.call_deferred("update_stat",self.change_setting)
+	#level.get_node("Map/"+player).connect.call_deferred("player_update_pv",self.change_hp)
 	self.add_child(level)
+	
 
 	

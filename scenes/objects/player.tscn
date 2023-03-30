@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4m3vl5p1kc3r"]
+[gd_scene load_steps=21 format=3 uid="uid://b4m3vl5p1kc3r"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_tldf4"]
 [ext_resource type="Texture2D" uid="uid://cuu4e3fyvahdx" path="res://Assets/personnages/bras/bras.png" id="2_0aous"]
-[ext_resource type="Script" path="res://scripts/Arm.gd" id="3_a2t4o"]
 [ext_resource type="Texture2D" uid="uid://c2exjhnn7bud5" path="res://Assets/personnages/idle/idle_01.png" id="4_fxe4x"]
 [ext_resource type="Texture2D" uid="uid://ct7ss8mebc4uu" path="res://Assets/personnages/idle/idle_02.png" id="5_uptpu"]
 [ext_resource type="Texture2D" uid="uid://bus6hekhh8m8y" path="res://Assets/personnages/idle/idle_03.png" id="6_3pict"]
@@ -107,7 +106,6 @@ sprite_frames = SubResource("SpriteFrames_icfmb")
 animation = &"shoot"
 autoplay = "idle"
 offset = Vector2(53, 1)
-script = ExtResource("3_a2t4o")
 
 [node name="Marker2D" type="Marker2D" parent="Arm"]
 position = Vector2(77, 4)

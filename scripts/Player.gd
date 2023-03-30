@@ -20,6 +20,7 @@ var move
 var shoot
 var suicide
 @export var is_player = true;
+signal send(position, pv, stat_speed, stat_damage, stat_regen, stat_range, name )
 
 var ACC = 50
 
@@ -62,19 +63,17 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 		set_velocity(vel)
 		move_and_slide()
 		vel = velocity
-		
-		update_pv(delta)
-	else : 
-		movement_loop()
-		shooting()
+		$Arm.look_at(get_global_mouse_position())
+		update_pv(delta) 
+		emit_signal("send", position, pv, stat_speed, stat_damage, stat_regen, stat_range, name)
+	#update_position()
 
-func update_ui():
-	player_update_pv.emit(pv)
+	
 
 func hit(damage):
 	pv -= damage
 	$Sounds/Hit.play()
-	update_ui()
+	player_update_pv.emit(pv)
 	
 	if pv <= 0:
 		die()
@@ -92,7 +91,7 @@ func update_pv(delta):
 		
 		regen_clock += delta
 		
-		update_ui()
+		player_update_pv.emit(pv)
 
 func action_loop():
 	right = Input.is_action_pressed("ui_right")
@@ -182,7 +181,6 @@ func upgrade(ind):
 	
 	$Sounds/Powerup.play()
 	
-	update_ui()
 	
 func change_setting(list):
 	stat_regen = list[0]

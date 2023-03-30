@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cmxcwv4mw72wd" path="res://scenes/tilemaps/tile_map_pp.tscn" id="1_0mpq8"]
 [ext_resource type="PackedScene" uid="uid://b4m3vl5p1kc3r" path="res://scenes/objects/player.tscn" id="1_schdy"]
-[ext_resource type="Script" path="res://scenes/concrete_scenes/Multiplayer.gd" id="1_ysk0u"]
 [ext_resource type="PackedScene" uid="uid://ccocvv6dqi2sj" path="res://scenes/objects/blocks/immemorial_block.tscn" id="3_0hxjt"]
 [ext_resource type="PackedScene" uid="uid://bu6v3kax4nleb" path="res://scenes/objects/blocks/magnesium_block.tscn" id="4_h0ddq"]
 [ext_resource type="PackedScene" uid="uid://bvctq65fhai5h" path="res://scenes/objects/blocks/copper_block.tscn" id="5_y0amc"]
@@ -13,10 +12,24 @@
 [ext_resource type="AudioStream" uid="uid://dobx6i14xf8s2" path="res://Assets/son/block_break.mp3" id="10_snsy3"]
 [ext_resource type="AudioStream" uid="uid://cnha7dj51525h" path="res://Assets/son/game.mp3" id="11_jyomp"]
 
+[sub_resource type="GDScript" id="GDScript_w0ku2"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Multiplayer" type="Node" parent="."]
-script = ExtResource("1_ysk0u")
+script = SubResource("GDScript_w0ku2")
 
 [node name="player_1" parent="." instance=ExtResource("1_schdy")]
 z_index = 3
