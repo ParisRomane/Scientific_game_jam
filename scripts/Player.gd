@@ -19,6 +19,8 @@ var down
 var move
 var shoot
 var suicide
+@export var is_player = true;
+signal send(position, pv, stat_speed, stat_damage, stat_regen, stat_range, name )
 
 var ACC = 50
 
@@ -48,29 +50,28 @@ func _ready():
 	
 	$Arm.animation_finished.connect(_on_shoot_animation_finished)
 	
-	$Sounds/Hit.stream = load("res://assets/son/hit.wav")
-	$Sounds/Shoot.stream = load("res://assets/son/shoot.mp3")
-	$Sounds/Powerup.stream = load("res://assets/son/powerup.mp3")
-	$Sounds/Loose.stream = load("res://assets/son/loose.mp3")
+	$Sounds/Hit.stream = load("res://Assets/son/hit.wav")
+	$Sounds/Shoot.stream = load("res://Assets/son/shoot.mp3")
+	$Sounds/Powerup.stream = load("res://Assets/son/powerup.mp3")
+	$Sounds/Loose.stream = load("res://Assets/son/loose.mp3")
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if pv <= 0:
 		die()
-	
-	action_loop()
-	set_velocity(vel)
-	move_and_slide()
-	vel = velocity
-	
-	update_pv(delta)
-
-func update_ui():
-	player_update_pv.emit(pv)
+	if is_player :
+		action_loop()
+		set_velocity(vel)
+		move_and_slide()
+		vel = velocity
+		$Arm.look_at(get_global_mouse_position())
+		update_pv(delta) 
+		emit_signal("send", position, pv, stat_speed, stat_damage, stat_regen, stat_range, name)
+	#update_position()
 
 func hit(damage):
 	pv -= damage
 	$Sounds/Hit.play()
-	update_ui()
+	player_update_pv.emit(pv)
 	
 	if pv <= 0:
 		die()
@@ -88,7 +89,7 @@ func update_pv(delta):
 		
 		regen_clock += delta
 		
-		update_ui()
+		player_update_pv.emit(pv)
 
 func action_loop():
 	right = Input.is_action_pressed("ui_right")
@@ -111,7 +112,7 @@ func movement_loop():
 	var speed = max_speed * (1 + 0.2 * stat_speed)
 	
 	#Change z-index priority
-	z_index = (int)(position.y/60)
+	z_index = int(position.y/60)
 	
 	if !is_dead:
 		if right:
@@ -156,7 +157,7 @@ func shooting():
 		
 		$Arm.play("shoot")
 		
-		$Sounds/Shoot.play_pitch()
+		$Sounds/Shoot.play()
 
 func _on_shoot_animation_finished():
 	$Arm.play("idle")
@@ -178,7 +179,6 @@ func upgrade(ind):
 	
 	$Sounds/Powerup.play()
 	
-	update_ui()
 	
 func change_setting(list):
 	stat_regen = list[0]

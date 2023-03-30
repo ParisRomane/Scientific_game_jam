@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://cryx87l48t4ps"]
+
+[ext_resource type="Script" path="res://scripts/lobby.gd" id="1_u40bm"]
+[ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://assets/entropybattle.png" id="2_rx7xx"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_u40bm")
+
+[node name="Lobby" type="Node2D" parent="."]
+
+[node name="Entropybattle" type="Sprite2D" parent="Lobby"]
+position = Vector2(574.25, 324.75)
+scale = Vector2(0.604948, 0.605093)
+texture = ExtResource("2_rx7xx")
+
+[node name="lobby_L" type="Control" parent="Lobby"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 98.0
+offset_top = 138.0
+offset_right = 98.0
+offset_bottom = 138.0
+
+[node name="ColorRect" type="ColorRect" parent="Lobby/lobby_L"]
+layout_mode = 0
+offset_left = -83.0
+offset_top = -75.0
+offset_right = 488.0
+offset_bottom = 494.0
+color = Color(0.105882, 0.160784, 0.160784, 0.568627)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Lobby/lobby_L"]
+layout_mode = 0
+offset_left = -65.0
+offset_top = -5.0
+offset_right = 457.0
+offset_bottom = 473.0
+
+[node name="lobby_label" type="Label" parent="Lobby/lobby_L"]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -59.0
+offset_right = 243.0
+offset_bottom = -22.0
+text = "LOBBY"
+
+[node name="lobby_R" type="Control" parent="Lobby"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect2" type="ColorRect" parent="Lobby/lobby_R"]
+layout_mode = 0
+offset_left = 667.0
+offset_top = 63.0
+offset_right = 1127.0
+offset_bottom = 632.0
+color = Color(0.105882, 0.160784, 0.160784, 0.568627)
+
+[node name="pseudo" type="TextEdit" parent="Lobby/lobby_R"]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 192.0
+offset_right = 1083.0
+offset_bottom = 278.0
+
+[node name="host" type="Button" parent="Lobby/lobby_R"]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 534.0
+offset_right = 1109.0
+offset_bottom = 608.0
+text = "HOST"
+
+[node name="pseudo_label" type="Label" parent="Lobby/lobby_R"]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 157.0
+offset_right = 885.0
+offset_bottom = 183.0
+text = "ENTRER VOTRE PSEUDO"
+
+[connection signal="pressed" from="Lobby/lobby_R/host" to="." method="_on_host_pressed"]

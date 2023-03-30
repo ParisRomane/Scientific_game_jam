@@ -1,27 +1,17 @@
-extends Node
+extends Node2D
 
 signal connected      # Connected to server
 signal disconnected   # Disconnected from server
 signal error          # Error with connection to server
 var _status: int = 0
 var _stream: StreamPeerTCP = StreamPeerTCP.new()
-var player = "Player_0"
-
-
-func connect_ui_to_player(player):
-	print("Level/"+player)
-	get_node("Level/"+player).connect.call_deferred("send", send_update)
-	get_node("CanvasLayer/1").connect.call_deferred("update_stat",get_node("Level/"+player).change_setting)
-	get_node("Level/"+player).connect.call_deferred("player_update_pv",get_node("CanvasLayer/1").change_hp)
-	get_node("Level/"+player).connect.call_deferred("add_element",get_node("CanvasLayer/1"). add_element)
-	pass
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_status = _stream.get_status()
 	print(_status)
-	connect_to_server("127.0.0.1",4435)
+	connect_to_server("127.0.0.1",4434)
 	pass # Replace with function body.
 
 
@@ -47,6 +37,7 @@ func _process(delta: float) -> void:
 	if _status == _stream.STATUS_CONNECTED:
 		var available_bytes: int = _stream.get_available_bytes()
 		if available_bytes > 0:
+			print("available bytes: ", available_bytes)
 			var data: Array = _stream.get_partial_data(available_bytes)
 			# Check for read error.
 			if data[0] != OK:
@@ -79,14 +70,45 @@ func send(sdata: String) -> bool:
 		return false
 	return true
 
-func update_data(datas):
-	if (datas != null):
-		for data in datas :
-			if ( data['name'] != player ):
-				get_node("Level/"+data['name']).change_setting(data['stat'])
-				get_node("Level/"+data['name']).position = Vector2(data['position'][0],data['position'][1])
-				get_node("Level/"+data['name']).pv = data['pv']
+var connect_scene = preload("res://scenes/server/connect.tscn")
+func update_data(data):
+	print(data)
+	for n in $Lobby/lobby_L/VBoxContainer.get_children():
+		$Lobby/lobby_L/VBoxContainer.remove_child(n)
+		n.queue_free()
+	for i in range(len(data)):
+		var co = connect_scene.instantiate()
+		co.setup(data[i],i)
+		co.connect("co", self._on_connect_pressed)
+		$Lobby/lobby_L/VBoxContainer.add_child(co)
+	
+var level_scene = preload("res://scenes/concrete_scenes/game.tscn")
 
-func send_update(position, pv, stat_speed, stat_damage, stat_regen, stat_range, name  ):
-	var data = {"name"= name, "position" = [position.x, position.y], "pv" = pv , "stat" = [ stat_speed, stat_damage, stat_regen, stat_range]}
-	send(JSON.stringify(data))
+func _on_connect_pressed(msg):
+	if (($Lobby/lobby_R/pseudo.text).replace(" ","") == "") :
+		print("erreur avec le pseudo")
+		return -1
+	send(msg + " "+ $Lobby/lobby_R/pseudo.text )
+	# a faire fonction séparé lorsque le serveur répond...
+	launch_game("Player_2")
+
+func _on_host_pressed():
+	var string = "LOBBY HOST "+ $Lobby/lobby_R/pseudo.text
+	send(string)
+	# a faire fonction séparé lorsque le serveur répond...
+	launch_game("Player_1")
+	
+func launch_game(name : String):
+	var level = level_scene.instantiate()
+	level.connect_ui_to_player(name)
+	for i in range (1,3) : 
+		if ('Player_'+str(i) != name) :
+			level.player = name
+			level.get_node('Level/Player_'+str(i)).is_player = false
+			level.get_node('Level/Player_'+str(i) + '/Camera2D').enabled = false
+	#level.get_node("CanvasLayer/1").connect.call_deferred("update_stat",self.change_setting)
+	#level.get_node("Map/"+player).connect.call_deferred("player_update_pv",self.change_hp)
+	self.add_child(level)
+	
+
+	
