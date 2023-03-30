@@ -156,7 +156,7 @@ func shooting():
 		
 		$Arm.play("shoot")
 		
-		$Sounds/Shoot.play()
+		$Sounds/Shoot.play_pitch()
 
 func _on_shoot_animation_finished():
 	$Arm.play("idle")
