@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1ogdv0p7dn4t"]
+[gd_scene load_steps=13 format=3 uid="uid://biul8kg62w4gl"]
 
-[ext_resource type="PackedScene" uid="uid://cmxcwv4mw72wd" path="res://scenes/tilemaps/tile_map_pp.tscn" id="1_0mpq8"]
+[ext_resource type="PackedScene" path="res://scenes/tilemaps/tile_map_pp.tscn" id="1_0mpq8"]
 [ext_resource type="PackedScene" uid="uid://b4m3vl5p1kc3r" path="res://scenes/objects/player.tscn" id="1_schdy"]
 [ext_resource type="PackedScene" uid="uid://ccocvv6dqi2sj" path="res://scenes/objects/blocks/immemorial_block.tscn" id="3_0hxjt"]
 [ext_resource type="PackedScene" uid="uid://bu6v3kax4nleb" path="res://scenes/objects/blocks/magnesium_block.tscn" id="4_h0ddq"]

@@ -52,11 +52,14 @@ func _process(delta: float) -> void:
 				print("Error getting data from stream: ", data[0])
 				emit_signal("error")
 			else:
-				var info = data[1].get_string_from_utf8()
-				update_data(JSON.parse_string(info.replace("'",'"')))
-	
-	#send data
-	
+				var info = JSON.parse_string(data[1].get_string_from_utf8().replace("'",'"'))
+				if (info != null) :
+					update_data(info)
+				else : 
+					print(data[1].get_string_from_utf8())
+
+
+
 
 
 func connect_to_server(host: String, port: int) -> void:

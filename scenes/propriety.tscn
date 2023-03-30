@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp27nd5jvxxdy"]
+[gd_scene load_steps=3 format=3 uid="uid://btxto00vajls0"]
 
 [ext_resource type="Script" path="res://scripts/propriety.gd" id="1_4oel7"]
 [ext_resource type="Texture2D" uid="uid://15vca2y8wim5" path="res://Assets/environement/Gemme_Jaune.png" id="2_8v8p8"]
