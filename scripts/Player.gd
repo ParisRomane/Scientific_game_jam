@@ -111,7 +111,7 @@ func movement_loop():
 	var speed = max_speed * (1 + 0.2 * stat_speed)
 	
 	#Change z-index priority
-	z_index = int(position.y)
+	z_index = (int)(position.y/60)
 	
 	if !is_dead:
 		if right:

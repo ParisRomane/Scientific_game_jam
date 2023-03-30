@@ -1,4 +1,4 @@
 extends StaticBody2D
 
 func _ready():
-	z_index = position.y
+	z_index = (int)(position.y/60)

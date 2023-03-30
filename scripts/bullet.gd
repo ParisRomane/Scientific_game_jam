@@ -16,7 +16,7 @@ func start(pos, dir, dam, ran):
 	time_counter = 0
 	
 	#Change z-index priority
-	z_index = int(position.y)
+	z_index = (int)(position.y/60)
 
 func _physics_process(delta):
 	time_counter += delta
@@ -28,6 +28,6 @@ func _physics_process(delta):
 	if collision:
 		if collision.get_collider().has_method("hit"):
 			collision.get_collider().hit(damage);
-			get_parent().get_node("Break").play()
+			#get_parent().get_node("Break").play()
 		
 		queue_free()
