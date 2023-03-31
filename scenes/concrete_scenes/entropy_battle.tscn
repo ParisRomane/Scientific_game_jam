@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dd6jvf01ifsgg"]
+[gd_scene load_steps=7 format=3 uid="uid://jc4xgw6c8xg2"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_7mh4i"]
 [ext_resource type="Texture2D" uid="uid://dagdecrokfe5u" path="res://Assets/component/cross.png" id="2_u4oow"]
 [ext_resource type="Texture2D" uid="uid://d37algrwcwy84" path="res://Assets/ui/authors.png" id="3_8usm0"]
 [ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://Assets/entropybattle.png" id="4_8cx18"]
 [ext_resource type="Texture2D" uid="uid://bqvd4kkaaugp2" path="res://Assets/ui/credits.png" id="4_fhj8u"]
-[ext_resource type="AudioStream" uid="uid://cv8ylthitehol" path="res://Assets/son/lobby.mp3" id="5_l3d3y"]
+[ext_resource type="AudioStream" uid="uid://cv8ylthitehol" path="res://assets/son/lobby.mp3" id="5_l3d3y"]
 
 [node name="entropy_battle" type="Node2D"]
 script = ExtResource("1_7mh4i")

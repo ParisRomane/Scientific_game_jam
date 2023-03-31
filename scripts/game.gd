@@ -1,12 +1,9 @@
 extends Node
 
-signal connected      # Connected to server
-signal disconnected   # Disconnected from server
-signal error          # Error with connection to server
-var _status: int = 0
-var _stream: StreamPeerTCP = StreamPeerTCP.new()
+var udp := PacketPeerUDP.new()
+var connected = false
 var player = "player_0"
-
+var data = ""
 
 func connect_ui_to_player(player):
 	get_node("Map/"+player).connect.call_deferred("send", send_update)
@@ -15,71 +12,29 @@ func connect_ui_to_player(player):
 	get_node("Map/"+player).connect.call_deferred("add_element",get_node("CanvasLayer/1"). add_element)
 	pass
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	_status = _stream.get_status()
-	print(_status)
-	connect_to_server("127.0.0.1",4435)
-	pass # Replace with function body.
+	udp.connect_to_host("127.0.0.1", 4435)
 
+func _process(delta):
+	if !connected:
+		# Try to contact server
+		udp.put_packet("42".to_utf8_buffer())
+		print("here")
+	if udp.get_available_packet_count() > 0:
+		for i in range (udp.get_available_packet_count()) :
+			data = udp.get_packet()
+		data = data.get_string_from_utf8()
+		print(data)
+		connected = true
+		var info = JSON.parse_string(data.replace("'",'"'))
+		if (info != null) :
+			update_data(info)
+		else : 
+			print(data)
 
-
-func _process(delta: float) -> void:
-	_stream.poll()
-	var new_status: int = _stream.get_status()
-	if new_status != _status:
-		_status = new_status
-		match _status:
-			_stream.STATUS_NONE:
-				print("Disconnected from host.")
-				emit_signal("disconnected")
-			_stream.STATUS_CONNECTING:
-				print("Connecting to host.")
-			_stream.STATUS_CONNECTED:
-				print("Connected to host.")
-				emit_signal("connected")
-			_stream.STATUS_ERROR:
-				print("Error with socket stream.")
-				emit_signal("error")
-	#recive data
-	if _status == _stream.STATUS_CONNECTED:
-		var available_bytes: int = _stream.get_available_bytes()
-		if available_bytes > 0:
-			var data: Array = _stream.get_partial_data(available_bytes)
-			# Check for read error.
-			if data[0] != OK:
-				print("Error getting data from stream: ", data[0])
-				emit_signal("error")
-			else:
-				var info = JSON.parse_string(data[1].get_string_from_utf8().replace("'",'"'))
-				if (info != null) :
-					update_data(info)
-				else : 
-					print(data[1].get_string_from_utf8())
-
-
-
-
-
-func connect_to_server(host: String, port: int) -> void:
-	print("Connecting to %s:%d" % [host, port])
-	# Reset status so we can tell if it changes to error again.
-	_status = _stream.STATUS_NONE
-	if _stream.connect_to_host(host, port) != OK:
-		print("Error connecting to host.")
-		emit_signal("error")
 	
-func send(sdata: String) -> bool:
-	var data = sdata.to_utf8_buffer()
-	if _status != _stream.STATUS_CONNECTED:
-		print("Error: Stream is not currently connected.")
-		return false
-	var error: int = _stream.put_data(data)
-	if error != OK:
-		print("Error writing to stream: ", error)
-		return false
-	return true
+func send(data: String):
+	udp.put_packet(data.to_utf8_buffer())
 
 func update_data(datas):
 	if (datas != null):
