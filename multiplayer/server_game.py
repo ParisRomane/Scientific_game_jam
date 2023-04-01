@@ -48,16 +48,18 @@ timer = 0.0
 while 1:
     try:
         message, address = s.recvfrom(1024)
-        clients.append(address)
+        if not(address in clients):
+        	clients.append(address)
+        	print(clients)
         update_game(str(message, 'utf-8'))
     except (KeyboardInterrupt, SystemExit):
         raise
     except:
         traceback.print_exc()
-    timer = time.time() - n_time
+    timer += time.time() - n_time
     n_time = time.time()
-    if (n_time>10):
-        n_time -= 1
+    if (timer>0):
+        timer = -0.1
         for r in clients:
             sent = s.sendto(bytes(str(data), 'utf-8'), address)
         
