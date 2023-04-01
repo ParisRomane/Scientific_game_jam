@@ -107,9 +107,10 @@ func action_loop():
 	
 	if !is_dead:
 		var coef = 1/(float(pv_default)/float(pv))
-		$Idle.modulate = Color(1, coef, coef)
-		$Run.modulate = Color(1, coef, coef)
+		$AnimatedSprite2D.modulate = Color(1, coef, coef)
 		$Arm.modulate = Color(1, coef, coef)
+	else : 
+		$AnimatedSprite2D.modulate = Color(1, 1,1)
 	
 	movement_loop()
 	shooting()
@@ -142,25 +143,14 @@ func animation_loop():
 	if !is_dead:
 		if !move:
 			_state_machine.travel("Idle")
-			if(_state_machine.get_current_node() == "Run"):
-				print_debug("Idle")
-				$Idle.show()
-				$Run.hide()
 		else:
 			_state_machine.travel("Run")
-			if(_state_machine.get_current_node() == "Idle"):
-				$Idle.hide()
-				$Run.show()
-				
 		if shoot:
 			_arm_anim_tree.travel("Shoot")
 		
 	if is_dying:
 		is_dying = false
-		$Idle.hide()
-		$Run.hide()
 		$Arm.hide()
-		$Death.show()
 		_state_machine.travel("Dying")
 
 func shooting():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cryx87l48t4ps"]
+[gd_scene load_steps=3 format=3 uid="uid://wo1m80vbt3sf"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_u40bm"]
 [ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://assets/entropybattle.png" id="2_rx7xx"]
