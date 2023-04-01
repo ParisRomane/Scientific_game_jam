@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d37algrwcwy84" path="res://assets/ui/authors.png" id="3_1f0j1"]
 [ext_resource type="Texture2D" uid="uid://bqvd4kkaaugp2" path="res://assets/ui/credits.png" id="4_w25fc"]
 [ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://assets/entropybattle.png" id="5_doj02"]
-[ext_resource type="AudioStream" uid="uid://cus65hykctovk" path="res://assets/son/lobby.mp3" id="6_uhp5n"]
+[ext_resource type="AudioStream" uid="uid://cv8ylthitehol" path="res://assets/son/lobby.mp3" id="6_uhp5n"]
 [ext_resource type="AudioStream" uid="uid://rxcso4ka1kqm" path="res://assets/son/bip_accept.wav" id="7_p4y8e"]
 [ext_resource type="AudioStream" uid="uid://dnc0pu7j315qb" path="res://assets/son/bip_cancel.wav" id="8_u76c1"]
 

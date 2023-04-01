@@ -2,14 +2,14 @@ extends Node
 
 var udp := PacketPeerUDP.new()
 var connected = false
-var player = "player_0"
+var player = "Player_0"
 var data = ""
 
 func connect_ui_to_player(player):
-	get_node("Map/"+player).connect.call_deferred("send", send_update)
-	get_node("CanvasLayer/1").connect.call_deferred("update_stat",get_node("Map/"+player).change_setting)
-	get_node("Map/"+player).connect.call_deferred("player_update_pv",get_node("CanvasLayer/1").change_hp)
-	get_node("Map/"+player).connect.call_deferred("add_element",get_node("CanvasLayer/1"). add_element)
+	get_node("Level/"+player).connect.call_deferred("send", send_update)
+	get_node("CanvasLayer/1").connect.call_deferred("update_stat",get_node("Level/"+player).change_setting)
+	get_node("Level/"+player).connect.call_deferred("player_update_pv",get_node("CanvasLayer/1").change_hp)
+	get_node("Level/"+player).connect.call_deferred("add_element",get_node("CanvasLayer/1"). add_element)
 	pass
 
 func _ready():
