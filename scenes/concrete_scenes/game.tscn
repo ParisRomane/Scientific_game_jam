@@ -7,10 +7,7 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_shv7s")
 
-[node name="Level" parent="." instance=ExtResource("2_ir72v")]
-
-[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
-spawn_limit = 4
+[node name="Map" parent="." instance=ExtResource("2_ir72v")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
