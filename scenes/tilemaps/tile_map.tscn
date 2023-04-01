@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnqm2blahk24p"]
+
+[ext_resource type="Texture2D" uid="uid://ckhbkcjohtthl" path="res://assets/tileset/blocks_tileset.png" id="1_hv3ii"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eeqxm"]
+texture = ExtResource("1_hv3ii")
+texture_region_size = Vector2i(120, 120)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/size_in_atlas = Vector2i(1, 2)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/size_in_atlas = Vector2i(1, 2)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/size_in_atlas = Vector2i(1, 2)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/size_in_atlas = Vector2i(1, 2)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/size_in_atlas = Vector2i(1, 2)
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/size_in_atlas = Vector2i(1, 2)
+6:0/0 = 0
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+7:1/0 = 0
+7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:1/0/physics_layer_0/angular_velocity = 0.0
+7:0/0 = 0
+7:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+7:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_the20"]
+tile_size = Vector2i(120, 120)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_eeqxm")
+
+[node name="TileMap" type="TileMap"]
+light_mask = 2
+tile_set = SubResource("TileSet_the20")
+cell_quadrant_size = 120
+format = 2
+layer_0/name = "Ground"
+layer_1/name = "Block"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()

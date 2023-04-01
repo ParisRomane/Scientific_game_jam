@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://duny58wshnafm"]
+
+[ext_resource type="Script" path="res://scripts/server/connect.gd" id="1_vbjxl"]
+
+[node name="connect" type="Container"]
+clip_contents = true
+custom_minimum_size = Vector2(600, 70)
+offset_right = 400.0
+script = ExtResource("1_vbjxl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.105882, 0.133333, 0.305882, 0.505882)
+
+[node name="pseudo_host" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Pseudo host : "
+
+[node name="nb_participant" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 31.0
+offset_right = 198.0
+offset_bottom = 57.0
+text = "nombres participant : 1/4"
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 15.0
+offset_right = 542.0
+offset_bottom = 46.0
+text = "CONNECTION"
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]

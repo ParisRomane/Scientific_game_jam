@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/blocks/magnesium_block.gd" id="1_v8455"]
+[ext_resource type="Texture2D" uid="uid://da5lw7ln7hw4j" path="res://assets/environement/Blocks/magnesium_block.png" id="2_awwnh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y2hh"]
+size = Vector2(120, 84)
+
+[node name="MgBlock" type="StaticBody2D"]
+script = ExtResource("1_v8455")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_awwnh")
+vframes = 5
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_2y2hh")

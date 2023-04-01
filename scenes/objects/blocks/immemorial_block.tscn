@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/blocks/immemorial_block.gd" id="1_h0jtx"]
+[ext_resource type="Texture2D" uid="uid://dn8cjtgptlktn" path="res://assets/environement/Blocks/immemorial_block.png" id="2_o7axu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y2hh"]
+size = Vector2(120, 84)
+
+[node name="ImmemorialBlock" type="StaticBody2D"]
+script = ExtResource("1_h0jtx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_o7axu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 30)
+shape = SubResource("RectangleShape2D_2y2hh")

@@ -1,0 +1,1063 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgdalbc8chxxb"]
+
+[ext_resource type="PackedScene" uid="uid://e7nwil12f2v2" path="res://scenes/objects/player.tscn" id="1_k3ig1"]
+[ext_resource type="PackedScene" uid="uid://dnqm2blahk24p" path="res://scenes/tilemaps/tile_map.tscn" id="2_81l8i"]
+[ext_resource type="PackedScene" path="res://scenes/objects/blocks/immemorial_block.tscn" id="3_ql5c5"]
+[ext_resource type="PackedScene" uid="uid://d1t3bxcsw75b3" path="res://scenes/objects/blocks/cobalt_block.tscn" id="4_qku27"]
+[ext_resource type="PackedScene" uid="uid://bixhxmdxipoi8" path="res://scenes/objects/blocks/basic_block.tscn" id="5_7gch5"]
+[ext_resource type="PackedScene" path="res://scenes/objects/blocks/nickel_block.tscn" id="6_f5yu7"]
+[ext_resource type="PackedScene" path="res://scenes/objects/blocks/magnesium_block.tscn" id="7_ptt0j"]
+[ext_resource type="PackedScene" uid="uid://cdbqtg4t725dh" path="res://scenes/objects/blocks/copper_block.tscn" id="8_nmwco"]
+[ext_resource type="PackedScene" path="res://scenes/objects/blocks/temple_block.tscn" id="9_rbepw"]
+[ext_resource type="AudioStream" uid="uid://dobx6i14xf8s2" path="res://assets/son/block_break.mp3" id="10_21x18"]
+[ext_resource type="AudioStream" uid="uid://cnha7dj51525h" path="res://assets/son/game.mp3" id="11_fj2j8"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Player_1" parent="." instance=ExtResource("1_k3ig1")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(300, 2100)
+
+[node name="Player_2" parent="." instance=ExtResource("1_k3ig1")]
+z_index = 1
+position = Vector2(3780, 300)
+
+[node name="TileMap" parent="." instance=ExtResource("2_81l8i")]
+position = Vector2(7319, 4283)
+layer_0/tile_data = PackedInt32Array(-2228284, 458753, 1, -2162748, 458753, 1, -2097212, 458753, 1, -2031676, 458753, 1, -1966140, 458753, 1, -1900604, 458753, 1, -1835068, 458753, 1, -1769532, 458753, 1, -1703996, 458753, 1, -1638460, 458753, 1, -1572924, 458753, 1, -1507388, 458753, 1, -1441852, 458753, 1, -1376316, 458753, 1, -1310780, 458753, 1, -1245244, 458753, 1, -1179708, 458753, 1, -1114172, 458753, 1, -2228283, 458753, 1, -2162747, 458753, 1, -2097211, 458753, 1, -2031675, 458753, 1, -1966139, 458753, 1, -1900603, 458753, 1, -1835067, 458753, 1, -1769531, 458753, 1, -1703995, 458753, 1, -1638459, 458753, 1, -1572923, 458753, 1, -1507387, 458753, 1, -1441851, 458753, 1, -1376315, 458753, 1, -1310779, 458753, 1, -1245243, 458753, 1, -1179707, 458753, 1, -1114171, 458753, 1, -2228282, 458753, 1, -2162746, 458753, 1, -2097210, 458753, 1, -2031674, 458753, 1, -1966138, 458753, 1, -1900602, 458753, 1, -1835066, 458753, 1, -1769530, 458753, 1, -1703994, 458753, 1, -1572922, 458753, 1, -1507386, 458753, 1, -1441850, 458753, 1, -1376314, 458753, 1, -1310778, 458753, 1, -1245242, 458753, 1, -1179706, 458753, 1, -1114170, 458753, 1, -2228281, 458753, 1, -2162745, 458753, 1, -2097209, 458753, 1, -2031673, 458753, 1, -1966137, 458753, 1, -1900601, 458753, 1, -1835065, 458753, 1, -1769529, 458753, 1, -1703993, 458753, 1, -1638457, 458753, 1, -1572921, 458753, 1, -1507385, 458753, 1, -1441849, 458753, 1, -1376313, 458753, 1, -1310777, 458753, 1, -1245241, 458753, 1, -1179705, 458753, 1, -1114169, 458753, 1, -2228280, 458753, 1, -2162744, 458753, 1, -2097208, 458753, 1, -2031672, 458753, 1, -1966136, 458753, 1, -1900600, 458753, 1, -1835064, 458753, 1, -1769528, 458753, 1, -1703992, 458753, 1, -1638456, 458753, 1, -1572920, 458753, 1, -1507384, 458753, 1, -1441848, 458753, 1, -1376312, 458753, 1, -1310776, 458753, 1, -1245240, 458753, 1, -1179704, 458753, 1, -1114168, 458753, 1, -2228279, 458753, 1, -2162743, 458753, 1, -2097207, 458753, 1, -2031671, 458753, 1, -1966135, 458753, 1, -1900599, 458753, 1, -1835063, 458753, 1, -1769527, 458753, 1, -1703991, 458753, 1, -1638455, 458753, 1, -1572919, 458753, 1, -1507383, 458753, 1, -1441847, 458753, 1, -1376311, 458753, 1, -1310775, 458753, 1, -1245239, 458753, 1, -1179703, 458753, 1, -1114167, 458753, 1, -2228278, 458753, 1, -2162742, 458753, 1, -2097206, 458753, 1, -2031670, 458753, 1, -1966134, 458753, 1, -1900598, 458753, 1, -1835062, 458753, 1, -1769526, 458753, 1, -1703990, 458753, 1, -1638454, 458753, 1, -1572918, 458753, 1, -1507382, 458753, 1, -1441846, 458753, 1, -1376310, 458753, 1, -1310774, 458753, 1, -1245238, 458753, 1, -1179702, 458753, 1, -1114166, 458753, 1, -2228277, 458753, 1, -2162741, 458753, 1, -2097205, 458753, 1, -2031669, 458753, 1, -1966133, 458753, 1, -1900597, 458753, 1, -1835061, 458753, 1, -1769525, 458753, 1, -1703989, 458753, 1, -1638453, 458753, 1, -1572917, 458753, 1, -1507381, 458753, 1, -1441845, 458753, 1, -1376309, 458753, 1, -1310773, 458753, 1, -1245237, 458753, 1, -1179701, 458753, 1, -1114165, 458753, 1, -2228276, 458753, 1, -2162740, 458753, 1, -2097204, 458753, 1, -2031668, 458753, 1, -1966132, 458753, 1, -1900596, 458753, 1, -1835060, 458753, 1, -1769524, 458753, 1, -1703988, 458753, 1, -1572916, 458753, 1, -1507380, 458753, 1, -1441844, 458753, 1, -1376308, 458753, 1, -1310772, 458753, 1, -1245236, 458753, 1, -1179700, 458753, 1, -1114164, 458753, 1, -2228275, 458753, 1, -2162739, 458753, 1, -2097203, 458753, 1, -2031667, 458753, 1, -1966131, 458753, 1, -1900595, 458753, 1, -1835059, 458753, 1, -1769523, 458753, 1, -1703987, 458753, 1, -1638451, 458753, 1, -1572915, 458753, 1, -1507379, 458753, 1, -1441843, 458753, 1, -1376307, 458753, 1, -1310771, 458753, 1, -1245235, 458753, 1, -1179699, 458753, 1, -1114163, 458753, 1, -2228274, 458753, 1, -2162738, 458753, 1, -2097202, 458753, 1, -2031666, 458753, 1, -1966130, 458753, 1, -1900594, 458753, 1, -1835058, 458753, 1, -1769522, 458753, 0, -1703986, 458753, 0, -1638450, 458753, 0, -1572914, 458753, 0, -1507378, 458753, 0, -1441842, 458753, 1, -1376306, 458753, 1, -1310770, 458753, 1, -1245234, 458753, 1, -1179698, 458753, 1, -1114162, 458753, 1, -2228273, 458753, 1, -2162737, 458753, 1, -2097201, 458753, 1, -2031665, 458753, 1, -1966129, 458753, 1, -1900593, 458753, 1, -1835057, 458753, 0, -1769521, 458753, 0, -1703985, 458753, 0, -1638449, 458753, 0, -1572913, 458753, 0, -1507377, 458753, 0, -1441841, 458753, 0, -1376305, 458753, 1, -1310769, 458753, 1, -1245233, 458753, 1, -1179697, 458753, 1, -1114161, 458753, 1, -2228272, 458753, 1, -2162736, 458753, 1, -2097200, 458753, 1, -2031664, 458753, 1, -1900592, 458753, 0, -1835056, 458753, 0, -1769520, 458753, 0, -1703984, 458753, 0, -1638448, 458753, 0, -1572912, 458753, 0, -1507376, 458753, 0, -1441840, 458753, 0, -1376304, 458753, 0, -1310768, 458753, 1, -1245232, 458753, 1, -1179696, 458753, 1, -1114160, 458753, 1, -2228271, 458753, 1, -2162735, 458753, 1, -2097199, 458753, 1, -2031663, 458753, 1, -1966127, 458753, 0, -1900591, 458753, 0, -1835055, 458753, 0, -1769519, 458753, 0, -1703983, 458753, 0, -1638447, 458753, 0, -1572911, 458753, 0, -1507375, 458753, 0, -1441839, 458753, 0, -1376303, 458753, 0, -1310767, 458753, 0, -1245231, 458753, 1, -1179695, 458753, 1, -1114159, 458753, 1, -2228270, 458753, 1, -2162734, 458753, 1, -2097198, 458753, 1, -2031662, 458753, 1, -1966126, 458753, 0, -1900590, 458753, 0, -1835054, 458753, 0, -1769518, 458753, 0, -1703982, 458753, 0, -1638446, 458753, 0, -1572910, 458753, 0, -1507374, 458753, 0, -1441838, 458753, 0, -1376302, 458753, 0, -1310766, 458753, 0, -1245230, 458753, 1, -1179694, 458753, 1, -1114158, 458753, 1, -2228269, 458753, 1, -2162733, 458753, 1, -2097197, 458753, 1, -2031661, 458753, 1, -1966125, 458753, 0, -1900589, 458753, 0, -1835053, 458753, 0, -1769517, 458753, 0, -1703981, 458753, 0, -1638445, 458753, 0, -1572909, 458753, 0, -1507373, 458753, 0, -1441837, 458753, 0, -1376301, 458753, 0, -1310765, 458753, 0, -1179693, 458753, 1, -1114157, 458753, 1, -2228268, 458753, 1, -2162732, 458753, 1, -2097196, 458753, 1, -2031660, 458753, 1, -1966124, 458753, 0, -1900588, 458753, 0, -1835052, 458753, 0, -1769516, 458753, 0, -1703980, 458753, 0, -1638444, 458753, 0, -1572908, 458753, 0, -1507372, 458753, 0, -1441836, 458753, 0, -1376300, 458753, 0, -1310764, 458753, 0, -1179692, 458753, 1, -1114156, 458753, 1, -2228267, 458753, 1, -2162731, 458753, 1, -2097195, 458753, 1, -2031659, 458753, 1, -1966123, 458753, 0, -1900587, 458753, 0, -1835051, 458753, 0, -1769515, 458753, 0, -1703979, 458753, 0, -1638443, 458753, 0, -1572907, 458753, 0, -1507371, 458753, 0, -1441835, 458753, 0, -1376299, 458753, 0, -1310763, 458753, 0, -1245227, 458753, 1, -1179691, 458753, 1, -1114155, 458753, 1, -2228266, 458753, 1, -2162730, 458753, 1, -2097194, 458753, 1, -2031658, 458753, 1, -1966122, 458753, 0, -1900586, 458753, 0, -1835050, 458753, 0, -1769514, 458753, 0, -1638442, 458753, 0, -1572906, 458753, 0, -1507370, 458753, 0, -1441834, 458753, 0, -1376298, 458753, 0, -1310762, 458753, 0, -1245226, 458753, 1, -1179690, 458753, 1, -1114154, 458753, 1, -2228265, 458753, 1, -2162729, 458753, 1, -2097193, 458753, 1, -2031657, 458753, 1, -1966121, 458753, 1, -1900585, 458753, 0, -1835049, 458753, 0, -1769513, 458753, 0, -1703977, 458753, 0, -1638441, 458753, 0, -1572905, 458753, 0, -1507369, 458753, 0, -1441833, 458753, 0, -1376297, 458753, 0, -1310761, 458753, 1, -1245225, 458753, 1, -1179689, 458753, 1, -1114153, 458753, 1, -2228264, 458753, 1, -2162728, 458753, 1, -2097192, 458753, 1, -2031656, 458753, 1, -1966120, 458753, 1, -1900584, 458753, 1, -1769512, 458753, 0, -1638440, 458753, 0, -1572904, 458753, 0, -1507368, 458753, 0, -1441832, 458753, 0, -1376296, 458753, 1, -1310760, 458753, 1, -1245224, 458753, 1, -1179688, 458753, 1, -1114152, 458753, 1, -2228263, 458753, 1, -2162727, 458753, 1, -2097191, 458753, 1, -2031655, 458753, 1, -1966119, 458753, 1, -1900583, 458753, 1, -1835047, 458753, 1, -1769511, 458753, 0, -1703975, 458753, 0, -1638439, 458753, 0, -1572903, 458753, 0, -1507367, 458753, 0, -1441831, 458753, 1, -1376295, 458753, 1, -1310759, 458753, 1, -1245223, 458753, 1, -1179687, 458753, 1, -1114151, 458753, 1, -2228262, 458753, 1, -2162726, 458753, 1, -2097190, 458753, 1, -2031654, 458753, 1, -1966118, 458753, 1, -1900582, 458753, 1, -1835046, 458753, 1, -1769510, 458753, 1, -1703974, 458753, 1, -1638438, 458753, 1, -1572902, 458753, 1, -1507366, 458753, 1, -1441830, 458753, 1, -1376294, 458753, 1, -1310758, 458753, 1, -1245222, 458753, 1, -1179686, 458753, 1, -1114150, 458753, 1, -2228261, 458753, 1, -2162725, 458753, 1, -2097189, 458753, 1, -2031653, 458753, 1, -1966117, 458753, 1, -1900581, 458753, 1, -1835045, 458753, 1, -1769509, 458753, 1, -1703973, 458753, 1, -1638437, 458753, 1, -1572901, 458753, 1, -1507365, 458753, 1, -1441829, 458753, 1, -1376293, 458753, 1, -1310757, 458753, 1, -1245221, 458753, 1, -1179685, 458753, 1, -1114149, 458753, 1, -2228260, 458753, 1, -2162724, 458753, 1, -2097188, 458753, 1, -2031652, 458753, 1, -1966116, 458753, 1, -1900580, 458753, 1, -1835044, 458753, 1, -1769508, 458753, 1, -1703972, 458753, 1, -1638436, 458753, 1, -1572900, 458753, 1, -1507364, 458753, 1, -1441828, 458753, 1, -1376292, 458753, 1, -1310756, 458753, 1, -1245220, 458753, 1, -1179684, 458753, 1, -1114148, 458753, 1, -2228259, 458753, 1, -2162723, 458753, 1, -2097187, 458753, 1, -2031651, 458753, 1, -1966115, 458753, 1, -1900579, 458753, 1, -1835043, 458753, 1, -1769507, 458753, 1, -1703971, 458753, 1, -1638435, 458753, 1, -1572899, 458753, 1, -1507363, 458753, 1, -1441827, 458753, 1, -1376291, 458753, 1, -1310755, 458753, 1, -1245219, 458753, 1, -1179683, 458753, 1, -1114147, 458753, 1, -2228258, 458753, 1, -2162722, 458753, 1, -2097186, 458753, 1, -2031650, 458753, 1, -1966114, 458753, 1, -1900578, 458753, 1, -1835042, 458753, 1, -1769506, 458753, 1, -1703970, 458753, 1, -1638434, 458753, 1, -1572898, 458753, 1, -1507362, 458753, 1, -1441826, 458753, 1, -1376290, 458753, 1, -1310754, 458753, 1, -1245218, 458753, 1, -1179682, 458753, 1, -1114146, 458753, 1, -2228257, 458753, 1, -2162721, 458753, 1, -2097185, 458753, 1, -2031649, 458753, 1, -1966113, 458753, 1, -1900577, 458753, 1, -1835041, 458753, 1, -1769505, 458753, 1, -1703969, 458753, 1, -1638433, 458753, 1, -1572897, 458753, 1, -1507361, 458753, 1, -1441825, 458753, 1, -1376289, 458753, 1, -1310753, 458753, 1, -1245217, 458753, 1, -1179681, 458753, 1, -1114145, 458753, 1, -2228256, 458753, 1, -2162720, 458753, 1, -2097184, 458753, 1, -2031648, 458753, 1, -1966112, 458753, 1, -1900576, 458753, 1, -1835040, 458753, 1, -1769504, 458753, 1, -1703968, 458753, 1, -1638432, 458753, 1, -1572896, 458753, 1, -1507360, 458753, 1, -1441824, 458753, 1, -1376288, 458753, 1, -1310752, 458753, 1, -1245216, 458753, 1, -1179680, 458753, 1, -1114144, 458753, 1, -2228255, 458753, 1, -2162719, 458753, 1, -2097183, 458753, 1, -2031647, 458753, 1, -1966111, 458753, 1, -1900575, 458753, 1, -1835039, 458753, 1, -1769503, 458753, 1, -1703967, 458753, 1, -1638431, 458753, 1, -1572895, 458753, 1, -1507359, 458753, 1, -1441823, 458753, 1, -1376287, 458753, 1, -1310751, 458753, 1, -1245215, 458753, 1, -1179679, 458753, 1, -1114143, 458753, 1, -2228254, 458753, 1, -2162718, 458753, 1, -2097182, 458753, 1, -2031646, 458753, 1, -1966110, 458753, 1, -1900574, 458753, 1, -1835038, 458753, 1, -1769502, 458753, 1, -1703966, 458753, 1, -1638430, 458753, 1, -1572894, 458753, 1, -1507358, 458753, 1, -1441822, 458753, 1, -1376286, 458753, 1, -1310750, 458753, 1, -1245214, 458753, 1, -1179678, 458753, 1, -1114142, 458753, 1, -2228253, 458753, 1, -2162717, 458753, 1, -2097181, 458753, 1, -2031645, 458753, 1, -1966109, 458753, 1, -1900573, 458753, 1, -1835037, 458753, 1, -1769501, 458753, 1, -1703965, 458753, 1, -1638429, 458753, 1, -1572893, 458753, 1, -1507357, 458753, 1, -1441821, 458753, 1, -1376285, 458753, 1, -1310749, 458753, 1, -1245213, 458753, 1, -1179677, 458753, 1, -1114141, 458753, 1, -1048605, 458753, 1, -1048606, 458753, 1, -1048607, 458753, 1, -1048608, 458753, 1, -1048609, 458753, 1, -1048610, 458753, 1, -1048611, 458753, 1, -1048612, 458753, 1, -1048613, 458753, 1, -1048614, 458753, 1, -1048615, 458753, 1, -1048616, 458753, 1, -1048617, 458753, 1, -1048618, 458753, 1, -1048619, 458753, 1, -1048620, 458753, 1, -1048621, 458753, 1, -1048622, 458753, 1, -1048623, 458753, 1, -1048624, 458753, 1, -1048625, 458753, 1, -1048626, 458753, 1, -1048627, 458753, 1, -1048628, 458753, 1, -1048629, 458753, 1, -1048630, 458753, 1, -1048631, 458753, 1, -1048632, 458753, 1, -1048633, 458753, 1, -1048634, 458753, 1, -1048635, 458753, 1, -1048636, 458753, 1, -1245228, 458753, 1, -1245229, 458753, 1, -1703978, 458753, 0, -1966128, 458753, 1, -1638452, 458753, 1, -1638458, 458753, 1, -1179676, 458753, 1, -1114140, 458753, 1, -1048604, 458753, 1, -2228252, 458753, 1, -2162716, 458753, 1, -2097180, 458753, 1, -2031644, 458753, 1, -1966108, 458753, 1, -1900572, 458753, 1, -1835036, 458753, 1, -1769500, 458753, 1, -1703964, 458753, 1, -1638428, 458753, 1, -1572892, 458753, 1, -1507356, 458753, 1, -1441820, 458753, 1, -1376284, 458753, 1, -1310748, 458753, 1, -1245212, 458753, 1, -1703976, 458753, 0)
+
+[node name="Blocks" type="Node2D" parent="."]
+
+[node name="ImmemorialBlock" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 2340)
+
+[node name="ImmemorialBlock2" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(180, 2340)
+
+[node name="ImmemorialBlock3" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(300, 2340)
+
+[node name="ImmemorialBlock4" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(420, 2340)
+
+[node name="ImmemorialBlock5" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(540, 2340)
+
+[node name="ImmemorialBlock6" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(660, 2340)
+
+[node name="ImmemorialBlock7" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(780, 2340)
+
+[node name="ImmemorialBlock8" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(900, 2340)
+
+[node name="ImmemorialBlock9" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1020, 2340)
+
+[node name="ImmemorialBlock10" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1140, 2340)
+
+[node name="ImmemorialBlock11" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1260, 2340)
+
+[node name="ImmemorialBlock12" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1380, 2340)
+
+[node name="ImmemorialBlock13" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1500, 2340)
+
+[node name="ImmemorialBlock14" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1620, 2340)
+
+[node name="ImmemorialBlock15" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1740, 2340)
+
+[node name="ImmemorialBlock16" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1860, 2340)
+
+[node name="ImmemorialBlock17" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1980, 2340)
+
+[node name="ImmemorialBlock18" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2100, 2340)
+
+[node name="ImmemorialBlock19" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2220, 2340)
+
+[node name="ImmemorialBlock20" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2340, 2340)
+
+[node name="ImmemorialBlock21" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2460, 2340)
+
+[node name="ImmemorialBlock22" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2580, 2340)
+
+[node name="ImmemorialBlock23" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2700, 2340)
+
+[node name="ImmemorialBlock24" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2820, 2340)
+
+[node name="ImmemorialBlock25" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2940, 2340)
+
+[node name="ImmemorialBlock26" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3060, 2340)
+
+[node name="ImmemorialBlock27" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3180, 2340)
+
+[node name="ImmemorialBlock28" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3300, 2340)
+
+[node name="ImmemorialBlock29" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3420, 2340)
+
+[node name="ImmemorialBlock30" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3540, 2340)
+
+[node name="ImmemorialBlock31" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3660, 2340)
+
+[node name="ImmemorialBlock32" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3780, 2340)
+
+[node name="ImmemorialBlock33" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3900, 2340)
+
+[node name="ImmemorialBlock34" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 2340)
+
+[node name="ImmemorialBlock35" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 2100)
+
+[node name="ImmemorialBlock36" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 2220)
+
+[node name="ImmemorialBlock37" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1980)
+
+[node name="ImmemorialBlock38" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1740)
+
+[node name="ImmemorialBlock39" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1860)
+
+[node name="ImmemorialBlock40" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1620)
+
+[node name="ImmemorialBlock41" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1380)
+
+[node name="ImmemorialBlock42" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1500)
+
+[node name="ImmemorialBlock43" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1260)
+
+[node name="ImmemorialBlock44" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1020)
+
+[node name="ImmemorialBlock45" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 1140)
+
+[node name="ImmemorialBlock46" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 900)
+
+[node name="ImmemorialBlock47" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 660)
+
+[node name="ImmemorialBlock48" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 780)
+
+[node name="ImmemorialBlock49" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 540)
+
+[node name="ImmemorialBlock50" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 300)
+
+[node name="ImmemorialBlock51" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 420)
+
+[node name="ImmemorialBlock53" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 180)
+
+[node name="ImmemorialBlock54" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 2100)
+
+[node name="ImmemorialBlock55" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 2220)
+
+[node name="ImmemorialBlock56" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1980)
+
+[node name="ImmemorialBlock57" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1740)
+
+[node name="ImmemorialBlock58" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1860)
+
+[node name="ImmemorialBlock59" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1620)
+
+[node name="ImmemorialBlock60" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1380)
+
+[node name="ImmemorialBlock61" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1500)
+
+[node name="ImmemorialBlock62" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1260)
+
+[node name="ImmemorialBlock63" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1020)
+
+[node name="ImmemorialBlock64" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 1140)
+
+[node name="ImmemorialBlock65" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 900)
+
+[node name="ImmemorialBlock66" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 660)
+
+[node name="ImmemorialBlock67" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 780)
+
+[node name="ImmemorialBlock68" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 540)
+
+[node name="ImmemorialBlock69" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 300)
+
+[node name="ImmemorialBlock70" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 420)
+
+[node name="ImmemorialBlock72" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 180)
+
+[node name="ImmemorialBlock52" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(60, 60)
+
+[node name="ImmemorialBlock71" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(180, 60)
+
+[node name="ImmemorialBlock73" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(300, 60)
+
+[node name="ImmemorialBlock74" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(420, 60)
+
+[node name="ImmemorialBlock75" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(540, 60)
+
+[node name="ImmemorialBlock76" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(660, 60)
+
+[node name="ImmemorialBlock77" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(780, 60)
+
+[node name="ImmemorialBlock78" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(900, 60)
+
+[node name="ImmemorialBlock79" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1020, 60)
+
+[node name="ImmemorialBlock80" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1140, 60)
+
+[node name="ImmemorialBlock81" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1260, 60)
+
+[node name="ImmemorialBlock82" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1380, 60)
+
+[node name="ImmemorialBlock83" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1500, 60)
+
+[node name="ImmemorialBlock84" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1620, 60)
+
+[node name="ImmemorialBlock85" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1740, 60)
+
+[node name="ImmemorialBlock86" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1860, 60)
+
+[node name="ImmemorialBlock87" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(1980, 60)
+
+[node name="ImmemorialBlock88" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2100, 60)
+
+[node name="ImmemorialBlock89" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2220, 60)
+
+[node name="ImmemorialBlock90" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2340, 60)
+
+[node name="ImmemorialBlock91" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2460, 60)
+
+[node name="ImmemorialBlock92" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2580, 60)
+
+[node name="ImmemorialBlock93" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2700, 60)
+
+[node name="ImmemorialBlock94" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2820, 60)
+
+[node name="ImmemorialBlock95" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(2940, 60)
+
+[node name="ImmemorialBlock96" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3060, 60)
+
+[node name="ImmemorialBlock97" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3180, 60)
+
+[node name="ImmemorialBlock98" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3300, 60)
+
+[node name="ImmemorialBlock99" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3420, 60)
+
+[node name="ImmemorialBlock100" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3540, 60)
+
+[node name="ImmemorialBlock101" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3660, 60)
+
+[node name="ImmemorialBlock102" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3780, 60)
+
+[node name="ImmemorialBlock103" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(3900, 60)
+
+[node name="ImmemorialBlock104" parent="Blocks" instance=ExtResource("3_ql5c5")]
+position = Vector2(4020, 60)
+
+[node name="CoBlock" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(180, 180)
+
+[node name="BasicBlock" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(300, 180)
+
+[node name="BasicBlock2" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(420, 180)
+
+[node name="BasicBlock3" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(540, 180)
+
+[node name="BasicBlock4" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(780, 180)
+
+[node name="NiBlock" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(660, 180)
+
+[node name="NiBlock2" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(660, 300)
+
+[node name="NiBlock3" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(540, 420)
+
+[node name="BasicBlock5" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(180, 300)
+
+[node name="BasicBlock6" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(300, 300)
+
+[node name="BasicBlock7" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(420, 300)
+
+[node name="BasicBlock8" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(540, 300)
+
+[node name="BasicBlock9" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(780, 300)
+
+[node name="BasicBlock10" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(420, 420)
+
+[node name="BasicBlock11" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(300, 420)
+
+[node name="BasicBlock12" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(180, 420)
+
+[node name="BasicBlock13" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(180, 540)
+
+[node name="BasicBlock14" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(300, 540)
+
+[node name="BasicBlock15" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(660, 540)
+
+[node name="BasicBlock16" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(660, 420)
+
+[node name="BasicBlock17" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(420, 660)
+
+[node name="BasicBlock18" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(540, 660)
+
+[node name="BasicBlock19" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(180, 780)
+
+[node name="BasicBlock20" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(300, 780)
+
+[node name="MgBlock" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(180, 1620)
+
+[node name="MgBlock2" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(180, 1740)
+
+[node name="MgBlock3" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(180, 1860)
+
+[node name="MgBlock4" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(420, 2100)
+
+[node name="MgBlock5" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(540, 1980)
+
+[node name="MgBlock6" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(540, 1860)
+
+[node name="CuBlock" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(180, 1260)
+
+[node name="CuBlock2" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(180, 1140)
+
+[node name="CuBlock3" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(300, 1260)
+
+[node name="CuBlock4" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(300, 1140)
+
+[node name="CuBlock5" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(420, 1380)
+
+[node name="CuBlock6" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(540, 1500)
+
+[node name="CuBlock7" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(780, 1740)
+
+[node name="BasicBlock21" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(420, 1260)
+
+[node name="BasicBlock22" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(540, 1260)
+
+[node name="BasicBlock23" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(540, 1380)
+
+[node name="BasicBlock24" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(660, 1380)
+
+[node name="BasicBlock25" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(660, 1500)
+
+[node name="BasicBlock26" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(780, 1500)
+
+[node name="BasicBlock27" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(660, 1620)
+
+[node name="BasicBlock28" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(780, 1620)
+
+[node name="BasicBlock29" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(900, 1620)
+
+[node name="BasicBlock30" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(900, 1740)
+
+[node name="BasicBlock31" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1020, 1740)
+
+[node name="BasicBlock32" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(780, 1860)
+
+[node name="BasicBlock33" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(900, 1860)
+
+[node name="BasicBlock34" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1020, 1860)
+
+[node name="BasicBlock35" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1140, 1860)
+
+[node name="BasicBlock36" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(900, 1980)
+
+[node name="BasicBlock37" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1020, 1980)
+
+[node name="BasicBlock38" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1140, 1980)
+
+[node name="BasicBlock39" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1260, 1980)
+
+[node name="BasicBlock40" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1380, 1980)
+
+[node name="BasicBlock41" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(900, 2100)
+
+[node name="BasicBlock42" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1020, 2100)
+
+[node name="BasicBlock43" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1140, 2100)
+
+[node name="BasicBlock44" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1260, 2100)
+
+[node name="BasicBlock45" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1380, 2100)
+
+[node name="BasicBlock46" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(900, 2220)
+
+[node name="BasicBlock47" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1020, 2220)
+
+[node name="BasicBlock48" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1140, 2220)
+
+[node name="BasicBlock49" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1260, 2220)
+
+[node name="BasicBlock50" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1380, 2220)
+
+[node name="BasicBlock51" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1500, 2220)
+
+[node name="CuBlock8" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(3780, 1260)
+
+[node name="CuBlock9" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(3780, 1140)
+
+[node name="CuBlock10" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(3900, 1260)
+
+[node name="CuBlock11" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(3900, 1140)
+
+[node name="BasicBlock52" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3660, 1140)
+
+[node name="BasicBlock53" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3540, 1140)
+
+[node name="BasicBlock54" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3540, 1020)
+
+[node name="BasicBlock55" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3420, 1020)
+
+[node name="BasicBlock56" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3420, 900)
+
+[node name="BasicBlock57" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3300, 900)
+
+[node name="CuBlock12" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(3660, 1020)
+
+[node name="CuBlock13" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(3540, 900)
+
+[node name="BasicBlock58" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3420, 780)
+
+[node name="BasicBlock59" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3300, 780)
+
+[node name="BasicBlock60" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3180, 780)
+
+[node name="CuBlock14" parent="Blocks" instance=ExtResource("8_nmwco")]
+position = Vector2(3300, 660)
+
+[node name="BasicBlock61" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3060, 660)
+
+[node name="CoBlock2" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(3900, 2220)
+
+[node name="BasicBlock62" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3180, 660)
+
+[node name="BasicBlock63" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2700, 300)
+
+[node name="BasicBlock64" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2820, 300)
+
+[node name="BasicBlock65" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2940, 300)
+
+[node name="BasicBlock66" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3060, 300)
+
+[node name="BasicBlock67" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3180, 300)
+
+[node name="BasicBlock68" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2700, 420)
+
+[node name="BasicBlock69" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2820, 420)
+
+[node name="BasicBlock70" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2940, 420)
+
+[node name="BasicBlock71" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3060, 420)
+
+[node name="BasicBlock72" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3180, 420)
+
+[node name="BasicBlock73" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2940, 540)
+
+[node name="BasicBlock74" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3060, 540)
+
+[node name="BasicBlock75" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3180, 540)
+
+[node name="BasicBlock76" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3300, 540)
+
+[node name="BasicBlock77" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2820, 180)
+
+[node name="BasicBlock78" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2940, 180)
+
+[node name="BasicBlock79" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3060, 180)
+
+[node name="BasicBlock80" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3180, 180)
+
+[node name="BasicBlock81" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2580, 180)
+
+[node name="BasicBlock82" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2700, 180)
+
+[node name="MgBlock7" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(3540, 540)
+
+[node name="MgBlock8" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(3540, 420)
+
+[node name="MgBlock9" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(3660, 300)
+
+[node name="MgBlock10" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(3900, 540)
+
+[node name="MgBlock11" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(3900, 660)
+
+[node name="MgBlock12" parent="Blocks" instance=ExtResource("7_ptt0j")]
+position = Vector2(3900, 780)
+
+[node name="BasicBlock83" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1140, 780)
+
+[node name="BasicBlock84" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1020, 780)
+
+[node name="BasicBlock85" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(900, 660)
+
+[node name="BasicBlock86" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(900, 540)
+
+[node name="BasicBlock87" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1260, 660)
+
+[node name="BasicBlock88" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1260, 540)
+
+[node name="BasicBlock89" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1140, 420)
+
+[node name="BasicBlock90" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(1020, 420)
+
+[node name="NiBlock4" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(1020, 660)
+
+[node name="NiBlock5" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(1140, 660)
+
+[node name="NiBlock6" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(1020, 540)
+
+[node name="NiBlock7" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(1140, 540)
+
+[node name="BasicBlock91" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3060, 1980)
+
+[node name="BasicBlock92" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2940, 1980)
+
+[node name="BasicBlock93" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2820, 1860)
+
+[node name="BasicBlock94" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2820, 1740)
+
+[node name="BasicBlock95" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3180, 1860)
+
+[node name="BasicBlock96" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3180, 1740)
+
+[node name="BasicBlock97" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3060, 1620)
+
+[node name="BasicBlock98" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(2940, 1620)
+
+[node name="NiBlock8" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(2940, 1860)
+
+[node name="NiBlock9" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3060, 1860)
+
+[node name="NiBlock10" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(2940, 1740)
+
+[node name="NiBlock11" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3060, 1740)
+
+[node name="CoBlock3" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(1860, 1380)
+
+[node name="CoBlock4" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(1980, 1380)
+
+[node name="CoBlock5" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(2220, 1380)
+
+[node name="CoBlock6" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(2100, 1380)
+
+[node name="CoBlock7" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(1860, 1260)
+
+[node name="CoBlock8" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(1980, 1260)
+
+[node name="CoBlock9" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(2220, 1260)
+
+[node name="CoBlock10" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(2100, 1260)
+
+[node name="CoBlock11" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(1860, 1140)
+
+[node name="CoBlock12" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(1980, 1140)
+
+[node name="CoBlock13" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(2220, 1140)
+
+[node name="CoBlock14" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(2100, 1140)
+
+[node name="CoBlock15" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(1860, 1020)
+
+[node name="CoBlock16" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(1980, 1020)
+
+[node name="CoBlock17" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(2220, 1020)
+
+[node name="CoBlock18" parent="Blocks" instance=ExtResource("4_qku27")]
+position = Vector2(2100, 1020)
+
+[node name="BasicBlock151" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3780, 2220)
+
+[node name="BasicBlock152" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3660, 2220)
+
+[node name="BasicBlock153" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3540, 2220)
+
+[node name="NiBlock12" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3420, 2220)
+
+[node name="BasicBlock154" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3300, 2220)
+
+[node name="BasicBlock155" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3300, 2100)
+
+[node name="NiBlock13" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3420, 2100)
+
+[node name="BasicBlock156" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3540, 2100)
+
+[node name="BasicBlock157" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3660, 2100)
+
+[node name="BasicBlock158" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3780, 2100)
+
+[node name="BasicBlock159" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3900, 2100)
+
+[node name="BasicBlock160" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3420, 1980)
+
+[node name="BasicBlock161" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3420, 1860)
+
+[node name="NiBlock14" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3540, 1980)
+
+[node name="NiBlock15" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3540, 1860)
+
+[node name="NiBlock16" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3660, 1860)
+
+[node name="NiBlock17" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3780, 1740)
+
+[node name="NiBlock18" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(3900, 1740)
+
+[node name="BasicBlock162" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3660, 1980)
+
+[node name="BasicBlock163" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3780, 1980)
+
+[node name="BasicBlock164" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3900, 1980)
+
+[node name="BasicBlock165" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3900, 1860)
+
+[node name="BasicBlock166" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3780, 1860)
+
+[node name="BasicBlock167" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3540, 1740)
+
+[node name="BasicBlock168" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3660, 1740)
+
+[node name="BasicBlock169" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3900, 1620)
+
+[node name="BasicBlock170" parent="Blocks" instance=ExtResource("5_7gch5")]
+position = Vector2(3780, 1620)
+
+[node name="TempleBlock" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1380, 1020)
+
+[node name="TempleBlock2" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1500, 1020)
+
+[node name="TempleBlock3" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1380, 1380)
+
+[node name="TempleBlock4" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1500, 1380)
+
+[node name="TempleBlock5" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1740, 1860)
+
+[node name="TempleBlock6" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1860, 1860)
+
+[node name="TempleBlock7" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1740, 540)
+
+[node name="TempleBlock8" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1860, 540)
+
+[node name="TempleBlock9" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2220, 540)
+
+[node name="TempleBlock10" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2340, 540)
+
+[node name="TempleBlock11" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2580, 1020)
+
+[node name="TempleBlock12" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2700, 1020)
+
+[node name="TempleBlock13" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2580, 1380)
+
+[node name="TempleBlock14" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2700, 1380)
+
+[node name="TempleBlock15" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2220, 1860)
+
+[node name="TempleBlock16" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2340, 1860)
+
+[node name="TempleBlock17" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1740, 1740)
+
+[node name="TempleBlock18" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1860, 1740)
+
+[node name="TempleBlock19" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1620, 1740)
+
+[node name="TempleBlock20" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1620, 1620)
+
+[node name="TempleBlock21" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1740, 1620)
+
+[node name="TempleBlock22" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1500, 1620)
+
+[node name="TempleBlock23" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1500, 1500)
+
+[node name="TempleBlock24" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1620, 1500)
+
+[node name="TempleBlock25" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1380, 1500)
+
+[node name="TempleBlock26" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2340, 1740)
+
+[node name="TempleBlock27" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2460, 1740)
+
+[node name="TempleBlock28" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2220, 1740)
+
+[node name="TempleBlock29" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2460, 1620)
+
+[node name="TempleBlock30" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2580, 1620)
+
+[node name="TempleBlock31" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2340, 1620)
+
+[node name="TempleBlock32" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2580, 1500)
+
+[node name="TempleBlock33" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2700, 1500)
+
+[node name="TempleBlock34" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2460, 1500)
+
+[node name="TempleBlock35" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2580, 900)
+
+[node name="TempleBlock36" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2700, 900)
+
+[node name="TempleBlock37" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2460, 900)
+
+[node name="TempleBlock38" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2460, 780)
+
+[node name="TempleBlock39" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2580, 780)
+
+[node name="TempleBlock40" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2340, 780)
+
+[node name="TempleBlock41" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2340, 660)
+
+[node name="TempleBlock42" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2460, 660)
+
+[node name="TempleBlock43" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(2220, 660)
+
+[node name="TempleBlock44" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1740, 660)
+
+[node name="TempleBlock45" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1860, 660)
+
+[node name="TempleBlock46" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1620, 660)
+
+[node name="TempleBlock47" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1620, 780)
+
+[node name="TempleBlock48" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1740, 780)
+
+[node name="TempleBlock49" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1500, 780)
+
+[node name="TempleBlock50" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1500, 900)
+
+[node name="TempleBlock51" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1620, 900)
+
+[node name="TempleBlock52" parent="Blocks" instance=ExtResource("9_rbepw")]
+position = Vector2(1380, 900)
+
+[node name="NiBlock19" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(180, 660)
+
+[node name="NiBlock20" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(300, 660)
+
+[node name="NiBlock21" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(420, 540)
+
+[node name="NiBlock22" parent="Blocks" instance=ExtResource("6_f5yu7")]
+position = Vector2(540, 540)
+
+[node name="Break" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_21x18")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_fj2j8")
+autoplay = true
+
+[node name="Spawn_1" type="Marker2D" parent="."]
+position = Vector2(300, 2100)
+
+[node name="Spawn_2" type="Marker2D" parent="."]
+position = Vector2(3780, 300)

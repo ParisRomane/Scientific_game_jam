@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://b85a02wlituwg"]
+
+[ext_resource type="Script" path="res://scripts/propriety.gd" id="1_6osf6"]
+[ext_resource type="Texture2D" uid="uid://15vca2y8wim5" path="res://assets/environement/Gemme_Jaune.png" id="2_ygpxt"]
+
+[node name="propriety" type="Control"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6osf6")
+
+[node name="hbox" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 178.0
+offset_bottom = 50.0
+scale = Vector2(0.7, 0.7)
+
+[node name="element_name" type="Label" parent="hbox"]
+layout_mode = 2
+text = "Ni "
+
+[node name="icon" type="TextureRect" parent="hbox"]
+layout_mode = 2
+texture = ExtResource("2_ygpxt")
+
+[node name="description" type="Label" parent="hbox"]
+layout_mode = 2
+text = ": x1,8 vitesse
+"
