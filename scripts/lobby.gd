@@ -12,7 +12,6 @@ func _ready():
 	_status = _stream.get_status()
 	print(_status)
 	connect_to_server("127.0.0.1",4434)
-	pass # Replace with function body.
 
 
 

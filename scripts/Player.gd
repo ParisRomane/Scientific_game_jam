@@ -67,7 +67,6 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 		update_pv(delta) 
 		emit_signal("send", position, pv, stat_speed, stat_damage, stat_regen, stat_range, name)
 	#update_position()
-
 	
 
 func hit(damage):

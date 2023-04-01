@@ -59,7 +59,7 @@ while 1:
     timer += time.time() - n_time
     n_time = time.time()
     if (timer>0):
-        timer = -0.1
+        timer = -0.016
         for r in clients:
             sent = s.sendto(bytes(str(data), 'utf-8'), address)
         

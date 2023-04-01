@@ -17,9 +17,8 @@ func _ready():
 
 
 func _process(delta):
-	if udp.get_available_packet_count() > 0:
-		for i in range (udp.get_available_packet_count()) :
-			data = udp.get_packet()
+	for i in range (udp.get_available_packet_count()) :
+		data = udp.get_packet()
 		data = data.get_string_from_utf8()
 		connected = true
 		var info = JSON.parse_string(data.replace("'",'"'))
@@ -37,7 +36,9 @@ func update_data(datas):
 		for data in datas :
 			if ( data['name'] != player ):
 				#get_node("Map/"+data['name']).change_setting(data['stat'])
-				get_node("Map/"+data['name']).position = Vector2(data['position'][0],data['position'][1])
+				var position = Vector2(data['position'][0],data['position'][1])
+				if (position != get_node("Map/"+data['name']).position ):
+					get_node("Map/"+data['name']).position = position
 				#get_node("Map/"+data['name']).pv = data['pv']
 
 func send_update(position, pv, stat_speed, stat_damage, stat_regen, stat_range, name  ):
