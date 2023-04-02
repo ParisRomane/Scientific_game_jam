@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://wo1m80vbt3sf"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_u40bm"]
-[ext_resource type="Texture2D" uid="uid://2ecxxlopu3c1" path="res://assets/entropybattle.png" id="2_rx7xx"]
+[ext_resource type="Texture2D" uid="uid://cx4krf01d5j52" path="res://assets/entropybattle.jpg" id="2_5ycx1"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u40bm")
@@ -9,9 +9,9 @@ script = ExtResource("1_u40bm")
 [node name="Lobby" type="Node2D" parent="."]
 
 [node name="Entropybattle" type="Sprite2D" parent="Lobby"]
-position = Vector2(574.25, 324.75)
-scale = Vector2(0.604948, 0.605093)
-texture = ExtResource("2_rx7xx")
+position = Vector2(576, 324)
+scale = Vector2(0.384, 0.383886)
+texture = ExtResource("2_5ycx1")
 
 [node name="lobby_L" type="Control" parent="Lobby"]
 layout_mode = 3
