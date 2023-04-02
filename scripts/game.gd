@@ -4,6 +4,7 @@ var udp := PacketPeerUDP.new()
 var connected = false
 var player = "Player_0"
 var data = ""
+var port = 42
 
 func connect_ui_to_player(player):
 	get_node("Level/"+player).connect.call_deferred("send", send_update)
@@ -13,7 +14,7 @@ func connect_ui_to_player(player):
 	pass
 
 func _ready():
-	udp.connect_to_host("127.0.0.1", 4435)
+	udp.connect_to_host("127.0.0.1", port)
 
 
 func _process(delta):
@@ -37,8 +38,8 @@ func update_data(datas):
 			if ( data['name'] != player ):
 				#get_node("Map/"+data['name']).change_setting(data['stat'])
 				var position = Vector2(data['position'][0],data['position'][1])
-				if (position != get_node("Map/"+data['name']).position ):
-					get_node("Map/"+data['name']).position = position
+				if (position != get_node("Level/"+data['name']).position ):
+					get_node("Level/"+data['name']).position = position
 				#get_node("Map/"+data['name']).pv = data['pv']
 
 func send_update(position, pv, stat_speed, stat_damage, stat_regen, stat_range, name  ):

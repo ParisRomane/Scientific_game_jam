@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdbqtg4t725dh"]
+[gd_scene load_steps=4 format=3 uid="uid://bvctq65fhai5h"]
 
 [ext_resource type="Script" path="res://scripts/blocks/copper_block.gd" id="1_ue2m6"]
-[ext_resource type="Texture2D" uid="uid://btv722q2amxad" path="res://assets/environement/Blocks/copper_block.png" id="2_r2bbg"]
+[ext_resource type="Texture2D" uid="uid://ghm40i00yisf" path="res://assets/environement/Blocks/copper_block.png" id="2_r2bbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2y2hh"]
 size = Vector2(120, 84)

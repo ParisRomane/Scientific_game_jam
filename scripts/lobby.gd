@@ -45,7 +45,11 @@ func _process(delta: float) -> void:
 				emit_signal("error")
 			else:
 				var info = data[1].get_string_from_utf8()
-				update_data(JSON.parse_string(info.replace("'",'"')))
+				var json = JSON.parse_string(info.replace("'",'"'))
+				if json == null :
+					launch_game(info)
+				else : 
+					update_data(json)
 	
 	#send data
 	
@@ -89,26 +93,26 @@ func _on_connect_pressed(msg):
 		print("erreur avec le pseudo")
 		return -1
 	send(msg + " "+ $Lobby/lobby_R/pseudo.text )
-	# a faire fonction séparé lorsque le serveur répond...
-	launch_game("Player_2")
 
 func _on_host_pressed():
 	var string = "LOBBY HOST "+ $Lobby/lobby_R/pseudo.text
 	send(string)
-	# a faire fonction séparé lorsque le serveur répond...
-	launch_game("Player_1")
 	
-func launch_game(name : String):
-	var level = level_scene.instantiate()
-	level.connect_ui_to_player(name)
-	for i in range (1,3) : 
-		if ('Player_'+str(i) != name) :
-			level.player = name
-			level.get_node('Level/Player_'+str(i)).is_player = false
-			level.get_node('Level/Player_'+str(i) + '/Camera2D').enabled = false
-	#level.get_node("CanvasLayer/1").connect.call_deferred("update_stat",self.change_setting)
-	#level.get_node("Map/"+player).connect.call_deferred("player_update_pv",self.change_hp)
-	self.add_child(level)
-	
-
-	
+func launch_game(sended : String):
+	print(sended)
+	var launch = sended.split(" ")
+	if (launch[0] == "LAUNCH"):
+		var name = launch[1]
+		var port = launch[2]
+		print("here " , name , port)
+		var level = level_scene.instantiate()
+		level.connect_ui_to_player(name)
+		level.port = int(port)
+		for i in range (1,3) : 
+			if ('Player_'+str(i) != name) :
+				level.player = name
+				level.get_node('Level/Player_'+str(i)).is_player = false
+				level.get_node('Level/Player_'+str(i) + '/Camera2D').enabled = false
+		#level.get_node("CanvasLayer/1").connect.call_deferred("update_stat",self.change_setting)
+		#level.get_node("Map/"+player).connect.call_deferred("player_update_pv",self.change_hp)
+		self.add_child(level)

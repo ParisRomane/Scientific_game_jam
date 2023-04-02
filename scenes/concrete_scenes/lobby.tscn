@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://wo1m80vbt3sf"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_u40bm"]
-[ext_resource type="Texture2D" uid="uid://ckaygaphbju0" path="res://assets/entropybattle.png" id="2_rx7xx"]
+[ext_resource type="Texture2D" uid="uid://2ecxxlopu3c1" path="res://assets/entropybattle.png" id="2_rx7xx"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u40bm")

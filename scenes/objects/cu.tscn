@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://pwuosvshi4vn"]
 
 [ext_resource type="Script" path="res://scripts/atoms/cu.gd" id="1_rpul1"]
-[ext_resource type="Texture2D" uid="uid://dq163ln1f2p8i" path="res://assets/environement/Gemme_Vert.png" id="2_1vxp2"]
+[ext_resource type="Texture2D" uid="uid://l0vvsreigwqr" path="res://assets/environement/Gemme_Vert.png" id="2_1vxp2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ig4f"]
 radius = 60.407
 
 [node name="Cu" type="StaticBody2D"]
+collision_mask = 129
 script = ExtResource("1_rpul1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_1vxp2")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_4ig4f")
