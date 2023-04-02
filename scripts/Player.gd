@@ -145,8 +145,6 @@ func animation_loop():
 			_state_machine.travel("Idle")
 		else:
 			_state_machine.travel("Run")
-		if shoot:
-			_arm_anim_tree.travel("Shoot")
 		
 	if is_dying:
 		is_dying = false
@@ -155,6 +153,8 @@ func animation_loop():
 
 func shooting():
 	if shoot and can_shoot and !is_dead:
+		_arm_anim_tree.travel("Shoot")
+		
 		shoot_line = get_global_mouse_position() - global_position
 		var b = bullet.instantiate()
 		var rotation = shoot_line.angle()
