@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://fdhrndqmcpp5"]
+[gd_scene load_steps=6 format=3 uid="uid://daohgp1o7vwie"]
 
 [ext_resource type="Script" path="res://scripts/UI.gd" id="1_xkwvf"]
 [ext_resource type="Texture2D" uid="uid://dkoapkls5ypuw" path="res://assets/component/rond_smal_0.png" id="2_15a7m"]
-[ext_resource type="Texture2D" uid="uid://dvfvchb6qowus" path="res://assets/environement/no_gems.png" id="2_od3pk"]
+[ext_resource type="Texture2D" uid="uid://q5o5evpwgdud" path="res://assets/environement/no_gems.png" id="2_od3pk"]
 [ext_resource type="Texture2D" uid="uid://cb3httmd3h0to" path="res://assets/component/people_icon.png" id="4_e57v1"]
-[ext_resource type="Texture2D" uid="uid://btitpgwojv5mu" path="res://assets/ui_crop.png" id="5_lq4km"]
+[ext_resource type="Texture2D" uid="uid://cpcj4wmlaj7q2" path="res://assets/ui_crop.png" id="5_lq4km"]
 
 [node name="UI" type="Control"]
 z_index = 100
@@ -92,5 +92,3 @@ offset_top = 526.0
 offset_right = 520.0
 offset_bottom = 552.0
 text = "Entropie : 1"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]

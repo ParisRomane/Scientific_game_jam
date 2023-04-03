@@ -1,9 +1,9 @@
 extends Control
 #enum elements type 
-enum {NONE, CU,CO,NI,MG}
+enum {NONE, CU, CO, NI, MG}
 const MAX_SIZE_MAT = 9
-var element_names = ["Cu","Co","Ni","Mg"]
-var begin_text = [" Régen", "Vitesse", " DMG", "Range"]
+var element_names = ["Cu", "Co", "Ni", "Mg"]
+var begin_text = [" Regen.", " Speed", " Damage", " Freq."]
 
 var next_texture = preload("res://assets/environement/placeholder.png")
 var None_texture = preload("res://assets/environement/no_gems.png")

@@ -3,15 +3,14 @@ extends CharacterBody2D
 const SPEED = 1000
 var vel = Vector2()
 var damage # harm in pv to player
-var ttl # time to live
+@export var ttl = 2 # time to live in s
 
 var time_counter
 
-func start(pos, dir, dam, ran):
+func start(pos, dir, dam):
 	$AnimatedSprite2D.rotate(dir)
 	position = pos
 	damage = dam
-	ttl = ran
 	vel = Vector2(SPEED, 0).rotated(dir)
 	time_counter = 0
 	
@@ -21,6 +20,7 @@ func start(pos, dir, dam, ran):
 func _physics_process(delta):
 	time_counter += delta
 	if time_counter >= ttl:
+		print("autodestruction")
 		queue_free()
 	
 	var collision = move_and_collide(vel*delta)

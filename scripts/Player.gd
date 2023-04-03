@@ -34,13 +34,13 @@ var pv #int between 0 and pv_default
 var stat_speed # positive int
 var stat_damage # positive int
 var stat_regen # positive int
-var stat_range # positive int
+var stat_frequence # positive int
 
 @export var pv_default = 100 # 100 pv
 @export var regen_time_default = 1.0 # time to recover 1 pv in seconds
 @export var max_speed = 100
-@export var damage_default = 5 # harm to players
-@export var range_default = 0.1 # seconds before bullet disappears
+@export var damage_default = 5 # harm to players or blocks
+@export var frequence_default = 1 # shoot per second
 
 signal player_death
 signal player_update_pv(pv)
@@ -55,7 +55,7 @@ func _ready():
 	stat_regen = 0
 	stat_speed = 0
 	stat_damage = 0
-	stat_range = 0
+	stat_frequence = 0
 	
 	$Sounds/Hit.stream = load("res://assets/son/hit.wav")
 	$Sounds/Shoot.stream = load("res://assets/son/shoot.mp3")
@@ -70,7 +70,7 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 		vel = velocity
 		$Arm.look_at(get_global_mouse_position())
 		update_pv(delta) 
-		emit_signal("send",name, position, pv, [stat_speed, stat_damage, stat_regen, stat_range], get_global_mouse_position())
+		emit_signal("send",name, position, pv, [stat_speed, stat_damage, stat_regen, stat_frequence], get_global_mouse_position())
 	#update_position()
 	if !is_dead:
 		var coef = 1/(float(pv_default)/float(pv))
@@ -117,7 +117,7 @@ func action_loop():
 	
 
 func movement_loop():
-	var speed = max_speed * (1 + 0.2 * stat_speed)
+	var speed = max_speed * (1.2 + 0.1 * stat_speed)
 	
 	#Change z-index priority
 	z_index = int(position.y/60)
@@ -145,8 +145,6 @@ func animation_loop():
 			_state_machine.travel("Idle")
 		else:
 			_state_machine.travel("Run")
-		if shoot:
-			_arm_anim_tree.travel("Shoot")
 		
 	if is_dying:
 		is_dying = false
@@ -155,18 +153,22 @@ func animation_loop():
 
 func shooting():
 	if shoot and can_shoot and !is_dead:
+		_arm_anim_tree.travel("Shoot")
+		
 		shoot_line = get_global_mouse_position() - global_position
 		var b = bullet.instantiate()
 		var rotation = shoot_line.angle()
 		can_shoot = false
 		
-		var damage = damage_default * (1 + 0.2 * stat_damage)
-		var range = range_default * (1 + 0.4 * stat_range)
+		var damage = damage_default * (0.5 + 0.05 * stat_damage)
 		
 		#Bullet spawn
 		self.add_collision_exception_with(b)
-		b.start($Arm/Marker2D.global_position, rotation, damage, range)
+		b.start($Arm/Marker2D.global_position, rotation, damage)
 		get_parent().add_child(b)
+		
+		var frequence = frequence_default * (1 + 0.05 * stat_frequence)
+		$Reload.wait_time = 1/frequence
 		
 		#Timer start
 		if $Reload.is_stopped():
@@ -195,7 +197,7 @@ func change_setting(list):
 	stat_regen = list[0]
 	stat_speed = list[1]
 	stat_damage = list[2]
-	stat_range = list[3]
+	stat_frequence = list[3]
 	
 func die():
 	player_death.emit()
