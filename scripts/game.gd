@@ -42,13 +42,12 @@ func update_data(datas):
 	if (datas != null):
 		for data in datas :
 			if ( data['name'] != player ):
-				var position = Vector2(data['position'][0],data['position'][1])
-				if (position != get_node("Level/"+data['name']).position ):
-					get_node("Level/"+data['name']).position = position
+				get_node("Level/"+data['name']).position = Vector2(data['position'][0],data['position'][1])
+				get_node("Level/"+data['name']).movement = Vector2(data['movement'][0],data['movement'][1])
 				get_node("Level/"+data['name']).pv = data['pv']
 				get_node("Level/"+data['name']).change_setting(data['stat'])
 				get_node("Level/"+data['name']+"/Arm").look_at(Vector2 (data['arm'][0],data['arm'][1]))
 
-func send_update(name, position, pv, list_stat, arm ):
-	var data = {"name"= name, "position" = [position.x, position.y], "pv" = pv , "stat" = list_stat, "arm" = [arm.x, arm.y] }
+func send_update(name, position, movement, pv, list_stat, arm ):
+	var data = {"name"= name, "position" = [position.x, position.y],"movement" = [movement.x, movement.y], "pv" = pv , "stat" = list_stat, "arm" = [arm.x, arm.y] }
 	send(JSON.stringify(data))
