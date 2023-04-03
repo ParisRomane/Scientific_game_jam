@@ -14,8 +14,14 @@ func connect_ui_to_player(player):
 	pass
 
 func _ready():
+	get_tree().set_auto_accept_quit(false)
 	udp.connect_to_host("127.0.0.1", port)
 
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		#player dies
+		get_tree().quit() 
+		pass
 
 func _process(delta):
 	for i in range (udp.get_available_packet_count()) :
@@ -36,12 +42,13 @@ func update_data(datas):
 	if (datas != null):
 		for data in datas :
 			if ( data['name'] != player ):
-				#get_node("Map/"+data['name']).change_setting(data['stat'])
 				var position = Vector2(data['position'][0],data['position'][1])
 				if (position != get_node("Level/"+data['name']).position ):
 					get_node("Level/"+data['name']).position = position
-				#get_node("Map/"+data['name']).pv = data['pv']
+				get_node("Level/"+data['name']).pv = data['pv']
+				get_node("Level/"+data['name']).change_setting(data['stat'])
+				get_node("Level/"+data['name']+"/Arm").look_at(Vector2 (data['arm'][0],data['arm'][1]))
 
-func send_update(position, pv, stat_speed, stat_damage, stat_regen, stat_range, name  ):
-	var data = {"name"= name, "position" = [position.x, position.y], "pv" = pv , "stat" = [ stat_speed, stat_damage, stat_regen, stat_range]}
+func send_update(name, position, pv, list_stat, arm ):
+	var data = {"name"= name, "position" = [position.x, position.y], "pv" = pv , "stat" = list_stat, "arm" = [arm.x, arm.y] }
 	send(JSON.stringify(data))

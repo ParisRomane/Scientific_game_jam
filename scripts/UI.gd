@@ -61,8 +61,8 @@ func update_proprieties():
 		$stat_UI/hbox/list_prop.get_child(i).set_description(": +"+ str(add(i+1)) + begin_text[i])	
 	$mult.text = "Entropie : x"+ str(multip)
 	emit_signal("update_stat", list)
-	
-	
+
+
 func update_holder(): 
 	if (nb_added < MAX_SIZE_MAT-1):
 		get_node("stat_UI/hbox/matrix/"+str(order_of_add[nb_added])).texture =  next_texture

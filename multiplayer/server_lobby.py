@@ -8,36 +8,38 @@ socketprincipale = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)
 port = int(sys.argv[1])
 socketprincipale.bind(('',port))
 socketprincipale.listen(1)
-next_port = 4435
-
-data = [ ]
+data =  {}
 # on créé la liste de socket, avec le socketPrincipale pour le sélect
 watcher_sockets = [socketprincipale]
 # meme liste sans socketPrincipale, les socket pour réellement recevoir un message avec recv
 clients = []
 
-
 def update_lobby(sended,socket):
-    global data, next_port
-    if sended.startswith('LOBBY HOST'):
-        sended = sended.split()
-        json = {'max_joueur' : 2, 'nb_joueur' : 1, 'joueur1': {'pseudo': sended[2]}, 'port' : next_port }
-        os.system("python3 server_game.py "+str(next_port)+"&")
-        socket.send(bytes("LAUNCH Player_1 "+str(next_port), 'utf-8'))
-        next_port+=1
-        data.append(json)
-        print(data)
+	global data, available_ports, index_port
+	if sended.startswith('LOBBY HOST'):
+		sended = sended.split()
+		new_socket = 4435 
+		while str(new_socket) in data : 
+			new_socket += 1
+		data[str(new_socket)] = {'max_joueur' : 2, 'nb_joueur' : 1, 'Player_1': {'pseudo': sended[2]}  }
+		os.system("python3 server_game.py "+ str(new_socket)+"&")
+		socket.send(bytes("LAUNCH Player_1 "+str(new_socket)+" ", 'utf-8'))
+		print(data)
+	
         
-    elif sended.startswith('LOBBY CONNECT'):
-        sended = sended.split()
-        i = int(sended[2])
-        if (data[i]['nb_joueur']<data[i]['max_joueur']):
-            nb_joueur = data[i]['nb_joueur']+1
-            data[i]['nb_joueur'] = nb_joueur
-            data[i]["joueur"+str(nb_joueur)] = {'pseudo': sended[3]}
-            socket.send(bytes("LAUNCH Player_"+str(data[i]['nb_joueur'])+" "+str(data[i]['port']), 'utf-8'))
+	elif sended.startswith('LOBBY CONNECT'):
+		sended = sended.split()
+		i = sended[2]
+		if (data[i]['nb_joueur']<data[i]['max_joueur']):
+			nb_joueur = data[i]['nb_joueur']+1
+			data[i]['nb_joueur'] = nb_joueur
+			data[i]["Player_"+str(nb_joueur)] = {'pseudo': sended[3]}
+			socket.send(bytes("LAUNCH Player_"+str(data[i]['nb_joueur'])+" "+i+" ", 'utf-8'))
+		else : 
+			socket.send(bytes("HOST_FULL" , 'utf-8'))
 
-
+def unconnect(sended,socket):
+    pass
 
 while True:
 	# on regarde les sockets qui envoient des messages pour parler
@@ -64,9 +66,7 @@ while True:
 						update_lobby(str(messageclient, 'utf-8'),s)
 						for r in clients:
 							sent = r.send(bytes(str(data), 'utf-8'))
-					else :
-						for r in clients:
-							if (r != s ):
-								sent = r.send(messageclient)
+					elif str(messageclient, 'utf-8').startswith('LOBBY'):
+						update_lobby(str(messageclient, 'utf-8'),s)
 			except ConnectionResetError:
 				pass

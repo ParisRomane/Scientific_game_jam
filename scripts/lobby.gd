@@ -80,14 +80,12 @@ func update_data(data):
 	for n in $Lobby/lobby_L/VBoxContainer.get_children():
 		$Lobby/lobby_L/VBoxContainer.remove_child(n)
 		n.queue_free()
-	for i in range(len(data)):
+	for i in data.keys():
 		var co = connect_scene.instantiate()
 		co.setup(data[i],i)
 		co.connect("co", self._on_connect_pressed)
 		$Lobby/lobby_L/VBoxContainer.add_child(co)
 	
-var level_scene = preload("res://scenes/concrete_scenes/game.tscn")
-
 func _on_connect_pressed(msg):
 	if (($Lobby/lobby_R/pseudo.text).replace(" ","") == "") :
 		print("erreur avec le pseudo")
@@ -97,7 +95,9 @@ func _on_connect_pressed(msg):
 func _on_host_pressed():
 	var string = "LOBBY HOST "+ $Lobby/lobby_R/pseudo.text
 	send(string)
-	
+
+var level_scene = preload("res://scenes/concrete_scenes/game.tscn")
+
 func launch_game(sended : String):
 	print(sended)
 	var launch = sended.split(" ")
@@ -116,3 +116,8 @@ func launch_game(sended : String):
 		#level.get_node("CanvasLayer/1").connect.call_deferred("update_stat",self.change_setting)
 		#level.get_node("Map/"+player).connect.call_deferred("player_update_pv",self.change_hp)
 		self.add_child(level)
+	else : 
+		print(launch[0])
+
+func dies(pseudo, player, port):
+	send("DIE "+str(player))

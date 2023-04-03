@@ -25,7 +25,7 @@ var move
 var shoot
 var suicide
 @export var is_player = true;
-signal send(position, pv, stat_speed, stat_damage, stat_regen, stat_range, name )
+signal send(name, position, pv, list_stat, arm )
 
 var ACC = 50
 
@@ -70,8 +70,18 @@ func _physics_process(delta):	# 60 FPS (delta is in s)
 		vel = velocity
 		$Arm.look_at(get_global_mouse_position())
 		update_pv(delta) 
-		emit_signal("send", position, pv, stat_speed, stat_damage, stat_regen, stat_range, name)
+		emit_signal("send",name, position, pv, [stat_speed, stat_damage, stat_regen, stat_range], get_global_mouse_position())
 	#update_position()
+	if !is_dead:
+		var coef = 1/(float(pv_default)/float(pv))
+		$AnimatedSprite2D.modulate = Color(1, coef, coef)
+		$Arm.modulate = Color(1, coef, coef)
+	else : 
+		$AnimatedSprite2D.modulate = Color(1, 1,1)
+	movement_loop()
+	shooting()
+	animation_loop()
+
 
 func hit(damage):
 	pv -= damage
@@ -105,16 +115,6 @@ func action_loop():
 	shoot = Input.is_action_pressed("shoot")
 	suicide = Input.is_action_just_pressed("ui_cancel")
 	
-	if !is_dead:
-		var coef = 1/(float(pv_default)/float(pv))
-		$AnimatedSprite2D.modulate = Color(1, coef, coef)
-		$Arm.modulate = Color(1, coef, coef)
-	else : 
-		$AnimatedSprite2D.modulate = Color(1, 1,1)
-	
-	movement_loop()
-	shooting()
-	animation_loop()
 
 func movement_loop():
 	var speed = max_speed * (1 + 0.2 * stat_speed)
