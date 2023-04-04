@@ -11,6 +11,7 @@ func connect_ui_to_player(player):
 	get_node("CanvasLayer/1").connect.call_deferred("update_stat",get_node("Level/"+player).change_setting)
 	get_node("Level/"+player).connect.call_deferred("player_update_pv",get_node("CanvasLayer/1").change_hp)
 	get_node("Level/"+player).connect.call_deferred("add_element",get_node("CanvasLayer/1"). add_element)
+	get_node("Level/"+player).connect.call_deferred("sig_shoot", send)
 	pass
 
 func _ready():
@@ -28,11 +29,16 @@ func _process(delta):
 		data = udp.get_packet()
 		data = data.get_string_from_utf8()
 		connected = true
-		var info = JSON.parse_string(data.replace("'",'"'))
-		if (info != null) :
-			update_data(info)
-		else : 
-			print(data)
+		if (data.split(" ")[0] == "SHOOT") :
+			print(data, data.split(" "),data.split(" ")[0] == "SHOOT")
+			if !get_node("Level/"+data.split(" ")[1]).is_player :
+				print( "here : ", str(get_node("Level/"+data.split(" ")[1]).shoot) )
+				get_node("Level/"+data.split(" ")[1]).shoot = true
+				get_node("Level/"+data.split(" ")[1]).can_shoot = true
+		else :
+			var info = JSON.parse_string(data.replace("'",'"'))
+			if (info != null) :
+				update_data(info)
 
 	
 func send(data: String):
@@ -46,7 +52,7 @@ func update_data(datas):
 				get_node("Level/"+data['name']).movement = Vector2(data['movement'][0],data['movement'][1])
 				get_node("Level/"+data['name']).pv = data['pv']
 				get_node("Level/"+data['name']).change_setting(data['stat'])
-				get_node("Level/"+data['name']+"/Arm").look_at(Vector2 (data['arm'][0],data['arm'][1]))
+				get_node("Level/"+data['name']).mouse_pos = Vector2 (data['arm'][0],data['arm'][1])
 
 func send_update(name, position, movement, pv, list_stat, arm ):
 	var data = {"name"= name, "position" = [position.x, position.y],"movement" = [movement.x, movement.y], "pv" = pv , "stat" = list_stat, "arm" = [arm.x, arm.y] }

@@ -22,7 +22,8 @@ var shoot = false
 var suicide = false
 var regen_clock = 0
 
-
+#position de la souris : utile a stocker pour ceux qui ne sont pas le player principal
+var mouse_pos = get_global_mouse_position()
 #player stats
 var pv #int between 0 and pv_default
 var stat_speed = 0 # positive int
@@ -40,6 +41,7 @@ signal player_death
 signal player_update_pv(pv)
 signal add_element(element)
 signal send(name, position, movement, pv, list_stat, arm )
+signal sig_shoot(msg)
 
 func _ready():
 	
@@ -55,11 +57,11 @@ func _ready():
 
 func _physics_process(delta):	# 60 FPS (delta is in s)
 	if is_player :
+		mouse_pos = get_global_mouse_position()
 		action_loop()
-		$Arm.look_at(get_global_mouse_position())
 		update_pv(delta) 
-		emit_signal("send", name, position, movement, pv, [stat_speed, stat_damage, stat_regen, stat_frequence ],get_global_mouse_position())
-	#update_position()
+		emit_signal("send", name, position, movement, pv, [stat_speed, stat_damage, stat_regen, stat_frequence ],mouse_pos)
+	$Arm.look_at(mouse_pos)
 	movement_loop()
 	move_and_slide()
 	shooting()
@@ -132,10 +134,11 @@ func animation_loop():
 func shooting():
 	if shoot and can_shoot and !is_dead:
 		_arm_anim_tree.travel("Shoot")
-		shoot_line = get_global_mouse_position() - global_position
+		shoot_line = mouse_pos - global_position
 		var b = bullet.instantiate()
 		var rotation = shoot_line.angle()
 		can_shoot = false
+		shoot = false
 		var damage = damage_default * (0.5 + 0.05 * stat_damage)
 		
 		#Bullet spawn
@@ -149,6 +152,7 @@ func shooting():
 			$Reload.start()
 		
 		$Sounds/Shoot.play()
+		emit_signal("sig_shoot", "SHOOT "+name+" ")
 
 func _on_reload_timeout():
 	can_shoot = true

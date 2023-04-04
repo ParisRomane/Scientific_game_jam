@@ -51,7 +51,11 @@ while 1:
         if not(address in clients):
             clients.append(address)
             print(clients)
-        update_game(str(message, 'utf-8'))
+        if str(message, 'utf-8').startswith('SHOOT'):
+            for r in clients:
+                sent = s.sendto(message, r)
+        else :
+            update_game(str(message, 'utf-8'))
     except (KeyboardInterrupt, SystemExit):
         raise
     except:
@@ -61,6 +65,6 @@ while 1:
     if (timer>0):
         timer = -0.016
         for r in clients:
-            sent = s.sendto(bytes(str(data), 'utf-8'), address)
+            sent = s.sendto(bytes(str(data), 'utf-8'), r)
         
 

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dygf8usfr1y7o" path="res://scenes/objects/blocks/nickel_block.tscn" id="6_f5yu7"]
 [ext_resource type="PackedScene" uid="uid://bu6v3kax4nleb" path="res://scenes/objects/blocks/magnesium_block.tscn" id="7_ptt0j"]
 [ext_resource type="PackedScene" uid="uid://bvctq65fhai5h" path="res://scenes/objects/blocks/copper_block.tscn" id="8_nmwco"]
-[ext_resource type="PackedScene" path="res://scenes/objects/blocks/temple_block.tscn" id="9_rbepw"]
+[ext_resource type="PackedScene" uid="uid://bvfrqb8edog1n" path="res://scenes/objects/blocks/temple_block.tscn" id="9_rbepw"]
 [ext_resource type="AudioStream" uid="uid://1flcwxdxby88" path="res://assets/son/block_break.mp3" id="10_21x18"]
 [ext_resource type="AudioStream" uid="uid://bk4nfka8ialbf" path="res://assets/son/game.mp3" id="11_fj2j8"]
 
