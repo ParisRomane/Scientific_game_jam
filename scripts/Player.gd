@@ -4,13 +4,14 @@ extends CharacterBody2D
 enum {NONE, CU,CO,NI,MG}
 
 var is_player = true
-#ANimation state machines
+#Animation state machines
 var _state_machine
 var _arm_anim_tree
 var _death_anim_tree
 
 var bullet = preload("res://scenes/objects/bullet.tscn")
 var is_dead = false
+var is_dying = false #Used once when the player die
 var can_shoot = true
 var shoot_line
 
@@ -114,21 +115,37 @@ func movement_loop():
 		velocity.x = lerpf(velocity.x, 0, 0.15)
 		velocity.y = lerpf(velocity.y, 0, 0.15)
 		
+func modulate():
+	var coef = 1/(float(pv_default)/float(pv))
+	$Idle.modulate = Color(1, coef, coef)
+	$Run.modulate = Color(1, coef, coef)
+	$Arm.modulate = Color(1, coef, coef)
+		
 func animation_loop():
 	if !is_dead:
-		var coef = 1/(float(pv_default)/float(pv))
-		$AnimatedSprite2D.modulate = Color(1, coef, coef)
-		$Arm.modulate = Color(1, coef, coef)
-	else : 
-		$AnimatedSprite2D.modulate = Color(1, 1,1)
+		modulate()
 		
-	if !is_dead:
 		if (movement == Vector2(0,0)):
 			_state_machine.travel("Idle")
+			if(_state_machine.get_current_node() == "Run"):
+				$Idle.show()
+				$Run.hide()
 		else:
 			_state_machine.travel("Run")
+			if(_state_machine.get_current_node() == "Idle"):
+				$Idle.hide()
+				$Run.show()
+
 		if shoot:
 			_arm_anim_tree.travel("Shoot")
+
+	if is_dying:
+		is_dying = false
+		$Idle.hide()
+		$Run.hide()
+		$Arm.hide()
+		$Death.show()
+		_state_machine.travel("Dying")
 		
 
 func shooting():
@@ -179,12 +196,10 @@ func change_setting(list):
 	stat_frequence = list[3]
 	
 func die():
-	# on lance l'animation de mort 	
-	$Arm.hide()
-	_state_machine.travel("Dying")
 	#envoie le signal de mort
 	player_death.emit()
 	$Sounds/Loose.play()
 	is_dead = true
+	is_dying = true
 	z_index = 0
 	$CollisionShape2D.set_disabled(true)
