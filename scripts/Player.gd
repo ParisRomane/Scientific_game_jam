@@ -6,6 +6,7 @@ enum {NONE, CU,CO,NI,MG}
 var is_player = true
 #Animation state machines
 var _state_machine
+var _body_anim_tree
 var _arm_anim_tree
 var _death_anim_tree
 
@@ -46,7 +47,8 @@ signal sig_shoot(msg)
 
 func _ready():
 	
-	_state_machine = $BodyAnimationTree.get("parameters/playback")
+	_body_anim_tree = $BodyAnimationTree.get("parameters/playback")
+	_state_machine = $BodyAnimationTree
 	_arm_anim_tree = $ArmAnimationTree.get("parameters/playback")
 	
 	pv = pv_default
@@ -117,8 +119,7 @@ func movement_loop():
 		
 func modulate():
 	var coef = 1/(float(pv_default)/float(pv))
-	$Idle.modulate = Color(1, coef, coef)
-	$Run.modulate = Color(1, coef, coef)
+	$Character.modulate = Color(1, coef, coef)
 	$Arm.modulate = Color(1, coef, coef)
 		
 func animation_loop():
@@ -126,26 +127,20 @@ func animation_loop():
 		modulate()
 		
 		if (movement == Vector2(0,0)):
-			_state_machine.travel("Idle")
-			if(_state_machine.get_current_node() == "Run"):
-				$Idle.show()
-				$Run.hide()
+			_body_anim_tree.travel("Idle")
 		else:
-			_state_machine.travel("Run")
-			if(_state_machine.get_current_node() == "Idle"):
-				$Idle.hide()
-				$Run.show()
+			_state_machine.set('parameters/Run/blend_position', movement.normalized())
+			_body_anim_tree.travel("Run")
 
 		if shoot:
 			_arm_anim_tree.travel("Shoot")
 
 	if is_dying:
 		is_dying = false
-		$Idle.hide()
-		$Run.hide()
+		$Character.hide()
 		$Arm.hide()
 		$Death.show()
-		_state_machine.travel("Dying")
+		_body_anim_tree.travel("Dying")
 		
 
 func shooting():
