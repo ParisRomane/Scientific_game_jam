@@ -53,6 +53,8 @@ func _ready():
 	
 	pv = pv_default
 	
+	$Character.flip_h = false
+	
 	$Sounds/Hit.stream = load("res://assets/son/hit.wav")
 	$Sounds/Shoot.stream = load("res://assets/son/shoot.mp3")
 	$Sounds/Powerup.stream = load("res://assets/son/powerup.mp3")

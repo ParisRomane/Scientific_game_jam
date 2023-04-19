@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://yybscwsjupia"]
+[gd_scene load_steps=44 format=3 uid="uid://yybscwsjupia"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_32vcc"]
 [ext_resource type="Texture2D" uid="uid://dna2onnamanwf" path="res://assets/personnages/move/move_spritesheet_character_1.png" id="2_othlx"]
@@ -111,6 +111,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-11, -21)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Character:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_c4v3v"]
 resource_name = "Run_back"
@@ -139,6 +151,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(15, -21)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_swk6c"]
@@ -169,9 +193,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2(-11, -21)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_cdf33"]
-resource_name = "Run_side"
+resource_name = "Run_side_right"
 length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
@@ -198,6 +234,59 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2(1, -12)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cl6rh"]
+resource_name = "Run_side_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Character:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Arm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-3, -13)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xspif"]
 _data = {
@@ -207,7 +296,8 @@ _data = {
 "RESET": SubResource("Animation_uenve"),
 "Run_back": SubResource("Animation_c4v3v"),
 "Run_front": SubResource("Animation_swk6c"),
-"Run_side": SubResource("Animation_cdf33")
+"Run_side_left": SubResource("Animation_cl6rh"),
+"Run_side_right": SubResource("Animation_cdf33")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_at0yh"]
@@ -229,10 +319,10 @@ animation = &"Run_front"
 animation = &"Run_back"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ysqxl"]
-animation = &"Run_side"
+animation = &"Run_side_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tf2rs"]
-animation = &"Run_side"
+animation = &"Run_side_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_t1tfg"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_b7i1b")
@@ -364,6 +454,7 @@ debug_color = Color(1, 1, 1, 0.419608)
 
 [node name="Character" type="Sprite2D" parent="."]
 texture = ExtResource("2_othlx")
+flip_h = true
 hframes = 6
 vframes = 4
 frame = 18
