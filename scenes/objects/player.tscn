@@ -1,9 +1,9 @@
 [gd_scene load_steps=44 format=3 uid="uid://yybscwsjupia"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_32vcc"]
-[ext_resource type="Texture2D" uid="uid://dna2onnamanwf" path="res://assets/personnages/move/move_spritesheet_character_1.png" id="2_othlx"]
-[ext_resource type="Texture2D" uid="uid://b7kmo1puhp0og" path="res://assets/personnages/bras_shoot/bras.png" id="2_swvvt"]
-[ext_resource type="Texture2D" uid="uid://d3ilw7xka03ri" path="res://assets/personnages/death/death.png" id="5_3qneu"]
+[ext_resource type="Texture2D" uid="uid://d1joywbw2sc54" path="res://assets/personnages/perso_01/move.png" id="2_ypyjm"]
+[ext_resource type="Texture2D" uid="uid://bk0e5sflf2job" path="res://assets/personnages/perso_01/death.png" id="3_tpm5a"]
+[ext_resource type="Texture2D" uid="uid://db15jn50tmapo" path="res://assets/personnages/perso_01/bras.png" id="4_igmhi"]
 [ext_resource type="Script" path="res://scripts/Shoot.gd" id="6_3ytay"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqvdu"]
@@ -206,47 +206,6 @@ tracks/2/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_cdf33"]
-resource_name = "Run_side_right"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Character:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [6, 7, 8, 9, 10, 11]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Arm:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(1, -12)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Character:flip_h")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_cl6rh"]
 resource_name = "Run_side_left"
 length = 0.6
@@ -286,6 +245,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(-3, -13)]
+}
+
+[sub_resource type="Animation" id="Animation_cdf33"]
+resource_name = "Run_side_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Arm:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, -12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Character:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xspif"]
@@ -453,7 +453,7 @@ debug_color = Color(1, 1, 1, 0.419608)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Character" type="Sprite2D" parent="."]
-texture = ExtResource("2_othlx")
+texture = ExtResource("2_ypyjm")
 flip_h = true
 hframes = 6
 vframes = 4
@@ -462,14 +462,14 @@ frame = 18
 [node name="Death" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("5_3qneu")
+texture = ExtResource("3_tpm5a")
 hframes = 3
 vframes = 4
 frame = 9
 
 [node name="Arm" type="Sprite2D" parent="."]
 position = Vector2(-11, -21)
-texture = ExtResource("2_swvvt")
+texture = ExtResource("4_igmhi")
 offset = Vector2(53, -2)
 vframes = 5
 

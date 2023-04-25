@@ -10,6 +10,9 @@ var _body_anim_tree
 var _arm_anim_tree
 var _death_anim_tree
 
+# Random's seed
+var rand = RandomNumberGenerator.new()
+
 var bullet = preload("res://scenes/objects/bullet.tscn")
 var is_dead = false
 var is_dying = false #Used once when the player die
@@ -46,6 +49,13 @@ signal send(name, position, movement, pv, list_stat, arm )
 signal sig_shoot(msg)
 
 func _ready():
+	
+	var randint = rand.randi_range(1, 4)
+	var dir_path = "res://assets/personnages/perso_0" + str(randint) + "/"
+	
+	$Character.set_texture(load(dir_path + "move.png"))
+	$Arm.set_texture(load(dir_path + "arm.png"))
+	$Death.set_texture(load(dir_path + "death.png"))
 	
 	_body_anim_tree = $BodyAnimationTree.get("parameters/playback")
 	_state_machine = $BodyAnimationTree
@@ -127,6 +137,7 @@ func modulate():
 func animation_loop():
 	if !is_dead:
 		modulate()
+		
 		
 		if (movement == Vector2(0,0)):
 			_body_anim_tree.travel("Idle")
